@@ -24,7 +24,7 @@ jobs:
             'meddeid-data==0.2.1' \
             'meddeid-eval==0.2.1' \
             'meddeid-training[train]==0.1.1' \
-            'torch==2.7.1' \
+            'torch==2.13.0' \
             'transformers==5.15.0' \
             'numpy==2.3.0' \
             'scikit-learn==1.7.0' \

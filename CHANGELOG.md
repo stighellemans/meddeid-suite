@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.1 - 2026-08-18
+
+- Updated the verified clean-install runtime from PyTorch 2.7.1 to 2.13.0 to
+  eliminate the known vulnerabilities reported for the earlier runtime pin.
+
 ## 0.1.0 - 2026-08-18
 
 - Published the first coordinated MedDeID suite release contract.
