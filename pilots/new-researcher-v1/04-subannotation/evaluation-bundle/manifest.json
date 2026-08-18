@@ -1,0 +1,31 @@
+{
+  "bundle_version": 1,
+  "generated_at": "2026-08-11T15:23:42.178Z",
+  "contracts": {
+    "schema_version": "meddeid.schema.v1",
+    "offset_unit": "unicode_codepoints",
+    "span_identity": "sha256(document_id,begin,end,label)"
+  },
+  "files": {
+    "benchmark": "meddeid-dutch-synthetic-benchmark.jsonl"
+  },
+  "hashes": {
+    "annotation_source_state_sha256": "fb0f8ffb8fc53b38f9f7c5e90eb57c43562013a6b874bb2868ac94b74db3d716",
+    "source_annotations_sha256": "af77e700a00f4f006d1af5f69781689d8ae657c9e8edbb7a1d42684939816346",
+    "confirmed_subannotations_sha256": "6a2a509cbed61b9bf6df5abfcdf5ec266dea853beda015d59cfc6a857bd0ed9c",
+    "benchmark_sha256": "0cea3c59236e6a0711659173179543a770c1d995fe4c64382cd568710f44460b"
+  },
+  "annotation_source": {
+    "annotations_sha256": "af77e700a00f4f006d1af5f69781689d8ae657c9e8edbb7a1d42684939816346",
+    "state": "../annotation-source-state.json"
+  },
+  "counts": {
+    "documents": 6,
+    "primary_gold_spans": 22,
+    "core_pii_subannotations": 92
+  },
+  "evaluation": {
+    "package": "meddeid-eval",
+    "command": "meddeid-eval score --gold meddeid-dutch-synthetic-benchmark.jsonl --predictions predictions.jsonl"
+  }
+}

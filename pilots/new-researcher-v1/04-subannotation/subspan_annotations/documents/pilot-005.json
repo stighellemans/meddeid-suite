@@ -1,0 +1,178 @@
+{
+  "version": 1,
+  "document_id": "pilot-005",
+  "primaryGold": {
+    "annotationsSha256": "af77e700a00f4f006d1af5f69781689d8ae657c9e8edbb7a1d42684939816346"
+  },
+  "updatedAt": "2026-08-11T15:23:42.174Z",
+  "items": {
+    "span-e53db68220d5986a212e9710": {
+      "itemId": "span-e53db68220d5986a212e9710",
+      "goldSpanId": "span-e53db68220d5986a212e9710",
+      "goldIndex": 0,
+      "gold": {
+        "begin": 12,
+        "end": 22,
+        "label": "Date",
+        "text": "02/08/2026",
+        "category": "Date",
+        "subtype": null
+      },
+      "reviewRange": {
+        "begin": 12,
+        "end": 22
+      },
+      "status": "confirmed",
+      "segments": [
+        {
+          "begin": 12,
+          "end": 14,
+          "category": "datetime_identifier"
+        },
+        {
+          "begin": 14,
+          "end": 15,
+          "category": "formatting"
+        },
+        {
+          "begin": 15,
+          "end": 17,
+          "category": "datetime_identifier"
+        },
+        {
+          "begin": 17,
+          "end": 18,
+          "category": "formatting"
+        },
+        {
+          "begin": 18,
+          "end": 22,
+          "category": "datetime_identifier"
+        }
+      ],
+      "updatedAt": "2026-08-11T15:23:42.174Z",
+      "confirmedAt": "2026-08-11T15:23:42.174Z"
+    },
+    "span-e8586b4436dd3deee4787bf2": {
+      "itemId": "span-e8586b4436dd3deee4787bf2",
+      "goldSpanId": "span-e8586b4436dd3deee4787bf2",
+      "goldIndex": 1,
+      "gold": {
+        "begin": 27,
+        "end": 35,
+        "label": "Profession",
+        "text": "huisarts",
+        "category": "Profession",
+        "subtype": null
+      },
+      "reviewRange": {
+        "begin": 27,
+        "end": 35
+      },
+      "status": "confirmed",
+      "segments": [
+        {
+          "begin": 27,
+          "end": 35,
+          "category": "name_identifier"
+        }
+      ],
+      "updatedAt": "2026-08-11T15:23:42.174Z",
+      "confirmedAt": "2026-08-11T15:23:42.174Z"
+    },
+    "span-472d7a14ca3ec3eb9df4d900": {
+      "itemId": "span-472d7a14ca3ec3eb9df4d900",
+      "goldSpanId": "span-472d7a14ca3ec3eb9df4d900",
+      "goldIndex": 2,
+      "gold": {
+        "begin": 36,
+        "end": 46,
+        "label": "Name:Caregiver",
+        "text": "Noor Aerts",
+        "category": "Name",
+        "subtype": "Caregiver"
+      },
+      "reviewRange": {
+        "begin": 36,
+        "end": 46
+      },
+      "status": "confirmed",
+      "segments": [
+        {
+          "begin": 36,
+          "end": 40,
+          "category": "name_identifier"
+        },
+        {
+          "begin": 40,
+          "end": 41,
+          "category": "formatting"
+        },
+        {
+          "begin": 41,
+          "end": 46,
+          "category": "name_identifier"
+        }
+      ],
+      "updatedAt": "2026-08-11T15:23:42.174Z",
+      "confirmedAt": "2026-08-11T15:23:42.174Z"
+    },
+    "span-f94472ad46c8a41bc5cc62e5": {
+      "itemId": "span-f94472ad46c8a41bc5cc62e5",
+      "goldSpanId": "span-f94472ad46c8a41bc5cc62e5",
+      "goldIndex": 3,
+      "gold": {
+        "begin": 54,
+        "end": 68,
+        "label": "ID:Caregiver",
+        "text": "1-23456-78-901",
+        "category": "ID",
+        "subtype": "Caregiver"
+      },
+      "reviewRange": {
+        "begin": 54,
+        "end": 68
+      },
+      "status": "confirmed",
+      "segments": [
+        {
+          "begin": 54,
+          "end": 55,
+          "category": "id_identifier"
+        },
+        {
+          "begin": 55,
+          "end": 56,
+          "category": "formatting"
+        },
+        {
+          "begin": 56,
+          "end": 61,
+          "category": "id_identifier"
+        },
+        {
+          "begin": 61,
+          "end": 62,
+          "category": "formatting"
+        },
+        {
+          "begin": 62,
+          "end": 64,
+          "category": "id_identifier"
+        },
+        {
+          "begin": 64,
+          "end": 65,
+          "category": "formatting"
+        },
+        {
+          "begin": 65,
+          "end": 68,
+          "category": "id_identifier"
+        }
+      ],
+      "updatedAt": "2026-08-11T15:23:42.174Z",
+      "confirmedAt": "2026-08-11T15:23:42.174Z"
+    }
+  }
+}

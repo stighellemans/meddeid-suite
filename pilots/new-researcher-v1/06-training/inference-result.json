@@ -1,0 +1,15 @@
+{
+  "text": "Patiënt Emma Voorbeeld bezocht op 10 augustus 2026 het UZ Leuven.\n",
+  "deid_text": "[Date].\n",
+  "spans": [
+    {
+      "begin": 0,
+      "end": 64,
+      "label": "Date",
+      "text": "Patiënt Emma Voorbeeld bezocht op 10 augustus 2026 het UZ Leuven",
+      "category": "Date",
+      "subtype": null,
+      "score": 0.4800400494863227
+    }
+  ]
+}

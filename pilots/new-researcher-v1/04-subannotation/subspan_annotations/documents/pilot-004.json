@@ -1,0 +1,185 @@
+{
+  "version": 1,
+  "document_id": "pilot-004",
+  "primaryGold": {
+    "annotationsSha256": "af77e700a00f4f006d1af5f69781689d8ae657c9e8edbb7a1d42684939816346"
+  },
+  "updatedAt": "2026-08-11T15:23:42.174Z",
+  "items": {
+    "span-1f6ed4d72227f698e0c3c85a": {
+      "itemId": "span-1f6ed4d72227f698e0c3c85a",
+      "goldSpanId": "span-1f6ed4d72227f698e0c3c85a",
+      "goldIndex": 0,
+      "gold": {
+        "begin": 0,
+        "end": 9,
+        "label": "Profession",
+        "text": "Apotheker",
+        "category": "Profession",
+        "subtype": null
+      },
+      "reviewRange": {
+        "begin": 0,
+        "end": 9
+      },
+      "status": "confirmed",
+      "segments": [
+        {
+          "begin": 0,
+          "end": 9,
+          "category": "name_identifier"
+        }
+      ],
+      "updatedAt": "2026-08-11T15:23:42.174Z",
+      "confirmedAt": "2026-08-11T15:23:42.174Z"
+    },
+    "span-8873ad0b43d8a5acc0d99437": {
+      "itemId": "span-8873ad0b43d8a5acc0d99437",
+      "goldSpanId": "span-8873ad0b43d8a5acc0d99437",
+      "goldIndex": 1,
+      "gold": {
+        "begin": 10,
+        "end": 22,
+        "label": "Name:Caregiver",
+        "text": "Koen Willems",
+        "category": "Name",
+        "subtype": "Caregiver"
+      },
+      "reviewRange": {
+        "begin": 10,
+        "end": 22
+      },
+      "status": "confirmed",
+      "segments": [
+        {
+          "begin": 10,
+          "end": 14,
+          "category": "name_identifier"
+        },
+        {
+          "begin": 14,
+          "end": 15,
+          "category": "formatting"
+        },
+        {
+          "begin": 15,
+          "end": 22,
+          "category": "name_identifier"
+        }
+      ],
+      "updatedAt": "2026-08-11T15:23:42.174Z",
+      "confirmedAt": "2026-08-11T15:23:42.174Z"
+    },
+    "span-68f8236333de1f680d3e0edb": {
+      "itemId": "span-68f8236333de1f680d3e0edb",
+      "goldSpanId": "span-68f8236333de1f680d3e0edb",
+      "goldIndex": 2,
+      "gold": {
+        "begin": 35,
+        "end": 47,
+        "label": "Name:Patient",
+        "text": "Lotte Jacobs",
+        "category": "Name",
+        "subtype": "Patient"
+      },
+      "reviewRange": {
+        "begin": 35,
+        "end": 47
+      },
+      "status": "confirmed",
+      "segments": [
+        {
+          "begin": 35,
+          "end": 40,
+          "category": "name_identifier"
+        },
+        {
+          "begin": 40,
+          "end": 41,
+          "category": "formatting"
+        },
+        {
+          "begin": 41,
+          "end": 47,
+          "category": "name_identifier"
+        }
+      ],
+      "updatedAt": "2026-08-11T15:23:42.174Z",
+      "confirmedAt": "2026-08-11T15:23:42.174Z"
+    },
+    "span-5b56e260596ebb5b435bfaab": {
+      "itemId": "span-5b56e260596ebb5b435bfaab",
+      "goldSpanId": "span-5b56e260596ebb5b435bfaab",
+      "goldIndex": 3,
+      "gold": {
+        "begin": 51,
+        "end": 62,
+        "label": "Organization:Healthcare",
+        "text": "AZ Sint-Jan",
+        "category": "Organization",
+        "subtype": "Healthcare"
+      },
+      "reviewRange": {
+        "begin": 51,
+        "end": 62
+      },
+      "status": "confirmed",
+      "segments": [
+        {
+          "begin": 51,
+          "end": 53,
+          "category": "organization_identifier"
+        },
+        {
+          "begin": 53,
+          "end": 54,
+          "category": "formatting"
+        },
+        {
+          "begin": 54,
+          "end": 58,
+          "category": "organization_identifier"
+        },
+        {
+          "begin": 58,
+          "end": 59,
+          "category": "formatting"
+        },
+        {
+          "begin": 59,
+          "end": 62,
+          "category": "organization_identifier"
+        }
+      ],
+      "updatedAt": "2026-08-11T15:23:42.174Z",
+      "confirmedAt": "2026-08-11T15:23:42.174Z"
+    },
+    "span-82fcdb7d4ac57db28c794461": {
+      "itemId": "span-82fcdb7d4ac57db28c794461",
+      "goldSpanId": "span-82fcdb7d4ac57db28c794461",
+      "goldIndex": 4,
+      "gold": {
+        "begin": 66,
+        "end": 72,
+        "label": "Address_Location:Other",
+        "text": "Brugge",
+        "category": "Address_Location",
+        "subtype": "Other"
+      },
+      "reviewRange": {
+        "begin": 66,
+        "end": 72
+      },
+      "status": "confirmed",
+      "segments": [
+        {
+          "begin": 66,
+          "end": 72,
+          "category": "address_identifier"
+        }
+      ],
+      "updatedAt": "2026-08-11T15:23:42.174Z",
+      "confirmedAt": "2026-08-11T15:23:42.174Z"
+    }
+  }
+}

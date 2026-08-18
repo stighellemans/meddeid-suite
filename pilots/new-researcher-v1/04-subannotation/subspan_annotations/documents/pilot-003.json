@@ -1,0 +1,151 @@
+{
+  "version": 1,
+  "document_id": "pilot-003",
+  "primaryGold": {
+    "annotationsSha256": "af77e700a00f4f006d1af5f69781689d8ae657c9e8edbb7a1d42684939816346"
+  },
+  "updatedAt": "2026-08-11T15:23:42.174Z",
+  "items": {
+    "span-8da0d29a6b5182aa91079a3b": {
+      "itemId": "span-8da0d29a6b5182aa91079a3b",
+      "goldSpanId": "span-8da0d29a6b5182aa91079a3b",
+      "goldIndex": 0,
+      "gold": {
+        "begin": 13,
+        "end": 26,
+        "label": "Name:Patient",
+        "text": "Maria De Smet",
+        "category": "Name",
+        "subtype": "Patient"
+      },
+      "reviewRange": {
+        "begin": 13,
+        "end": 26
+      },
+      "status": "confirmed",
+      "segments": [
+        {
+          "begin": 13,
+          "end": 18,
+          "category": "name_identifier"
+        },
+        {
+          "begin": 18,
+          "end": 19,
+          "category": "formatting"
+        },
+        {
+          "begin": 19,
+          "end": 21,
+          "category": "name_identifier"
+        },
+        {
+          "begin": 21,
+          "end": 22,
+          "category": "formatting"
+        },
+        {
+          "begin": 22,
+          "end": 26,
+          "category": "name_identifier"
+        }
+      ],
+      "updatedAt": "2026-08-11T15:23:42.174Z",
+      "confirmedAt": "2026-08-11T15:23:42.174Z"
+    },
+    "span-1f75471b963f4a6356d920aa": {
+      "itemId": "span-1f75471b963f4a6356d920aa",
+      "goldSpanId": "span-1f75471b963f4a6356d920aa",
+      "goldIndex": 1,
+      "gold": {
+        "begin": 42,
+        "end": 54,
+        "label": "ID:Patient",
+        "text": "AZ-2026-0042",
+        "category": "ID",
+        "subtype": "Patient"
+      },
+      "reviewRange": {
+        "begin": 42,
+        "end": 54
+      },
+      "status": "confirmed",
+      "segments": [
+        {
+          "begin": 42,
+          "end": 44,
+          "category": "id_identifier"
+        },
+        {
+          "begin": 44,
+          "end": 45,
+          "category": "formatting"
+        },
+        {
+          "begin": 45,
+          "end": 49,
+          "category": "id_identifier"
+        },
+        {
+          "begin": 49,
+          "end": 50,
+          "category": "formatting"
+        },
+        {
+          "begin": 50,
+          "end": 54,
+          "category": "id_identifier"
+        }
+      ],
+      "updatedAt": "2026-08-11T15:23:42.174Z",
+      "confirmedAt": "2026-08-11T15:23:42.174Z"
+    },
+    "span-cebc0ff76de86a4dcfe6bbd9": {
+      "itemId": "span-cebc0ff76de86a4dcfe6bbd9",
+      "goldSpanId": "span-cebc0ff76de86a4dcfe6bbd9",
+      "goldIndex": 2,
+      "gold": {
+        "begin": 74,
+        "end": 99,
+        "label": "Contactdetails",
+        "text": "maria.desmet@example.test",
+        "category": "Contactdetails",
+        "subtype": null
+      },
+      "reviewRange": {
+        "begin": 74,
+        "end": 99
+      },
+      "status": "confirmed",
+      "segments": [
+        {
+          "begin": 74,
+          "end": 79,
+          "category": "contact_identifier"
+        },
+        {
+          "begin": 79,
+          "end": 80,
+          "category": "formatting"
+        },
+        {
+          "begin": 80,
+          "end": 94,
+          "category": "contact_identifier"
+        },
+        {
+          "begin": 94,
+          "end": 95,
+          "category": "formatting"
+        },
+        {
+          "begin": 95,
+          "end": 99,
+          "category": "contact_identifier"
+        }
+      ],
+      "updatedAt": "2026-08-11T15:23:42.174Z",
+      "confirmedAt": "2026-08-11T15:23:42.174Z"
+    }
+  }
+}

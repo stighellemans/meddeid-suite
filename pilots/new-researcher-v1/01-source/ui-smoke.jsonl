@@ -1,0 +1,1 @@
+{"document_id":"ui-smoke-001","text":"Patiënt Jan Peeters kwam op controle.","metadata":{"lang":"nl","synthetic":true},"annotated":true,"spans":[{"begin":8,"end":19,"label":"Name:Patient","text":"Jan Peeters","category":"Name","subtype":"Patient","confirmed":false}]}

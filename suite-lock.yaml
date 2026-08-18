@@ -1,0 +1,152 @@
+lock_format: meddeid.suite-lock.v1
+suite_version: 0.1.0
+status: released
+recorded_at: 2026-08-18
+schema_version: meddeid.schema.v1
+taxonomy_version: ProductionLabels-v1.1
+model_head_labels: 14
+language_profile:
+  id: nl-BE
+  version: "1"
+  python_package: meddeid-language-nl==0.1.1
+  javascript_package: "@meddeid/language-nl@0.1.0"
+  javascript_status: published
+  javascript_git_head: 9e438f2be05485d9f73aa31eb233476f110612f9
+  javascript_shasum: 63cd6cb03847e83977955ea3e120e5a9ac1e51d6
+  javascript_integrity: "sha512-oq7Vs2jfBAr6Bqoc4PCMQk67yzpcS2MNIc0sares7VUs+agLjHIZUGYAE6jK1KGZlw2Rrvn1GbUGrlBh86y6qA=="
+
+components:
+  meddeid:
+    repository: https://github.com/stighellemans/meddeid
+    version: 0.1.1
+    tag: v0.1.1
+    commit: 75ad89a8d93c6b8f30e628e9f92b085538fbfd0b
+    wheel_sha256: 812e3ff8ae390d8618939df3dd961b64e34ebcebce243324d10538f927d2ea89
+    sdist_sha256: b70229c4760fbb865e76a0794d11aef5edbf4caffde4d35bae072883da928f5e
+  meddeid-core:
+    repository: https://github.com/stighellemans/meddeid-core
+    version: 0.1.1
+    tag: v0.1.1
+    commit: 6a84d9285c520ec347749961ff6f6f1235a4f747
+    wheel_sha256: 72c82275588e8a9e95892e8db078293845c4878ca96232f73099aea4ed9e601e
+    sdist_sha256: 43b90156286e87ec2c00aa1bd1045b8bb1e910470f3c09f5692e3e01ca00cf76
+  meddeid-language-nl:
+    repository: https://github.com/stighellemans/meddeid-language-nl
+    version: 0.1.1
+    tag: v0.1.1
+    commit: ba47c78fd9877ad727711766771c1cfad6d9f3bf
+    wheel_sha256: 429d31487f53dbc885e5f6ef211bb50bdba4e4a4e77d3d3b43b4ebd30e49db93
+    sdist_sha256: 0acbb5e4eb2fabdacc124238344a12cd726bf98dacbd27e2560d9b198aa6a4c0
+  meddeid-data:
+    repository: https://github.com/stighellemans/meddeid-data
+    version: 0.2.1
+    tag: v0.2.1
+    commit: 4a1a657a77a2f2f44ab67b373c3d87d92440dac7
+    wheel_sha256: 75d0704ea83667ba039819bc1bd1ed7679bd67832ab196ba3fe5c7d312178553
+    sdist_sha256: ec5ae4ead2ff77c49ec723396410cef25249102788d40891f3c837a20725fee7
+  meddeid-eval:
+    repository: https://github.com/stighellemans/meddeid-eval
+    version: 0.2.1
+    tag: v0.2.1
+    commit: ef9f7176a20397b55802260fe9600cc37cce7b9b
+    wheel_sha256: 3a4faba3fd2cb05b39f8113be85380ffe12ab28d0cd602d3ab6fa4a4704f3e96
+    sdist_sha256: c80c0de8cdc7f153cbf700f046a95a19b2c487b9d1e8da6ca976d20cad7a2d79
+  meddeid-training:
+    repository: https://github.com/stighellemans/meddeid-training
+    version: 0.1.1
+    tag: v0.1.1
+    commit: a4aef1be7983fe6d245d63af68a1292bc5ca109f
+    wheel_sha256: 854c4f26f07cd5f0b8139cc3554ad2c008c1395c7a8cc9e83f73da3a1b3ac693
+    sdist_sha256: 53e3b0c418c831a977546603249ff3c53488d18aebffbdeab5dfc9d898e5e387
+  meddeid-annotate:
+    repository: https://github.com/stighellemans/meddeid-annotate
+    version: 0.1.0
+    tag: v0.1.0
+    commit: f3ff1c3b355420eec819901ab43ab1d97fa94d90
+  meddeid-curate:
+    repository: https://github.com/stighellemans/meddeid-curate
+    version: 0.1.0
+    tag: v0.1.0
+    commit: 1c14c1911a1127f53cb4fe39676f0980fd19af8c
+  meddeid-subannotate:
+    repository: https://github.com/stighellemans/meddeid-subannotate
+    version: 0.1.0
+    tag: v0.1.0
+    commit: a215fdb089d38709c71a5c61a2376da5a6ff3af7
+
+containers:
+  meddeid-api:
+    reference: ghcr.io/stighellemans/meddeid-api:0.1.1
+    digest: sha256:14fab911f369162b3ccb465b1793693c132720dc638996b64c711a2bb4b8e3b1
+  meddeid-annotate:
+    reference: ghcr.io/stighellemans/meddeid-annotate:0.1.0
+    digest: sha256:72f3e0fa0935da41e635e668573ec9c434cc3e8e1ef97bc793917bdfe6a7b78d
+  meddeid-curate:
+    reference: ghcr.io/stighellemans/meddeid-curate:0.1.0
+    digest: sha256:8b3dde675cadc81f42a7fc34917d7b472c1556d14bc3acd1babf5bee8699875b
+  meddeid-subannotate:
+    reference: ghcr.io/stighellemans/meddeid-subannotate:0.1.0
+    digest: sha256:d7da6967cb29b6cf8377458959dca84626a9c0e157320b42fe8815f49e880c87
+
+model:
+  repository: stighellemans/meddeid-dutch-synth
+  revision: 55c7858e91a53686bfd359d2653c8c6b8dabde89
+  weights_sha256: 791c6b2135274d548a0ee0c8759055be3eac2ac6245977b7faaf992a664f4780
+  bundle_sha256: 3d1dcf7248434e309724630e80979178b48be057eeeb4432ed3c97c7b79e8eb3
+  base_encoder: DTAI-KULeuven/robbert-2023-dutch-base
+  base_encoder_revision: 1164b2df6d3ceb1735900c839da8de9bad1a99f9
+  licence: AGPL-3.0-only
+
+hosted_demo:
+  repository: stighellemans/meddeid-demo
+  revision: 7e0dafa057f8ffc33f2c623987cfaf9bedaae581
+  runtime: zero-a10g
+  api: /deidentify
+  privacy_boundary: synthetic-or-otherwise-non-sensitive-text-only
+
+hugging_face_collection:
+  slug: stighellemans/meddeid-6a7ae47783f48f05c85170d0
+  status: published
+
+datasets:
+  synthetic_training:
+    repository: stighellemans/meddeid-dutch-synthetic-corpus
+    revision: cd85ee5500bd6b2783bc759d96d75a2b6e966a1f
+    split: train
+    rows: 6493
+    artifact: source/original.jsonl
+    sha256: 94ecefbcf5c2613d905c7762a71881f08c39a28cd6bf0828f70407f2bbeba41c
+    licence: CC-BY-4.0
+  synthetic_benchmark:
+    repository: stighellemans/meddeid-dutch-synthetic-benchmark
+    revision: 6e023545aa8415fb0f153948e755cf9f4613dea0
+    split: test
+    rows: 300
+    primary_spans: 3598
+    subannotations: 14591
+    artifact: source/benchmark.jsonl
+    sha256: ea00dff702c490c5a8de6120a8ec33b8659b579aff88ab2c464d087d1bc084cc
+    licence: CC-BY-4.0
+
+archive:
+  concept_doi: 10.5281/zenodo.21890964
+  version_doi: 10.5281/zenodo.21992866
+  record_id: 21992866
+  version: v2
+  status: published
+  archive_sha256: 1e1c2b37dd515b427b14884015771bec09b7c47667aabe58b5596853834602a7
+
+runtime:
+  python: "3.12"
+  torch: "2.7.1"
+  transformers: "5.15.0"
+  numpy: "2.3.0"
+  scikit_learn: "1.7.0"
+
+smoke:
+  fixture: pilots/new-researcher-v1
+  documents: 6
+  predicted_spans: 22
+  exact_f1:
+    target: 0.90
+    tolerance: 0.10

@@ -1,0 +1,54 @@
+{
+  "manifest_version": "meddeid.primary-gold.v1",
+  "status": "published",
+  "published_at": "2026-08-11T15:22:48.194Z",
+  "contracts": {
+    "schema_version": "meddeid.schema.v1",
+    "offset_unit": "unicode_codepoints",
+    "taxonomy_contract_version": 1,
+    "taxonomy_version": "ProductionLabels-v1.1"
+  },
+  "dataset": {
+    "dataset_id": "dataset-9566571755c2cd57",
+    "dataset_revision": "9566571755c2cd5732ac838139fafa2fe5320326ce218931afe6c99d5181ccd1",
+    "offset_unit": "unicode_codepoints"
+  },
+  "curator": {
+    "curator_id": "pilot-curator-v2"
+  },
+  "inputs": [
+    {
+      "filename": "annotator-a.jsonl",
+      "manifest_filename": null,
+      "annotation_set_id": "annotation-set-dbc0ac3a5ee56f29",
+      "annotator_id": null,
+      "sha256": "dbc0ac3a5ee56f2994554eba09e2de2432f156f8a119a865ba8ddfadcaaba935",
+      "documents": 6,
+      "spans": 22
+    },
+    {
+      "filename": "annotator-b.jsonl",
+      "manifest_filename": null,
+      "annotation_set_id": "annotation-set-40d90333ffc71d7c",
+      "annotator_id": null,
+      "sha256": "40d90333ffc71d7ceb644a14b0fecde6fa50f41519f39c3a6d3eb7bb24f73ad3",
+      "documents": 6,
+      "spans": 20
+    }
+  ],
+  "files": {
+    "annotations": "annotations.jsonl",
+    "decisions": "decisions.jsonl"
+  },
+  "hashes": {
+    "annotations_sha256": "af77e700a00f4f006d1af5f69781689d8ae657c9e8edbb7a1d42684939816346",
+    "decisions_sha256": "20f3c7423c7624d4b537c4e7e10511f244620a09c53b76de219cb631f66fc39b"
+  },
+  "counts": {
+    "documents": 6,
+    "confirmed_documents": 6,
+    "primary_gold_spans": 22,
+    "disagreements": 7,
+    "resolved_disagreements": 7
+  }
+}

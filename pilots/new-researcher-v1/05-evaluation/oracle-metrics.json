@@ -1,0 +1,10 @@
+{
+  "character_precision": 1.0,
+  "character_recall": 1.0,
+  "core_pii_recall": 1.0,
+  "documents": 6,
+  "exact_f1": 1.0,
+  "exact_precision": 1.0,
+  "exact_recall": 1.0,
+  "exact_true_positive": 22
+}

@@ -1,0 +1,151 @@
+{
+  "version": 1,
+  "document_id": "pilot-001",
+  "primaryGold": {
+    "annotationsSha256": "af77e700a00f4f006d1af5f69781689d8ae657c9e8edbb7a1d42684939816346"
+  },
+  "updatedAt": "2026-08-11T15:23:42.174Z",
+  "items": {
+    "span-dd5e61765e7534a17f098c70": {
+      "itemId": "span-dd5e61765e7534a17f098c70",
+      "goldSpanId": "span-dd5e61765e7534a17f098c70",
+      "goldIndex": 0,
+      "gold": {
+        "begin": 8,
+        "end": 19,
+        "label": "Name:Patient",
+        "text": "Jan Peeters",
+        "category": "Name",
+        "subtype": "Patient"
+      },
+      "reviewRange": {
+        "begin": 8,
+        "end": 19
+      },
+      "status": "confirmed",
+      "segments": [
+        {
+          "begin": 8,
+          "end": 11,
+          "category": "name_identifier"
+        },
+        {
+          "begin": 11,
+          "end": 12,
+          "category": "formatting"
+        },
+        {
+          "begin": 12,
+          "end": 19,
+          "category": "name_identifier"
+        }
+      ],
+      "updatedAt": "2026-08-11T15:23:42.173Z",
+      "confirmedAt": "2026-08-11T15:23:42.173Z"
+    },
+    "span-21e43d2e1e1a7c0904a30810": {
+      "itemId": "span-21e43d2e1e1a7c0904a30810",
+      "goldSpanId": "span-21e43d2e1e1a7c0904a30810",
+      "goldIndex": 1,
+      "gold": {
+        "begin": 32,
+        "end": 42,
+        "label": "Age_Birthdate",
+        "text": "12/03/1980",
+        "category": "Age_Birthdate",
+        "subtype": null
+      },
+      "reviewRange": {
+        "begin": 32,
+        "end": 42
+      },
+      "status": "confirmed",
+      "segments": [
+        {
+          "begin": 32,
+          "end": 34,
+          "category": "datetime_identifier"
+        },
+        {
+          "begin": 34,
+          "end": 35,
+          "category": "formatting"
+        },
+        {
+          "begin": 35,
+          "end": 37,
+          "category": "datetime_identifier"
+        },
+        {
+          "begin": 37,
+          "end": 38,
+          "category": "formatting"
+        },
+        {
+          "begin": 38,
+          "end": 42,
+          "category": "datetime_identifier"
+        }
+      ],
+      "updatedAt": "2026-08-11T15:23:42.173Z",
+      "confirmedAt": "2026-08-11T15:23:42.173Z"
+    },
+    "span-1d3049368d2309c8e148a181": {
+      "itemId": "span-1d3049368d2309c8e148a181",
+      "goldSpanId": "span-1d3049368d2309c8e148a181",
+      "goldIndex": 2,
+      "gold": {
+        "begin": 53,
+        "end": 77,
+        "label": "Address_Location:Patient",
+        "text": "Kerkstraat 14, 9000 Gent",
+        "category": "Address_Location",
+        "subtype": "Patient"
+      },
+      "reviewRange": {
+        "begin": 53,
+        "end": 77
+      },
+      "status": "confirmed",
+      "segments": [
+        {
+          "begin": 53,
+          "end": 63,
+          "category": "address_identifier"
+        },
+        {
+          "begin": 63,
+          "end": 64,
+          "category": "formatting"
+        },
+        {
+          "begin": 64,
+          "end": 66,
+          "category": "address_identifier"
+        },
+        {
+          "begin": 66,
+          "end": 68,
+          "category": "formatting"
+        },
+        {
+          "begin": 68,
+          "end": 72,
+          "category": "address_identifier"
+        },
+        {
+          "begin": 72,
+          "end": 73,
+          "category": "formatting"
+        },
+        {
+          "begin": 73,
+          "end": 77,
+          "category": "address_identifier"
+        }
+      ],
+      "updatedAt": "2026-08-11T15:23:42.173Z",
+      "confirmedAt": "2026-08-11T15:23:42.173Z"
+    }
+  }
+}

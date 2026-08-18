@@ -1,0 +1,41 @@
+{
+  "bundle_version": "meddeid.bundle.v1",
+  "artifact_version": "0.1.0",
+  "model_version": "1",
+  "name": "meddeid-dutch-synth",
+  "task": "dual_head_token_classification",
+  "base_encoder": "DTAI-KULeuven/robbert-2023-dutch-base",
+  "hidden_size": 768,
+  "labels": {
+    "bio": [
+      "O",
+      "B",
+      "I"
+    ],
+    "entity": [
+      "Address_Location:Caregiver",
+      "Address_Location:Other",
+      "Address_Location:Patient",
+      "Age_Birthdate",
+      "Contactdetails",
+      "Date",
+      "ID:Caregiver",
+      "ID:Patient",
+      "Name:Caregiver",
+      "Name:Other",
+      "Name:Patient",
+      "Organization:Healthcare",
+      "Organization:Other",
+      "Profession"
+    ]
+  },
+  "inference": {
+    "max_length": 512,
+    "overlap": 64,
+    "min_entity_score": 0.0
+  },
+  "postprocess": {
+    "profile_id": "nl-BE",
+    "profile_version": "1"
+  }
+}

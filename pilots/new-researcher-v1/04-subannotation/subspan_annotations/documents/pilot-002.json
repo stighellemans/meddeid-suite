@@ -1,0 +1,198 @@
+{
+  "version": 1,
+  "document_id": "pilot-002",
+  "primaryGold": {
+    "annotationsSha256": "af77e700a00f4f006d1af5f69781689d8ae657c9e8edbb7a1d42684939816346"
+  },
+  "updatedAt": "2026-08-11T15:23:42.174Z",
+  "items": {
+    "span-c9ef2a1f673be444063bdd4e": {
+      "itemId": "span-c9ef2a1f673be444063bdd4e",
+      "goldSpanId": "span-c9ef2a1f673be444063bdd4e",
+      "goldIndex": 0,
+      "gold": {
+        "begin": 0,
+        "end": 19,
+        "label": "Name:Caregiver",
+        "text": "Dr. Elise Vermeulen",
+        "category": "Name",
+        "subtype": "Caregiver"
+      },
+      "reviewRange": {
+        "begin": 0,
+        "end": 19
+      },
+      "status": "confirmed",
+      "segments": [
+        {
+          "begin": 0,
+          "end": 2,
+          "category": "name_identifier"
+        },
+        {
+          "begin": 2,
+          "end": 4,
+          "category": "formatting"
+        },
+        {
+          "begin": 4,
+          "end": 9,
+          "category": "name_identifier"
+        },
+        {
+          "begin": 9,
+          "end": 10,
+          "category": "formatting"
+        },
+        {
+          "begin": 10,
+          "end": 19,
+          "category": "name_identifier"
+        }
+      ],
+      "updatedAt": "2026-08-11T15:23:42.173Z",
+      "confirmedAt": "2026-08-11T15:23:42.173Z"
+    },
+    "span-f930574393ad36cf6f5db9b9": {
+      "itemId": "span-f930574393ad36cf6f5db9b9",
+      "goldSpanId": "span-f930574393ad36cf6f5db9b9",
+      "goldIndex": 1,
+      "gold": {
+        "begin": 24,
+        "end": 33,
+        "label": "Organization:Healthcare",
+        "text": "UZ Leuven",
+        "category": "Organization",
+        "subtype": "Healthcare"
+      },
+      "reviewRange": {
+        "begin": 24,
+        "end": 33
+      },
+      "status": "confirmed",
+      "segments": [
+        {
+          "begin": 24,
+          "end": 26,
+          "category": "organization_identifier"
+        },
+        {
+          "begin": 26,
+          "end": 27,
+          "category": "formatting"
+        },
+        {
+          "begin": 27,
+          "end": 33,
+          "category": "organization_identifier"
+        }
+      ],
+      "updatedAt": "2026-08-11T15:23:42.174Z",
+      "confirmedAt": "2026-08-11T15:23:42.174Z"
+    },
+    "span-cbeaa8db30bdf17ec9b758b5": {
+      "itemId": "span-cbeaa8db30bdf17ec9b758b5",
+      "goldSpanId": "span-cbeaa8db30bdf17ec9b758b5",
+      "goldIndex": 2,
+      "gold": {
+        "begin": 43,
+        "end": 55,
+        "label": "Date",
+        "text": "18 juli 2026",
+        "category": "Date",
+        "subtype": null
+      },
+      "reviewRange": {
+        "begin": 43,
+        "end": 55
+      },
+      "status": "confirmed",
+      "segments": [
+        {
+          "begin": 43,
+          "end": 45,
+          "category": "datetime_identifier"
+        },
+        {
+          "begin": 45,
+          "end": 46,
+          "category": "formatting"
+        },
+        {
+          "begin": 46,
+          "end": 50,
+          "category": "datetime_identifier"
+        },
+        {
+          "begin": 50,
+          "end": 51,
+          "category": "formatting"
+        },
+        {
+          "begin": 51,
+          "end": 55,
+          "category": "datetime_identifier"
+        }
+      ],
+      "updatedAt": "2026-08-11T15:23:42.174Z",
+      "confirmedAt": "2026-08-11T15:23:42.174Z"
+    },
+    "span-46257e43606b31eebfcfacad": {
+      "itemId": "span-46257e43606b31eebfcfacad",
+      "goldSpanId": "span-46257e43606b31eebfcfacad",
+      "goldIndex": 3,
+      "gold": {
+        "begin": 61,
+        "end": 74,
+        "label": "Contactdetails",
+        "text": "0470 12 34 56",
+        "category": "Contactdetails",
+        "subtype": null
+      },
+      "reviewRange": {
+        "begin": 61,
+        "end": 74
+      },
+      "status": "confirmed",
+      "segments": [
+        {
+          "begin": 61,
+          "end": 65,
+          "category": "contact_identifier"
+        },
+        {
+          "begin": 65,
+          "end": 66,
+          "category": "formatting"
+        },
+        {
+          "begin": 66,
+          "end": 68,
+          "category": "contact_identifier"
+        },
+        {
+          "begin": 68,
+          "end": 69,
+          "category": "formatting"
+        },
+        {
+          "begin": 69,
+          "end": 71,
+          "category": "contact_identifier"
+        },
+        {
+          "begin": 71,
+          "end": 72,
+          "category": "formatting"
+        },
+        {
+          "begin": 72,
+          "end": 74,
+          "category": "contact_identifier"
+        }
+      ],
+      "updatedAt": "2026-08-11T15:23:42.174Z",
+      "confirmedAt": "2026-08-11T15:23:42.174Z"
+    }
+  }
+}

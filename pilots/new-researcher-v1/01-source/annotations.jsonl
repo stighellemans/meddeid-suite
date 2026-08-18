@@ -1,0 +1,6 @@
+{"document_id":"pilot-001","text":"Patiënt Jan Peeters, geboren op 12/03/1980, woont in Kerkstraat 14, 9000 Gent.","metadata":{"lang":"nl","synthetic":true},"annotated":false,"spans":[]}
+{"document_id":"pilot-002","text":"Dr. Elise Vermeulen van UZ Leuven belde op 18 juli 2026 naar 0470 12 34 56.","metadata":{"lang":"nl","synthetic":true},"annotated":false,"spans":[]}
+{"document_id":"pilot-003","text":"Verslag voor Maria De Smet, dossiernummer AZ-2026-0042, doorgestuurd naar maria.desmet@example.test.","metadata":{"lang":"nl","synthetic":true},"annotated":false,"spans":[]}
+{"document_id":"pilot-004","text":"Apotheker Koen Willems zag patiënt Lotte Jacobs in AZ Sint-Jan te Brugge.","metadata":{"lang":"nl","synthetic":true},"annotated":false,"spans":[]}
+{"document_id":"pilot-005","text":"Controle op 02/08/2026 bij huisarts Noor Aerts, RIZIV 1-23456-78-901.","metadata":{"lang":"nl","synthetic":true},"annotated":false,"spans":[]}
+{"document_id":"pilot-006","text":"De 7-jarige Bram Claes verhuisde naar Stationsplein 3 in Hasselt.","metadata":{"lang":"nl","synthetic":true},"annotated":false,"spans":[]}

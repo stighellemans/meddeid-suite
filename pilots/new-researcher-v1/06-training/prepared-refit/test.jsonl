@@ -1,0 +1,1 @@
+{"document_id":"pilot-006","text":"De 7-jarige Bram Claes verhuisde naar Stationsplein 3 in Hasselt.","metadata":{"lang":"nl","synthetic":true},"spans":[{"begin":3,"end":11,"text":"7-jarige","label":"Age_Birthdate"},{"begin":12,"end":22,"text":"Bram Claes","label":"Name:Patient"},{"begin":38,"end":64,"text":"Stationsplein 3 in Hasselt","label":"Address_Location:Patient"}]}

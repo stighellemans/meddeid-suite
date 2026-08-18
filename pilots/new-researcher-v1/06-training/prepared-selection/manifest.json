@@ -1,0 +1,1 @@
+{"manifest_version":1,"purpose":"pilot-selection","counts":{"train":4,"val":1,"test":1},"warning":"Pipeline plumbing test only; not a scientific dataset release."}

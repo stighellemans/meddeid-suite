@@ -1,0 +1,10 @@
+{
+  "character_precision": 0.8771929824561403,
+  "character_recall": 0.704225352112676,
+  "core_pii_recall": 0.757085020242915,
+  "documents": 6,
+  "exact_f1": 0.65,
+  "exact_precision": 0.7222222222222222,
+  "exact_recall": 0.5909090909090909,
+  "exact_true_positive": 13
+}
