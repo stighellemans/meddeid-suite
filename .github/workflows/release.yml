@@ -52,7 +52,8 @@ jobs:
         run: pip-audit --format=json --output=dependency-audit.json
       - name: Record dependency-audit outcome
         if: always()
-        run: echo "Dependency audit outcome: ${{ steps.dependency-audit.outcome }}" >> "$GITHUB_STEP_SUMMARY"
+        run: |
+          echo "Dependency audit outcome: ${{ steps.dependency-audit.outcome }}" >> "$GITHUB_STEP_SUMMARY"
       - name: Build SBOM
         if: always()
         run: cyclonedx-py environment --output-file sbom.cdx.json
