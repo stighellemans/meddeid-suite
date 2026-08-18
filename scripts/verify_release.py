@@ -9,6 +9,8 @@ import importlib.metadata
 import json
 import re
 import subprocess
+import time
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -27,18 +29,36 @@ def require(condition: bool, message: str) -> None:
 
 
 def read_json(url: str) -> dict:
-    request = urllib.request.Request(url, headers={"User-Agent": "meddeid-release-verifier/1"})
-    with urllib.request.urlopen(request, timeout=60) as response:
-        return json.load(response)
+    for attempt in range(3):
+        try:
+            request = urllib.request.Request(
+                url, headers={"User-Agent": "meddeid-release-verifier/1"}
+            )
+            with urllib.request.urlopen(request, timeout=60) as response:
+                return json.load(response)
+        except (urllib.error.URLError, TimeoutError, ConnectionError):
+            if attempt == 2:
+                raise
+            time.sleep(2**attempt)
+    raise AssertionError("unreachable")
 
 
 def remote_sha256(url: str) -> str:
-    digest = hashlib.sha256()
-    request = urllib.request.Request(url, headers={"User-Agent": "meddeid-release-verifier/1"})
-    with urllib.request.urlopen(request, timeout=180) as response:
-        while chunk := response.read(1024 * 1024):
-            digest.update(chunk)
-    return digest.hexdigest()
+    for attempt in range(3):
+        try:
+            digest = hashlib.sha256()
+            request = urllib.request.Request(
+                url, headers={"User-Agent": "meddeid-release-verifier/1"}
+            )
+            with urllib.request.urlopen(request, timeout=180) as response:
+                while chunk := response.read(1024 * 1024):
+                    digest.update(chunk)
+            return digest.hexdigest()
+        except (urllib.error.URLError, TimeoutError, ConnectionError):
+            if attempt == 2:
+                raise
+            time.sleep(2**attempt)
+    raise AssertionError("unreachable")
 
 
 def verify_python_components(lock: dict) -> None:
