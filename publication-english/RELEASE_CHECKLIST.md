@@ -17,7 +17,7 @@
 - [x] Review the reported benchmark metrics and wording.
 - [x] Confirm CC BY 4.0 for data/guideline and AGPL-3.0-only for the model.
 - [x] Include the English synthetic training corpus and subannotated benchmark
-      in the existing MedDeID Collection; do not add the English model.
+      in the existing MedDeID Collection together with the English model.
 
 ## Staged release
 
@@ -28,10 +28,10 @@
       corpus rows and 300 benchmark rows).
 - [x] Download the model into an empty cache and run both `en-GB` and `en-US`
       smoke inference with the public `meddeid==0.2.0` runtime.
-- [x] Create and preview the Zenodo draft; record concept DOI `10.5281/zenodo.22127863`
-      and version DOI `10.5281/zenodo.22127864`.
+- [x] Create and preview the corrected Zenodo draft; record concept DOI `10.5281/zenodo.22127863`
+      and version DOI `10.5281/zenodo.22129255`.
 - [x] Publish the two datasets, model, and Zenodo record after final review.
-- [x] Add the English synthetic corpus and subannotated benchmark—but not the
-      English model—to the MedDeID Collection. Add the final paper when available.
+- [x] Add the English synthetic corpus, subannotated benchmark and English model
+      to the MedDeID Collection. Add the final paper when available.
 
 No checklist item authorizes publication automatically.

@@ -11,7 +11,7 @@ Review:
 - `publication-english/dist/huggingface/meddeid-english-synthetic-corpus/README.md`;
 - `publication-english/dist/huggingface/meddeid-english-synthetic-benchmark/README.md`;
 - `publication-english/dist/huggingface/meddeid-english-synth/README.md`;
-- `publication-english/dist/zenodo/meddeid-english-synthetic-data-v1/metadata.json`;
+- `publication-english/dist/zenodo/meddeid-english-synthetic-data-v2/metadata.json`;
 - `publication-english/RELEASE_CHECKLIST.md`.
 
 The account currently configured for the Hugging Face CLI should be checked
@@ -39,15 +39,15 @@ Upload one local folder per repository:
 ```bash
 hf upload stighellemans/meddeid-english-synthetic-corpus \
   publication-english/dist/huggingface/meddeid-english-synthetic-corpus . \
-  --type dataset --commit-message "Stage MedDeID English synthetic corpus v1"
+  --type dataset --commit-message "Stage MedDeID English synthetic corpus v2"
 
 hf upload stighellemans/meddeid-english-synthetic-benchmark \
   publication-english/dist/huggingface/meddeid-english-synthetic-benchmark . \
-  --type dataset --commit-message "Stage MedDeID English synthetic benchmark v1"
+  --type dataset --commit-message "Stage MedDeID English synthetic benchmark v2"
 
 hf upload stighellemans/meddeid-english-synth \
   publication-english/dist/huggingface/meddeid-english-synth . \
-  --type model --commit-message "Stage MedDeID English model v1"
+  --type model --commit-message "Stage MedDeID English model v2"
 ```
 
 Record the immutable commit SHA returned for each repository. Inspect the cards,
@@ -56,13 +56,13 @@ files, licences, and model metadata while all repositories remain private.
 ## 3. Zenodo draft
 
 Create a new dataset upload in Zenodo and use the values from
-`publication-english/dist/zenodo/meddeid-english-synthetic-data-v1/metadata.json`.
+`publication-english/dist/zenodo/meddeid-english-synthetic-data-v2/metadata.json`.
 Upload only:
 
-`publication-english/dist/zenodo/meddeid-english-synthetic-data-v1.zip`
+`publication-english/dist/zenodo/meddeid-english-synthetic-data-v2.zip`
 
 Preview the draft and verify the title, six creators and ORCIDs, affiliations,
-FWO grant, CC BY 4.0 licence, version `v1`, and public visibility. Reserve the
+FWO grant, CC BY 4.0 licence, version `v2`, and public visibility. Reserve the
 DOI if the final cards should cite it. Record both the concept DOI and version
 DOI in `publication-english/release-manifest.json` before rebuilding the final
 artifacts.
@@ -94,9 +94,8 @@ hf repos settings stighellemans/meddeid-english-synth \
 Publish the reviewed Zenodo draft in the same release window. Then record the
 three immutable Hub revisions, Zenodo identifiers, archive checksum, and release
 date in the manifest. Add the English synthetic corpus and subannotated
-benchmark to the existing MedDeID Collection, together with the final paper.
-Keep `stighellemans/meddeid-english-synth` outside the Collection as a standalone
-public model repository.
+benchmark and `stighellemans/meddeid-english-synth` model to the existing
+MedDeID Collection, together with the final paper.
 
 Publishing changes public external state and should be a separate, explicit
 action from preparing or staging the artifacts.

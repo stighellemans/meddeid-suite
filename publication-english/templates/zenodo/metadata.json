@@ -3,9 +3,9 @@
     "upload_type": "dataset",
     "title": "MedDeID English synthetic clinical corpus, benchmark and annotation guideline",
     "description": "A synthetic English clinical-text de-identification release containing 6,700 model-development documents and a disjoint 300-document human-validated benchmark, balanced between en-GB and en-US. The benchmark contains 1,717 primary PII spans and 7,358 confirmed nested core-PII subannotation segments. The archive also contains the English annotation guideline and provenance manifests. It contains no real patient notes or personal information.",
-    "version": "v1",
+    "version": "v2",
     "publication_date": "2026-08-27",
-    "doi": "10.5281/zenodo.22127864",
+    "doi": "10.5281/zenodo.22129255",
     "creators": [
       {"name": "Hellemans, Stig", "affiliation": "Adrem Data Lab, Department of Computer Science, University of Antwerp; Antwerp University Hospital", "orcid": "0000-0001-9441-3882"},
       {"name": "Stroobants, Tom", "affiliation": "Laboratory of Experimental Medicine and Pediatrics (LEMP), University of Antwerp; Antwerp University Hospital (UZA)", "orcid": "0009-0009-6983-5405"},

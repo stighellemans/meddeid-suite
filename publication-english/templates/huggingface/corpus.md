@@ -88,6 +88,9 @@ Philippe Jorens, and Kris Laukens at the University of Antwerp and Antwerp
 University Hospital (UZA), with support from Research Foundation Flanders
 (FWO), grant 1SA3226N.
 
+We thank De Wijkpraktijk and [Co-Medic](https://co-medic.com/en) for enabling
+the primary-care validation reported in the accompanying MedDeID study.
+
 ## Citation
 
 Please cite both the archived dataset version and the accompanying paper.
@@ -98,9 +101,9 @@ Please cite both the archived dataset version and the accompanying paper.
   title     = {MedDeID English synthetic clinical corpus, benchmark and annotation guideline},
   year      = {2026},
   publisher = {Zenodo},
-  version   = {v1},
-  doi       = {10.5281/zenodo.22127864},
-  url       = {https://doi.org/10.5281/zenodo.22127864}
+  version   = {v2},
+  doi       = {10.5281/zenodo.22129255},
+  url       = {https://doi.org/10.5281/zenodo.22129255}
 }
 ```
 

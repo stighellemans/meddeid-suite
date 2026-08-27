@@ -1,4 +1,4 @@
-# MedDeID English synthetic data v1
+# MedDeID English synthetic data v2
 
 This archive contains 6,700 synthetic English clinical documents for model
 development, a separate 300-document human-validated synthetic benchmark, and

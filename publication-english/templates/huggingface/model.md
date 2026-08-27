@@ -14,6 +14,7 @@ tags:
 - en-US
 datasets:
 - stighellemans/meddeid-english-synthetic-corpus
+- stighellemans/meddeid-english-synthetic-benchmark
 ---
 
 # meddeid-english-synth
@@ -81,9 +82,10 @@ entity evaluation produced precision 99.19%, recall 99.48%, and F1 99.33%
 precision 99.01%, recall 99.30%, and F1 99.16%. Exact-slice F1 was 99.07% for
 `en-GB` and 99.24% for `en-US`.
 
-### Comparison with other systems
+### Internal synthetic benchmark comparison
 
-The complete manuscript comparison is shown below. Recall is calculated over
+The comparison on the released 300-note English synthetic benchmark is shown
+below. Recall is calculated over
 the identifying annotation characters. The metadata-enabled condition applies
 the same optional patient/caregiver-name recovery step to every system. Values
 in parentheses are document-clustered 95% bootstrap confidence intervals.
@@ -101,6 +103,27 @@ Higher recall and lower non-PII redaction are better.
 
 These are synthetic-benchmark point estimates. They are not estimates of
 performance on real clinical notes or another institution.
+
+### External portability benchmarks (manuscript Table 3)
+
+The manuscript also evaluates the same systems on the independent
+[Technetium-I](https://huggingface.co/datasets/temlm-foundation/Technetium-I)
+and [ASQ-PHI](https://doi.org/10.1016/j.dib.2026.112586) synthetic datasets.
+Values are percentages. Recall is label-agnostic annotation-character recall;
+higher recall and lower non-PII redaction are better.
+
+| Model or system | Technetium-I recall (%) | Technetium-I non-PII redaction (%) | ASQ-PHI recall (%) | ASQ-PHI non-PII redaction (%) |
+|---|---:|---:|---:|---:|
+| [meddeid-english-synth](https://huggingface.co/stighellemans/meddeid-english-synth) | **99.730** | 1.606 | **98.90** | 6.21 |
+| [GLiNER Multilingual PII](https://huggingface.co/urchade/gliner_multi_pii-v1) | 97.773 | 3.616 | 96.32 | 11.52 |
+| [OBI RoBERTa i2b2](https://huggingface.co/obi/deid_roberta_i2b2) | 91.595 | 0.868 | 95.45 | 2.01 |
+| [OpenAI Privacy Filter](https://huggingface.co/openai/privacy-filter) | 96.328 | 0.870 | 63.48 | **1.19** |
+| [OpenMed Multilingual Privacy Filter](https://huggingface.co/OpenMed/privacy-filter-multilingual) | 92.032 | 1.086 | 75.36 | 4.39 |
+| [OpenMed SuperClinical 434M](https://huggingface.co/OpenMed/OpenMed-PII-SuperClinical-Large-434M-v1) | 94.828 | 1.723 | 61.67 | 4.85 |
+| [UCSF Philter](https://github.com/BCHSI/philter-ucsf) | 88.295 | **0.700** | 70.89 | 1.80 |
+
+These external results assess portability to other synthetic corpora; they are
+not estimates of performance on real clinical notes.
 
 ## Predicted labels
 
@@ -137,6 +160,9 @@ Philippe Jorens, and Kris Laukens at the University of Antwerp and Antwerp
 University Hospital (UZA), with support from Research Foundation Flanders
 (FWO), grant 1SA3226N.
 
+We thank De Wijkpraktijk and [Co-Medic](https://co-medic.com/en) for enabling
+the primary-care validation reported in the accompanying MedDeID study.
+
 ### Model
 
 ```bibtex
@@ -153,8 +179,8 @@ University Hospital (UZA), with support from Research Foundation Flanders
 
 Hellemans, S., Stroobants, T., Scheurwegs, E., Meysman, P., Jorens, P., and
 Laukens, K. (2026). *MedDeID English synthetic clinical corpus, benchmark and
-annotation guideline* (v1) [Dataset]. Zenodo.
-[https://doi.org/10.5281/zenodo.22127864](https://doi.org/10.5281/zenodo.22127864)
+annotation guideline* (v2) [Dataset]. Zenodo.
+[https://doi.org/10.5281/zenodo.22129255](https://doi.org/10.5281/zenodo.22129255)
 
 ### Accompanying paper (forthcoming)
 

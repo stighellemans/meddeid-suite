@@ -325,7 +325,7 @@ def build_zenodo(target: Path, verified: dict[str, Any]) -> Path:
     copy_file(ROOT / "templates/zenodo/metadata.json", target / "metadata.json")
     write_json(target / "release-manifest.json", release_manifest(verified, include_local_paths=False))
     write_checksums(target)
-    archive = target.parent / "meddeid-english-synthetic-data-v1.zip"
+    archive = target.parent / "meddeid-english-synthetic-data-v2.zip"
     deterministic_zip(target, archive)
     return archive
 
@@ -349,14 +349,14 @@ def release_manifest(verified: dict[str, Any], *, include_local_paths: bool) -> 
         "owner": "stighellemans",
         "publication": {
             "zenodo": {
-                "record": "https://zenodo.org/records/22127864",
-                "version_doi": "10.5281/zenodo.22127864",
+                "record": "https://zenodo.org/records/22129255",
+                "version_doi": "10.5281/zenodo.22129255",
                 "concept_doi": "10.5281/zenodo.22127863",
             },
             "hugging_face_revisions": {
-                "stighellemans/meddeid-english-synthetic-corpus": "28d9cec2ef2b889c474760d1bf13d155eba3308f",
-                "stighellemans/meddeid-english-synthetic-benchmark": "7df368327d900c1d45f51511696304bc0e1d4c7a",
-                "stighellemans/meddeid-english-synth": "1c9e2fdae10b63d6cdf7cae46555423ff2272158",
+                "stighellemans/meddeid-english-synthetic-corpus": "b93f735c88cda2ed77725c6a4f53e8124503073a",
+                "stighellemans/meddeid-english-synthetic-benchmark": "36879b454408a86548cdcb6f82657a9434fa2b80",
+                "stighellemans/meddeid-english-synth": "3e5139a749bd2e4f490a76571338108dbe6b1498",
                 "spaces/stighellemans/meddeid-demo": "830fc3d3ffb97140dd7c5b633a7d4b210f55ac2b",
             },
         },
@@ -365,9 +365,10 @@ def release_manifest(verified: dict[str, Any], *, include_local_paths: bool) -> 
             "include": [
                 "stighellemans/meddeid-english-synthetic-corpus",
                 "stighellemans/meddeid-english-synthetic-benchmark",
+                "stighellemans/meddeid-english-synth",
             ],
-            "exclude": ["stighellemans/meddeid-english-synth"],
-            "policy": "include the two synthetic data repositories; keep the English model standalone",
+            "exclude": [],
+            "policy": "include the English synthetic corpus, benchmark, and model",
         },
         "datasets": {
             "development": dataset_entry(
@@ -447,11 +448,11 @@ def main() -> None:
         },
     )
     build_model_repo(hf_root / "meddeid-english-synth", verified)
-    archive = build_zenodo(output / "zenodo/meddeid-english-synthetic-data-v1", verified)
+    archive = build_zenodo(output / "zenodo/meddeid-english-synthetic-data-v2", verified)
     write_json(
         output / "BUILD.json",
         {
-            "status": "prepared-not-published",
+            "status": "published",
             "manifest_sha256": sha256_file(ROOT / "release-manifest.json"),
             "zenodo_archive": archive.relative_to(output).as_posix(),
             "zenodo_archive_sha256": sha256_file(archive),

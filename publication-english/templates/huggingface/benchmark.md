@@ -89,16 +89,20 @@ for UK- and US-style synthetic contexts. Synthetic-benchmark performance must
 not be interpreted as performance on real clinical notes or as proof that
 output is anonymous. Deployments require representative local validation.
 
-## Integrity and project context
+## Annotation guideline
 
-`CHECKSUMS.sha256` covers every repository file. See the
-[annotation guideline](guidelines/annotation-guidelines-en.pdf) used for this
-benchmark.
+See the [English annotation guideline](guidelines/annotation-guidelines-en.pdf)
+used for the human review and subannotations in this benchmark.
+
+## Project and acknowledgements
 
 Developed by Stig Hellemans, Tom Stroobants, Elyne Scheurwegs, Pieter Meysman,
 Philippe Jorens, and Kris Laukens at the University of Antwerp and Antwerp
 University Hospital (UZA), with support from Research Foundation Flanders
 (FWO), grant 1SA3226N.
+
+We thank De Wijkpraktijk and [Co-Medic](https://co-medic.com/en) for enabling
+the primary-care validation reported in the accompanying MedDeID study.
 
 ## Citation
 
@@ -108,8 +112,8 @@ Please cite both the archived dataset version and the accompanying paper.
 
 Hellemans, S., Stroobants, T., Scheurwegs, E., Meysman, P., Jorens, P., and
 Laukens, K. (2026). *MedDeID English synthetic clinical corpus, benchmark and
-annotation guideline* (v1) [Dataset]. Zenodo.
-[https://doi.org/10.5281/zenodo.22127864](https://doi.org/10.5281/zenodo.22127864)
+annotation guideline* (v2) [Dataset]. Zenodo.
+[https://doi.org/10.5281/zenodo.22129255](https://doi.org/10.5281/zenodo.22129255)
 
 ### Accompanying paper (forthcoming)
 
