@@ -99,7 +99,7 @@ model:
 
 hosted_demo:
   repository: stighellemans/meddeid-demo
-  revision: 7e0dafa057f8ffc33f2c623987cfaf9bedaae581
+  revision: 830fc3d3ffb97140dd7c5b633a7d4b210f55ac2b
   runtime: zero-a10g
   api: /deidentify
   privacy_boundary: synthetic-or-otherwise-non-sensitive-text-only
