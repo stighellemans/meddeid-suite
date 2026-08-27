@@ -23,6 +23,8 @@ publication/
 repos/
 comparators/
 spaces/
+tmp/
+workspaces/
 report/
 DOCS_OWNERSHIP.md
 .staged-v1
@@ -34,6 +36,7 @@ IMPROVEMENT_PLAN.md
 scripts/*
 !scripts/verify_release.py
 !scripts/verify_new_researcher_pilot.py
+!scripts/prepare_english_publication.py
 
 pilots/*
 !pilots/new-researcher-v1/

@@ -5,13 +5,28 @@ public artifacts that make up MedDeID. End users normally install an individual
 component or follow the [public documentation](https://stighellemans.github.io/meddeid.github.io/);
 they do not need this coordinator checkout.
 
+The prevalent cross-component workflows now use `meddeid` as a guided front
+door:
+
+```bash
+python -m pip install 'meddeid[research]'
+meddeid guide
+meddeid workflow init TYPE WORKSPACE
+meddeid workflow next WORKSPACE
+```
+
+This records scientific branches instead of inferring them from filenames or
+installed tools. Component CLIs remain available independently. See the
+[guided workflow documentation](https://stighellemans.github.io/meddeid.github.io/workflows/guided-workflows/).
+
 ## Public components
 
 | Component | Purpose |
 |---|---|
 | [`meddeid`](https://github.com/stighellemans/meddeid) | Python API, CLI, batch inference, and HTTP service |
-| [`meddeid-core`](https://github.com/stighellemans/meddeid-core) | Canonical schema, taxonomy, normalization, and validation |
-| [`meddeid-language-nl`](https://github.com/stighellemans/meddeid-language-nl) | Dutch and `nl-BE` language capabilities |
+| [`meddeid-core`](https://github.com/stighellemans/meddeid-core) | Canonical schema, taxonomy, normalization, validation, and suite-wide age policy |
+| [`meddeid-language-nl`](https://github.com/stighellemans/meddeid-language-nl) | Strictly separated `nl-BE` and `nl-NL` language capabilities |
+| [`meddeid-language-en`](https://github.com/stighellemans/meddeid-language-en) | Strictly separated `en-GB` and `en-US` language capabilities |
 | [`meddeid-data`](https://github.com/stighellemans/meddeid-data) | Project import, splits, and synthetic generation |
 | [`meddeid-training`](https://github.com/stighellemans/meddeid-training) | Selection, refit, training, and bundle export |
 | [`meddeid-eval`](https://github.com/stighellemans/meddeid-eval) | Metrics and stability analysis |
@@ -23,9 +38,18 @@ they do not need this coordinator checkout.
 and hashes, repository commits, container digests, model and dataset revisions,
 the archival DOI, language/profile contracts, and smoke-test tolerances.
 
+The English language component, synthetic corpus, human-reviewed benchmark,
+and synthetic model are now public. They will be incorporated into
+`suite-lock.yaml` in the next coordinated suite release. Bare `en` is not a
+valid profile selection.
+
 ## Public release endpoints
 
-- npm language capability: [`@meddeid/language-nl@0.1.0`](https://www.npmjs.com/package/@meddeid/language-nl)
+- English model: [`stighellemans/meddeid-english-synth`](https://huggingface.co/stighellemans/meddeid-english-synth)
+- English synthetic corpus: [`stighellemans/meddeid-english-synthetic-corpus`](https://huggingface.co/datasets/stighellemans/meddeid-english-synthetic-corpus)
+- English human-reviewed benchmark: [`stighellemans/meddeid-english-synthetic-benchmark`](https://huggingface.co/datasets/stighellemans/meddeid-english-synthetic-benchmark)
+- English data and guideline archive: [Zenodo v1](https://doi.org/10.5281/zenodo.22127864)
+- npm Dutch language capability: [`@meddeid/language-nl`](https://www.npmjs.com/package/@meddeid/language-nl)
 - Hugging Face project collection: [MedDeID](https://huggingface.co/collections/stighellemans/meddeid)
 - hosted non-clinical demo: [`stighellemans/meddeid-demo`](https://huggingface.co/spaces/stighellemans/meddeid-demo)
 - versioned data and guideline archive: [Zenodo v2](https://doi.org/10.5281/zenodo.21992866)

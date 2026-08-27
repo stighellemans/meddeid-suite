@@ -1,0 +1,116 @@
+{
+  "manifest_version": "meddeid.english-publication.v1",
+  "status": "published",
+  "prepared_date": "2026-08-27",
+  "published_date": "2026-08-27",
+  "owner": "stighellemans",
+  "publication": {
+    "zenodo": {
+      "record": "https://zenodo.org/records/22127864",
+      "version_doi": "10.5281/zenodo.22127864",
+      "concept_doi": "10.5281/zenodo.22127863"
+    },
+    "hugging_face_revisions": {
+      "stighellemans/meddeid-english-synthetic-corpus": "28d9cec2ef2b889c474760d1bf13d155eba3308f",
+      "stighellemans/meddeid-english-synthetic-benchmark": "7df368327d900c1d45f51511696304bc0e1d4c7a",
+      "stighellemans/meddeid-english-synth": "1c9e2fdae10b63d6cdf7cae46555423ff2272158",
+      "spaces/stighellemans/meddeid-demo": "830fc3d3ffb97140dd7c5b633a7d4b210f55ac2b"
+    }
+  },
+  "collection": {
+    "slug": "stighellemans/meddeid-6a7ae47783f48f05c85170d0",
+    "include": [
+      "stighellemans/meddeid-english-synthetic-corpus",
+      "stighellemans/meddeid-english-synthetic-benchmark"
+    ],
+    "exclude": [
+      "stighellemans/meddeid-english-synth"
+    ],
+    "policy": "include the two synthetic data repositories; keep the English model standalone"
+  },
+  "datasets": {
+    "development": {
+      "documents": 6700,
+      "primary_spans": 38581,
+      "subannotations": 0,
+      "profiles": {
+        "en-GB": 3350,
+        "en-US": 3350
+      },
+      "bytes": 38428793,
+      "sha256": "ea77758db5f91dc992a23fc756e0d30958ba75750845fa78ec874bf96404fe45",
+      "source_path": "repos/meddeid-data/data/english-production-v2/final/development.jsonl",
+      "hugging_face": {
+        "repository": "stighellemans/meddeid-english-synthetic-corpus",
+        "split": "train"
+      }
+    },
+    "benchmark": {
+      "documents": 300,
+      "primary_spans": 1717,
+      "subannotations": 7358,
+      "profiles": {
+        "en-GB": 150,
+        "en-US": 150
+      },
+      "bytes": 2273960,
+      "sha256": "021332c7cf2900d22e38a77975920444a6fff475187925b973eee2ca8c2e51e5",
+      "source_path": "workspaces/english-synthetic-subannotations/evaluation-bundle/benchmark.jsonl",
+      "hugging_face": {
+        "repository": "stighellemans/meddeid-english-synthetic-benchmark",
+        "split": "test"
+      }
+    },
+    "benchmark_primary": {
+      "documents": 300,
+      "primary_spans": 1717,
+      "subannotations": 0,
+      "profiles": {
+        "en-GB": 150,
+        "en-US": 150
+      },
+      "bytes": 1727813,
+      "sha256": "ac036c069a073886327c5847b9316cf116fe7d94dec21e242ccebff0beee1b25"
+    }
+  },
+  "subannotation_provenance": {
+    "bundle_manifest": {
+      "bytes": 12882,
+      "sha256": "dbbb0b52f856381917f01d873371c27effacc2c7250076e99ddbc280a24bef0e"
+    },
+    "confirmed_subannotations": {
+      "bytes": 769806,
+      "sha256": "edef44a6a81c09ffbf27da3481f29b9cb179ac10e7223c0a46fc220aa5e7e60f"
+    }
+  },
+  "model": {
+    "repository": "stighellemans/meddeid-english-synth",
+    "base_encoder": "FacebookAI/roberta-base",
+    "base_encoder_revision": "e2da8e2f811d1448a5b465c236feacd80ffbac7b",
+    "weights_sha256": "545ebc71a235d471ba7f2fefca341704fe6aed33df4fb5b46ab9adef3e139bcc",
+    "source_bundle_sha256": "4894ba77c0d14c70d73e4f156868152a074e6a1764c2216e2693b61aa7a120bc",
+    "checkpoint_sha256": "597eb39fe408f334c659eee50b47d8f513a1c4a0c87c330a716f7e02a02dd1cb",
+    "train_metrics_sha256": "c89315f8c3b2d0774d22dcccd58e70c536ad92ba3ca6c81a5d8e573249f01bb1",
+    "eval_sha256": "c9a8af0d907282c751eea43abc61490322c9a1f3837cf2053f8ff7e3a3b1b741",
+    "final_test": {
+      "entity_precision": 0.991869918699187,
+      "entity_recall": 0.9947582993593477,
+      "entity_f1": 0.9933120093050305,
+      "span_edit_total_ops": 29
+    },
+    "exact_span_test": {
+      "documents": 300,
+      "true": 1717,
+      "predicted": 1722,
+      "correct": 1705,
+      "precision": 0.9901277584204413,
+      "recall": 0.9930110658124636,
+      "f1": 0.9915673160802558
+    }
+  },
+  "licenses": {
+    "datasets_and_guideline": "CC-BY-4.0",
+    "model": "AGPL-3.0-only"
+  },
+  "release_blockers": []
+}

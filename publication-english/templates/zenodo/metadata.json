@@ -1,0 +1,28 @@
+{
+  "metadata": {
+    "upload_type": "dataset",
+    "title": "MedDeID English synthetic clinical corpus, benchmark and annotation guideline",
+    "description": "A synthetic English clinical-text de-identification release containing 6,700 model-development documents and a disjoint 300-document human-validated benchmark, balanced between en-GB and en-US. The benchmark contains 1,717 primary PII spans and 7,358 confirmed nested core-PII subannotation segments. The archive also contains the English annotation guideline and provenance manifests. It contains no real patient notes or personal information.",
+    "version": "v1",
+    "publication_date": "2026-08-27",
+    "doi": "10.5281/zenodo.22127864",
+    "creators": [
+      {"name": "Hellemans, Stig", "affiliation": "Adrem Data Lab, Department of Computer Science, University of Antwerp; Antwerp University Hospital", "orcid": "0000-0001-9441-3882"},
+      {"name": "Stroobants, Tom", "affiliation": "Laboratory of Experimental Medicine and Pediatrics (LEMP), University of Antwerp; Antwerp University Hospital (UZA)", "orcid": "0009-0009-6983-5405"},
+      {"name": "Scheurwegs, Elyne", "affiliation": "Antwerp University Hospital (UZA)", "orcid": "0000-0003-1560-7617"},
+      {"name": "Meysman, Pieter", "affiliation": "Adrem Data Lab, Department of Computer Science, University of Antwerp", "orcid": "0000-0001-5903-633X"},
+      {"name": "Jorens, Philippe", "affiliation": "Laboratory of Experimental Medicine and Pediatrics (LEMP), University of Antwerp; Antwerp University Hospital (UZA)", "orcid": "0000-0002-5434-957X"},
+      {"name": "Laukens, Kris", "affiliation": "Adrem Data Lab, Department of Computer Science, University of Antwerp", "orcid": "0000-0002-8217-2564"}
+    ],
+    "contributors": [
+      {"name": "Adrem Data Lab", "type": "ResearchGroup", "affiliation": "University of Antwerp"},
+      {"name": "University of Antwerp", "type": "HostingInstitution"},
+      {"name": "Antwerp University Hospital (UZA)", "type": "HostingInstitution"},
+      {"name": "Research Foundation Flanders (FWO)", "type": "Sponsor"}
+    ],
+    "grants": [{"id": "1SA3226N", "title": "FWO SB Fellowship"}],
+    "license": "cc-by-4.0",
+    "keywords": ["clinical text", "de-identification", "English", "en-GB", "en-US", "synthetic data", "named entity recognition"],
+    "notes": "The release contains synthetic data and an annotation guideline only; it contains no real patient notes or personal information. Cite the archived version DOI and report the exact artifact and model revisions."
+  }
+}

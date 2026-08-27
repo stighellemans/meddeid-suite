@@ -1,0 +1,10 @@
+MedDeID English synthetic model
+
+This model is derived from FacebookAI/roberta-base, pinned at revision
+e2da8e2f811d1448a5b465c236feacd80ffbac7b. The upstream model remains subject
+to its own terms and attribution requirements.
+
+No real patient notes were used for training. The model was trained on the
+MedDeID English synthetic corpus and evaluated on the separate fixed synthetic
+benchmark. Synthetic-benchmark results do not establish safety or performance
+on real clinical data.
