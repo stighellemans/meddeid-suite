@@ -1,0 +1,329 @@
+{
+  "budget": {
+    "key": "pytorch-cuda",
+    "max_content_size_bytes": 8000000000,
+    "max_portable_save_gzip_bytes": 4900000000,
+    "passed": true
+  },
+  "content_size_bytes": 7394209700,
+  "content_size_note": "Unpacked layer-size sum from docker image history. Newer containerd-backed Docker engines can report compressed content in image inspect Size.",
+  "engine_reported_size_bytes": 11941936231,
+  "image": "meddeid-api:0.3.0-cuda12.9-ci",
+  "image_id": "sha256:f82a960929395b7093083a52dee6cd9b5d729017544bf92df8b1728b75276ffb",
+  "labels": {
+    "io.meddeid.accelerator": "cuda",
+    "io.meddeid.core-revision": "13a5b5d6049611e0c64e0d375d1cb5d99266bc15",
+    "io.meddeid.cuda-version": "12.9",
+    "io.meddeid.language-en-revision": "7958b77ee83295de7d809a8f52d6de2c2732c35e",
+    "io.meddeid.language-nl-revision": "c316c06669789fd16b2405a1ca8076d878f3d730",
+    "io.meddeid.model-id": "stighellemans/meddeid-dutch-synth",
+    "io.meddeid.model-revision": "1f20655454dcbd042647cacdfff6b6802a970959",
+    "io.meddeid.torch-compile-mode": "off",
+    "io.meddeid.torch-precision": "fp16",
+    "io.meddeid.torch-version": "2.13.0",
+    "org.opencontainers.image.created": "2026-09-05T23:31:06+02:00",
+    "org.opencontainers.image.description": "Local Dutch clinical-text de-identification API",
+    "org.opencontainers.image.licenses": "AGPL-3.0-only",
+    "org.opencontainers.image.revision": "a8869e08c671815d88fb5d1eae64931fe030beec",
+    "org.opencontainers.image.source": "https://github.com/stighellemans/meddeid",
+    "org.opencontainers.image.title": "MedDeID API",
+    "org.opencontainers.image.version": "0.3.0"
+  },
+  "layers": [
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-05T21:40:11Z",
+      "CreatedBy": "CMD [\"meddeid-server\"]",
+      "CreatedSince": "35 minutes ago",
+      "ID": "sha256:f82a960929395b7093083a52dee6cd9b5d729017544bf92df8b1728b75276ffb",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-05T21:40:11Z",
+      "CreatedBy": "HEALTHCHECK &{[\"CMD-SHELL\" \"python -c \\\"import json,urllib.request; json.load(urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=4))\\\"\"] \"30s\" \"5s\" \"45s\" \"0s\" '\\x03'}",
+      "CreatedSince": "35 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-05T21:40:11Z",
+      "CreatedBy": "EXPOSE map[8000/tcp:{}]",
+      "CreatedSince": "35 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-05T21:40:11Z",
+      "CreatedBy": "USER 10001:10001",
+      "CreatedSince": "35 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-05T21:40:11Z",
+      "CreatedBy": "LABEL org.opencontainers.image.title=MedDeID API org.opencontainers.image.description=Local Dutch clinical-text de-identification API org.opencontainers.image.source=https://github.com/stighellemans/meddeid org.opencontainers.image.licenses=AGPL-3.0-only org.opencontainers.image.version=0.3.0 org.opencontainers.image.revision=a8869e08c671815d88fb5d1eae64931fe030beec org.opencontainers.image.created=2026-09-05T23:31:06+02:00 io.meddeid.core-revision=13a5b5d6049611e0c64e0d375d1cb5d99266bc15 io.meddeid.language-en-revision=7958b77ee83295de7d809a8f52d6de2c2732c35e io.meddeid.language-nl-revision=c316c06669789fd16b2405a1ca8076d878f3d730 io.meddeid.model-id=stighellemans/meddeid-dutch-synth io.meddeid.model-revision=1f20655454dcbd042647cacdfff6b6802a970959 io.meddeid.accelerator=cuda io.meddeid.torch-version=2.13.0 io.meddeid.cuda-version=12.9 io.meddeid.torch-precision=fp16 io.meddeid.torch-compile-mode=off",
+      "CreatedSince": "35 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-05T21:40:11Z",
+      "CreatedBy": "ARG BUILD_DATE=unknown",
+      "CreatedSince": "35 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-05T21:40:11Z",
+      "CreatedBy": "ARG VCS_REF=unknown",
+      "CreatedSince": "35 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-05T21:40:11Z",
+      "CreatedBy": "ARG MEDDEID_VERSION=0.3.0",
+      "CreatedSince": "35 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-05T21:40:11Z",
+      "CreatedBy": "RUN |11 MEDDEID_CORE_COMMIT=13a5b5d6049611e0c64e0d375d1cb5d99266bc15 MEDDEID_LANGUAGE_EN_COMMIT=7958b77ee83295de7d809a8f52d6de2c2732c35e MEDDEID_LANGUAGE_NL_COMMIT=c316c06669789fd16b2405a1ca8076d878f3d730 MEDDEID_MODEL_ID=stighellemans/meddeid-dutch-synth MEDDEID_MODEL_REVISION=1f20655454dcbd042647cacdfff6b6802a970959 TORCH_VERSION=2.13.0 MEDDEID_ACCELERATOR=cuda MEDDEID_CUDA_VERSION=12.9 MEDDEID_DEVICE=cuda MEDDEID_TORCH_PRECISION=fp16 MEDDEID_TORCH_COMPILE_MODE=off /bin/sh -c groupadd --gid 10001 meddeid     && useradd --uid 10001 --gid 10001 --create-home --home-dir /home/meddeid meddeid     && mkdir -p /var/cache/meddeid/huggingface     && chown -R 10001:10001 /var/cache/meddeid /home/meddeid     && test \"$(stat -c %U /opt/meddeid-model)\" = root # buildkit",
+      "CreatedSince": "35 minutes ago",
+      "ID": "<missing>",
+      "Size": "86kB"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-05T21:40:11Z",
+      "CreatedBy": "RUN |11 MEDDEID_CORE_COMMIT=13a5b5d6049611e0c64e0d375d1cb5d99266bc15 MEDDEID_LANGUAGE_EN_COMMIT=7958b77ee83295de7d809a8f52d6de2c2732c35e MEDDEID_LANGUAGE_NL_COMMIT=c316c06669789fd16b2405a1ca8076d878f3d730 MEDDEID_MODEL_ID=stighellemans/meddeid-dutch-synth MEDDEID_MODEL_REVISION=1f20655454dcbd042647cacdfff6b6802a970959 TORCH_VERSION=2.13.0 MEDDEID_ACCELERATOR=cuda MEDDEID_CUDA_VERSION=12.9 MEDDEID_DEVICE=cuda MEDDEID_TORCH_PRECISION=fp16 MEDDEID_TORCH_COMPILE_MODE=off /bin/sh -c python -c \"import torch; expected='${MEDDEID_CUDA_VERSION}'; actual=torch.version.cuda or 'none'; assert actual == expected, f'expected CUDA {expected}, found {actual}'\" # buildkit",
+      "CreatedSince": "35 minutes ago",
+      "ID": "<missing>",
+      "Size": "4.1kB"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-05T21:40:07Z",
+      "CreatedBy": "COPY LICENSE NOTICE /licenses/meddeid/ # buildkit",
+      "CreatedSince": "35 minutes ago",
+      "ID": "<missing>",
+      "Size": "53.2kB"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-05T21:40:07Z",
+      "CreatedBy": "COPY /opt/meddeid-model /opt/meddeid-model # buildkit",
+      "CreatedSince": "35 minutes ago",
+      "ID": "<missing>",
+      "Size": "503MB"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-05T21:39:59Z",
+      "CreatedBy": "COPY /opt/venv /opt/venv # buildkit",
+      "CreatedSince": "35 minutes ago",
+      "ID": "<missing>",
+      "Size": "6.74GB"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-05T21:33:46Z",
+      "CreatedBy": "RUN |11 MEDDEID_CORE_COMMIT=13a5b5d6049611e0c64e0d375d1cb5d99266bc15 MEDDEID_LANGUAGE_EN_COMMIT=7958b77ee83295de7d809a8f52d6de2c2732c35e MEDDEID_LANGUAGE_NL_COMMIT=c316c06669789fd16b2405a1ca8076d878f3d730 MEDDEID_MODEL_ID=stighellemans/meddeid-dutch-synth MEDDEID_MODEL_REVISION=1f20655454dcbd042647cacdfff6b6802a970959 TORCH_VERSION=2.13.0 MEDDEID_ACCELERATOR=cuda MEDDEID_CUDA_VERSION=12.9 MEDDEID_DEVICE=cuda MEDDEID_TORCH_PRECISION=fp16 MEDDEID_TORCH_COMPILE_MODE=off /bin/sh -c apt-get update     && apt-get upgrade --yes --no-install-recommends     && if [ \"${MEDDEID_TORCH_COMPILE_MODE}\" != off ]; then       apt-get install --yes --no-install-recommends gcc g++ libc6-dev;     fi     && /usr/local/bin/python -m pip uninstall --yes pip setuptools wheel     && rm -rf /var/lib/apt/lists/* # buildkit",
+      "CreatedSince": "41 minutes ago",
+      "ID": "<missing>",
+      "Size": "17.3MB"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-05T21:33:46Z",
+      "CreatedBy": "ENV VIRTUAL_ENV=/opt/venv PATH=/opt/venv/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 HOME=/home/meddeid HF_HOME=/var/cache/meddeid/huggingface MEDDEID_MODEL=/opt/meddeid-model MEDDEID_REVISION=1f20655454dcbd042647cacdfff6b6802a970959 MEDDEID_OFFLINE=true MEDDEID_BACKEND=torch MEDDEID_DEVICE=cuda MEDDEID_TORCH_PRECISION=fp16 MEDDEID_TORCH_COMPILE_MODE=off MEDDEID_TORCH_COMPILE_DYNAMIC=true MEDDEID_SERVING_PROFILE=latency MEDDEID_MICROBATCH_ENABLED=auto MEDDEID_WINDOW_BATCH_SIZE=32 MEDDEID_WORKERS=1 MEDDEID_DOCS_ENABLED=false MEDDEID_UI_ENABLED=false MEDDEID_REQUIRE_API_KEY=false MEDDEID_MAX_INPUT_CHARS=20000 MEDDEID_MAX_BATCH_DOCUMENTS=32 MEDDEID_MAX_BATCH_CHARS=200000 MEDDEID_MAX_REQUEST_BYTES=2000000 MEDDEID_MAX_CONCURRENT_REQUESTS=auto MEDDEID_QUEUE_TIMEOUT_SECONDS=30 MEDDEID_ACCESS_LOG=true OMP_NUM_THREADS=4 MKL_NUM_THREADS=4 PORT=8000",
+      "CreatedSince": "41 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-05T21:33:46Z",
+      "CreatedBy": "ARG MEDDEID_TORCH_COMPILE_MODE=off",
+      "CreatedSince": "41 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-05T21:33:46Z",
+      "CreatedBy": "ARG MEDDEID_TORCH_PRECISION=fp32",
+      "CreatedSince": "41 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-05T21:33:46Z",
+      "CreatedBy": "ARG MEDDEID_DEVICE=cpu",
+      "CreatedSince": "41 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-05T21:33:46Z",
+      "CreatedBy": "ARG MEDDEID_CUDA_VERSION=none",
+      "CreatedSince": "41 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-05T21:33:46Z",
+      "CreatedBy": "ARG MEDDEID_ACCELERATOR=cpu",
+      "CreatedSince": "41 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-05T21:33:46Z",
+      "CreatedBy": "ARG TORCH_VERSION=2.13.0",
+      "CreatedSince": "41 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-05T21:33:46Z",
+      "CreatedBy": "ARG MEDDEID_MODEL_REVISION=1f20655454dcbd042647cacdfff6b6802a970959",
+      "CreatedSince": "41 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-05T21:33:46Z",
+      "CreatedBy": "ARG MEDDEID_MODEL_ID=stighellemans/meddeid-dutch-synth",
+      "CreatedSince": "41 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-05T21:33:46Z",
+      "CreatedBy": "ARG MEDDEID_LANGUAGE_NL_COMMIT=c316c06669789fd16b2405a1ca8076d878f3d730",
+      "CreatedSince": "41 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-05T21:33:46Z",
+      "CreatedBy": "ARG MEDDEID_LANGUAGE_EN_COMMIT=7958b77ee83295de7d809a8f52d6de2c2732c35e",
+      "CreatedSince": "41 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-05T21:33:46Z",
+      "CreatedBy": "ARG MEDDEID_CORE_COMMIT=13a5b5d6049611e0c64e0d375d1cb5d99266bc15",
+      "CreatedSince": "41 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-08-13T19:43:37Z",
+      "CreatedBy": "CMD [\"python3\"]",
+      "CreatedSince": "3 weeks ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-08-13T19:43:37Z",
+      "CreatedBy": "RUN /bin/sh -c set -eux;  for src in idle3 pip3 pydoc3 python3 python3-config; do   dst=\"$(echo \"$src\" | tr -d 3)\";   [ -s \"/usr/local/bin/$src\" ];   [ ! -e \"/usr/local/bin/$dst\" ];   ln -svT \"$src\" \"/usr/local/bin/$dst\";  done # buildkit",
+      "CreatedSince": "3 weeks ago",
+      "ID": "<missing>",
+      "Size": "16.4kB"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-08-13T19:43:37Z",
+      "CreatedBy": "RUN /bin/sh -c set -eux;   savedAptMark=\"$(apt-mark showmanual)\";  apt-get update;  apt-get install -y --no-install-recommends   dpkg-dev   gcc   gnupg   libbluetooth-dev   libbz2-dev   libc6-dev   libdb-dev   libffi-dev   libgdbm-dev   liblzma-dev   libncursesw5-dev   libreadline-dev   libsqlite3-dev   libssl-dev   make   tk-dev   uuid-dev   wget   xz-utils   zlib1g-dev  ;   wget -O python.tar.xz \"https://www.python.org/ftp/python/${PYTHON_VERSION%%[a-z]*}/Python-$PYTHON_VERSION.tar.xz\";  echo \"$PYTHON_SHA256 *python.tar.xz\" | sha256sum -c -;  wget -O python.tar.xz.asc \"https://www.python.org/ftp/python/${PYTHON_VERSION%%[a-z]*}/Python-$PYTHON_VERSION.tar.xz.asc\";  GNUPGHOME=\"$(mktemp -d)\"; export GNUPGHOME;  gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys \"$GPG_KEY\";  gpg --batch --verify python.tar.xz.asc python.tar.xz;  gpgconf --kill all;  rm -rf \"$GNUPGHOME\" python.tar.xz.asc;  mkdir -p /usr/src/python;  tar --extract --directory /usr/src/python --strip-components=1 --file python.tar.xz;  rm python.tar.xz;   cd /usr/src/python;  gnuArch=\"$(dpkg-architecture --query DEB_BUILD_GNU_TYPE)\";  ./configure   --build=\"$gnuArch\"   --enable-loadable-sqlite-extensions   --enable-optimizations   --enable-option-checking=fatal   --enable-shared   $(test \"${gnuArch%%-*}\" != 'riscv64' && echo '--with-lto')   --with-ensurepip  ;  nproc=\"$(nproc)\";  EXTRA_CFLAGS=\"$(dpkg-buildflags --get CFLAGS)\";  LDFLAGS=\"$(dpkg-buildflags --get LDFLAGS)\";  LDFLAGS=\"${LDFLAGS:-} -Wl,--strip-all\";  arch=\"$(dpkg --print-architecture)\"; arch=\"${arch##*-}\";  case \"$arch\" in   amd64|arm64)    EXTRA_CFLAGS=\"${EXTRA_CFLAGS:-} -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer\";    ;;   i386)    ;;   *)    EXTRA_CFLAGS=\"${EXTRA_CFLAGS:-} -fno-omit-frame-pointer\";    ;;  esac;  make -j \"$nproc\"   \"EXTRA_CFLAGS=${EXTRA_CFLAGS:-}\"   \"LDFLAGS=${LDFLAGS:-}\"  ;  rm python;  make -j \"$nproc\"   \"EXTRA_CFLAGS=${EXTRA_CFLAGS:-}\"   \"LDFLAGS=${LDFLAGS:-} -Wl,-rpath='\\$\\$ORIGIN/../lib'\"   python  ;  make install;   cd /;  rm -rf /usr/src/python;   find /usr/local -depth   \\(    \\( -type d -a \\( -name test -o -name tests -o -name idle_test \\) \\)    -o \\( -type f -a \\( -name '*.pyc' -o -name '*.pyo' -o -name 'libpython*.a' \\) \\)   \\) -exec rm -rf '{}' +  ;   ldconfig;   apt-mark auto '.*' > /dev/null;  apt-mark manual $savedAptMark;  find /usr/local -type f -executable -not \\( -name '*tkinter*' \\) -exec ldd '{}' ';'   | awk '/=>/ { so = $(NF-1); if (index(so, \"/usr/local/\") == 1) { next }; gsub(\"^/(usr/)?\", \"\", so); printf \"*%s\\n\", so }'   | sort -u   | xargs -rt dpkg-query --search   | awk 'sub(\":$\", \"\", $1) { print $1 }'   | sort -u   | xargs -r apt-mark manual  ;  apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false;  apt-get dist-clean;   export PYTHONDONTWRITEBYTECODE=1;  python3 --version;  pip3 --version # buildkit",
+      "CreatedSince": "3 weeks ago",
+      "ID": "<missing>",
+      "Size": "41.4MB"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-08-13T19:34:34Z",
+      "CreatedBy": "ENV PYTHON_SHA256=5c8462af5790baf43a321a1559dbe0db06d1be4300fb85fb53c40060668e548a",
+      "CreatedSince": "3 weeks ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-08-13T19:34:34Z",
+      "CreatedBy": "ENV PYTHON_VERSION=3.12.14",
+      "CreatedSince": "3 weeks ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-08-13T19:34:34Z",
+      "CreatedBy": "ENV GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305",
+      "CreatedSince": "3 weeks ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-08-13T19:34:34Z",
+      "CreatedBy": "RUN /bin/sh -c set -eux;  apt-get update;  apt-get install -y --no-install-recommends   ca-certificates   netbase   tzdata  ;  apt-get dist-clean # buildkit",
+      "CreatedSince": "3 weeks ago",
+      "ID": "<missing>",
+      "Size": "4.95MB"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-08-13T19:34:34Z",
+      "CreatedBy": "ENV LANG=C.UTF-8",
+      "CreatedSince": "3 weeks ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-08-13T19:34:34Z",
+      "CreatedBy": "ENV PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "CreatedSince": "3 weeks ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "debuerreotype 0.17",
+      "CreatedAt": "2026-08-03T00:00:00Z",
+      "CreatedBy": "# debian.sh --arch 'amd64' out/ 'trixie' '@1785715200'",
+      "CreatedSince": "4 weeks ago",
+      "ID": "<missing>",
+      "Size": "87.4MB"
+    }
+  ],
+  "platform": {
+    "architecture": "amd64",
+    "os": "linux"
+  },
+  "portable_save_gzip_bytes": 4537880559,
+  "portable_save_note": "Gzip-compressed docker-save size is a consistent pull-size proxy; the registry transfer size can differ with its compression and shared layers.",
+  "schema": "meddeid.container-image-size.v1"
+}

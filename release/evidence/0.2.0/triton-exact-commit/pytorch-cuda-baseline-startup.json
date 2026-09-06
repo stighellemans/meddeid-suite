@@ -1,0 +1,27 @@
+{
+  "attempts": 139,
+  "base_url": "http://127.0.0.1:8002",
+  "health": {
+    "contracts": {
+      "default_language_profile": "nl-BE",
+      "language_profiles": [
+        {
+          "profile_id": "nl-BE"
+        }
+      ]
+    },
+    "model": {
+      "name": "meddeid-dutch-synth",
+      "version": "1"
+    },
+    "ready": true,
+    "serving": {
+      "gateway_microbatching": false,
+      "max_concurrent_requests": 8,
+      "profile": "latency"
+    },
+    "status": "ok"
+  },
+  "ready_seconds": 35.452298244,
+  "schema": "meddeid.container-startup.v1"
+}

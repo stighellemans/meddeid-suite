@@ -1,0 +1,12 @@
+{
+  "cuda_device": {
+    "compute_capability": "7.5",
+    "name": "Tesla T4",
+    "total_memory_bytes": 16712597504
+  },
+  "cuda_runtime": "12.9",
+  "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.41",
+  "schema": "meddeid.pytorch-cuda-check.v1",
+  "status": "ok",
+  "torch": "2.13.0+cu129"
+}

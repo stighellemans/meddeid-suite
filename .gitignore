@@ -34,6 +34,9 @@ EXCLUSIONS.md
 IMPROVEMENT_PLAN.md
 
 scripts/*
+!scripts/finalize_release_candidate.py
+!scripts/release_requirements.py
+!scripts/verify_release_candidate.py
 !scripts/verify_release.py
 !scripts/verify_new_researcher_pilot.py
 !scripts/prepare_english_publication.py

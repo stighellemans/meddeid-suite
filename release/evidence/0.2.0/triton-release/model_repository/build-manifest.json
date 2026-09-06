@@ -1,0 +1,65 @@
+{
+  "artifacts": {
+    "config": {
+      "bytes": 441,
+      "path": "meddeid-dutch-synth/config.pbtxt",
+      "sha256": "d28ae91089eab876a9003d663579762da870792466ae186b2b2a6af16f0656a1"
+    },
+    "config_profiles": {
+      "latency": {
+        "bytes": 441,
+        "path": "meddeid-dutch-synth/configs/latency.pbtxt",
+        "sha256": "d28ae91089eab876a9003d663579762da870792466ae186b2b2a6af16f0656a1"
+      },
+      "throughput": {
+        "bytes": 441,
+        "path": "meddeid-dutch-synth/configs/throughput.pbtxt",
+        "sha256": "d28ae91089eab876a9003d663579762da870792466ae186b2b2a6af16f0656a1"
+      }
+    },
+    "plan": {
+      "bytes": 249645356,
+      "path": "meddeid-dutch-synth/1/model.plan",
+      "sha256": "3088ba7826685ce63f5eb9e139f3d2f95f72f8d74ac819d78df072f1d92d82be"
+    }
+  },
+  "model": {
+    "bundle_sha256": "001123dbc1184751e4bae3c29633d14a5e041acae0c173773f186127ae3fd944",
+    "id": "stighellemans/meddeid-dutch-synth",
+    "revision": "1f20655454dcbd042647cacdfff6b6802a970959",
+    "triton_name": "meddeid-dutch-synth",
+    "triton_version": "1"
+  },
+  "optimization_profile": {
+    "max": "64x512",
+    "min": "1x8",
+    "opt": "16x256"
+  },
+  "runtime": {
+    "builder_image": "nvcr.io/nvidia/tensorrt:26.07-py3@sha256:715352ed6840166888d79b135dd2a8d3f23ffe3169b8cacb6ca4df270388a8df",
+    "tensorrt_version": "11.1.0.106",
+    "triton_server_version": "2.71.0",
+    "triton_stack": "26.07"
+  },
+  "scheduler_profiles": {
+    "latency": {
+      "dynamic_batching": false
+    },
+    "throughput": {
+      "dynamic_batching": false
+    }
+  },
+  "schema": "meddeid.triton-build.v2",
+  "target": {
+    "catalog_spec_sha256": "cf74d080d4f83a2882890ed01b98899d888039c0b381b15fad2d27cd032e8ae3",
+    "compute_capability": "7.5",
+    "display_name": "NVIDIA T4",
+    "driver_version": "610.57.04",
+    "gpu_name": "Tesla T4",
+    "id": "t4-sm75",
+    "image_repository": "ghcr.io/stighellemans/meddeid-triton-t4-sm75",
+    "output_precision": "fp32",
+    "precision": "fp16",
+    "release_status": "ready"
+  }
+}

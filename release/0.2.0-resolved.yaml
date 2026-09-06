@@ -1,0 +1,350 @@
+lock_format: meddeid.suite-lock.v2
+suite_version: 0.2.0
+status: release-candidate
+prepared_at: 2026-09-05
+schema_version: meddeid.schema.v1
+taxonomy_version: ProductionLabels-v1.1
+model_head_labels: 14
+source_policy:
+  source_of_truth: meddeid
+  primary_checkout: repos/meddeid
+  rule: Only the current meddeid source defines inference, API, gateway, scheduling,
+    and deployment behavior.
+  dirty_worktrees_excluded: {}
+components:
+  meddeid:
+    repository: https://github.com/stighellemans/meddeid
+    ecosystem: python
+    release_action: publish
+    version: 0.3.0
+    tag: v0.3.0
+    commit: 6370c67e020b2b8165bdab2276c431a5b0d09802
+    wheel_sha256: 86aa15d95e90e0dc2cf5766472ef10c36ecd0dcae6f908798f5adf074ac26099
+    sdist_sha256: 8d56c1bd4d2386ab4c72067619e4a43563028570dd822bf921ed0fcc559452e9
+  meddeid-core:
+    repository: https://github.com/stighellemans/meddeid-core
+    ecosystem: python
+    release_action: publish
+    version: 0.2.1
+    tag: v0.2.1
+    commit: 13a5b5d6049611e0c64e0d375d1cb5d99266bc15
+    wheel_sha256: 50350295f5dbaac71f9f3c63be0ed34932cc42424312accb6063b94acc96080d
+    sdist_sha256: ff58cc2bc0bbb18fc2395a71f08979e1175ff58e570846952f7e3acc646b32a1
+  meddeid-language-en:
+    repository: https://github.com/stighellemans/meddeid-language-en
+    ecosystem: python
+    release_action: publish
+    version: 0.2.1
+    tag: v0.2.1
+    commit: 7958b77ee83295de7d809a8f52d6de2c2732c35e
+    wheel_sha256: d33f38622136f5a1c00432e07d7e7af5547d0f51189c9910c6e175dbc70ddb0f
+    sdist_sha256: 2fd319243c77f7cfaadce354517c8d8c349c5fce24fba184ff1442137eb28962
+  meddeid-language-nl:
+    repository: https://github.com/stighellemans/meddeid-language-nl
+    ecosystem: python
+    release_action: publish
+    version: 0.2.1
+    tag: v0.2.1
+    commit: c316c06669789fd16b2405a1ca8076d878f3d730
+    wheel_sha256: 9ecb84b723dc62ce8c791e918e6127853ac86e9ab681f90bf8ebc06a93cfe434
+    sdist_sha256: 27d4b382bbc88e0e03addb0d67c14cdb60dbab4bdf267656e8d315ca5d0988b7
+  meddeid-data:
+    repository: https://github.com/stighellemans/meddeid-data
+    ecosystem: python
+    release_action: publish
+    version: 0.4.0
+    tag: v0.4.0
+    commit: 5fbc38bed3e30cf12b86b09f63928e6cfb78f4ff
+    wheel_sha256: 6a0ff366f501e323786b3b15d70294a09e194671d9be16ed9b220f03933a38e2
+    sdist_sha256: 94fd9f6b287cec258a7b17b5f7cbab93d64dd9fb0998cabbb60056cefe8b14b0
+  meddeid-eval:
+    repository: https://github.com/stighellemans/meddeid-eval
+    ecosystem: python
+    release_action: publish
+    version: 0.4.0
+    tag: v0.4.0
+    commit: 27516c01dcdb26aa9d9e2cbbb2fd84c9b511109a
+    wheel_sha256: 68e017a321e67856b67e91b7f7b2bd75b2e94293884fab8b8ffb6bd05a562998
+    sdist_sha256: eabada82d77d00e9155f95c71da560a89ea24682f8cb23e33223dce5def2e4dc
+  meddeid-training:
+    repository: https://github.com/stighellemans/meddeid-training
+    ecosystem: python
+    release_action: publish
+    version: 0.2.1
+    tag: v0.2.1
+    commit: ae0b2a2d80a7a543095039df47bea3d8c5212b5a
+    wheel_sha256: 0b363e15828c36724160f473f340df9b263672438f5f9b03b426b56665a74cce
+    sdist_sha256: bc06f376f2a335f04dca9df72aedee45a88b19cd929dc0a5406316158f553a1e
+  meddeid-annotate:
+    repository: https://github.com/stighellemans/meddeid-annotate
+    ecosystem: container
+    release_action: publish
+    version: 0.2.0
+    tag: v0.2.0
+    commit: dc27b4f27aaddff7206923c0c029115c312fbf0d
+  meddeid-curate:
+    repository: https://github.com/stighellemans/meddeid-curate
+    ecosystem: container
+    release_action: publish
+    version: 0.2.0
+    tag: v0.2.0
+    commit: a6c307df64d07160d0946c063a132aafffedfd52
+  meddeid-subannotate:
+    repository: https://github.com/stighellemans/meddeid-subannotate
+    ecosystem: container
+    release_action: publish
+    version: 0.2.0
+    tag: v0.2.0
+    commit: d21db652f619d84c9cc34b5d959a6b17ee2a089a
+  meddeid.github.io:
+    repository: https://github.com/stighellemans/meddeid.github.io
+    ecosystem: documentation
+    release_action: publish
+    version: 0.2.0
+    tag: v0.2.0
+    commit: 59fb227dbbf9c63cd55b470c3a46299f84df5922
+language_profiles:
+  nl:
+    ids:
+    - nl-BE
+    - nl-NL
+    python_component: meddeid-language-nl
+    javascript_package: '@meddeid/language-nl@0.2.1'
+    javascript_status: published
+    javascript_git_head: c316c06669789fd16b2405a1ca8076d878f3d730
+    javascript_shasum: 31496b7b6cff261f22681bc2a4b4fbaa293a6b72
+    javascript_integrity: sha512-fLQg6U0iAGLjfztsVolhjbKNI7SLRUZ8QGvO8p6sbL7txk5JJ+3NZ9RFDXL9mWeM/1T9AGHDrpdFJ+syUchQhw==
+  en:
+    ids:
+    - en-GB
+    - en-US
+    python_component: meddeid-language-en
+    javascript_package: '@meddeid/language-en@0.2.1'
+    javascript_status: published
+    javascript_git_head: 7958b77ee83295de7d809a8f52d6de2c2732c35e
+    javascript_shasum: a9b02bfed2efefc90e225ad5dc6f5a2072e7bac1
+    javascript_integrity: sha512-VSycyKC/lFtp1F5dMxiQYo/ufXmhYH0Uv8rt7c9lcQf33H9Y1T5nXujM5akRGQ7RDegoWp4NuJxylfgC3xvkPg==
+containers:
+  meddeid-api-cpu:
+    release_action: publish
+    reference: ghcr.io/stighellemans/meddeid-api:0.3.0
+    platforms:
+    - linux/amd64
+    - linux/arm64
+    size_budget_key: cpu
+    digest: sha256:221700879ff9bd7a74954b690d7cacb7dc5d6bbd612af44573b7763b57f4535a
+  meddeid-api-cuda:
+    release_action: publish
+    reference: ghcr.io/stighellemans/meddeid-api:0.3.0-cuda12.9
+    platforms:
+    - linux/amd64
+    size_budget_key: pytorch-cuda
+    digest: sha256:7f6af1ba6ed11cc6ed15dde4c08131a5f8d306ebe94b1c49297b69603bfd1d28
+  meddeid-triton-gateway:
+    release_action: publish
+    reference: ghcr.io/stighellemans/meddeid-triton-gateway:0.3.0
+    platforms:
+    - linux/amd64
+    size_budget_key: tensorrt-gateway
+    digest: sha256:cb5a982a2011800d706507cff475522a45b8e3e6650746fa2c3754497c9eddda
+  meddeid-triton-t4-sm75:
+    release_action: publish
+    reference: ghcr.io/stighellemans/meddeid-triton-t4-sm75:0.3.0-trt26.07-fp16
+    platforms:
+    - linux/amd64
+    size_budget_key: tensorrt-server
+    digest: sha256:f9502f40130cd5c7058e2b0e66cb038d90b522a2d37c2bf7325454ac998d2c0c
+  meddeid-annotate:
+    release_action: publish
+    reference: ghcr.io/stighellemans/meddeid-annotate:0.2.0
+    platforms:
+    - linux/amd64
+    - linux/arm64
+    digest: sha256:a31fc05bd18f58d0e14449293e8e74033dca1bd32743359512888ed9af1c8b2d
+  meddeid-curate:
+    release_action: publish
+    reference: ghcr.io/stighellemans/meddeid-curate:0.2.0
+    platforms:
+    - linux/amd64
+    - linux/arm64
+    digest: sha256:5fc8158c9efe632f9d24acb6937d63457945fa5dab8f1c02d314fcf96d7b1367
+  meddeid-subannotate:
+    release_action: publish
+    reference: ghcr.io/stighellemans/meddeid-subannotate:0.2.0
+    platforms:
+    - linux/amd64
+    - linux/arm64
+    digest: sha256:bffda1df92ea1d5c03f69c8101bfd873b080ef7b9c8093fddd7ef4aa69fefe1a
+models:
+  dutch_synthetic:
+    repository: stighellemans/meddeid-dutch-synth
+    tag: v1.0.0
+    tag_revision: c7491c8b085767c70a5f234df518aece1c35f75f
+    revision: 1f20655454dcbd042647cacdfff6b6802a970959
+    doi: 10.57967/hf/10304
+    weights_artifact: model.safetensors
+    weights_sha256: 791c6b2135274d548a0ee0c8759055be3eac2ac6245977b7faaf992a664f4780
+    bundle_artifact: bundle.json
+    bundle_sha256: 85ecad2c48dddca380e6e8b5e4352f384b2cf0ba785781b0869b6c953cd399f8
+    contract_sha256: 001123dbc1184751e4bae3c29633d14a5e041acae0c173773f186127ae3fd944
+    base_encoder: DTAI-KULeuven/robbert-2023-dutch-base
+    base_encoder_revision: 1164b2df6d3ceb1735900c839da8de9bad1a99f9
+    licence: AGPL-3.0-only
+  english_synthetic:
+    repository: stighellemans/meddeid-english-synth
+    tag: v1.0.0
+    tag_revision: fe15b89afb4c8f2272d2397da8b0eee77a5528f8
+    revision: e519d454250ba67bef62c0063dbbf242c329b750
+    doi: 10.57967/hf/10306
+    weights_artifact: model.safetensors
+    weights_sha256: 545ebc71a235d471ba7f2fefca341704fe6aed33df4fb5b46ab9adef3e139bcc
+    bundle_artifact: bundle.json
+    bundle_sha256: 270c41fbdd8608d4537a7c47d04721dbeb2db72e283b31d55e4fec0c9c6fa02a
+    contract_sha256: 8cb37a84c0ce91b88d511727a4f05f83b85f419cdb5bd277f5820e8e503478a7
+    base_encoder: FacebookAI/roberta-base
+    base_encoder_revision: e2da8e2f811d1448a5b465c236feacd80ffbac7b
+    licence: AGPL-3.0-only
+study_software:
+  deid-battery:
+    repository: https://github.com/stighellemans/deid-battery
+    version: 0.1.0
+    tag: v0.1.0
+    commit: 77da7c133d345353b52427ff0a14a424de08398b
+    role: Reproducible model and pseudonymisation evaluation used in the study.
+  belgian-deduce:
+    repository: https://github.com/stighellemans/belgian-deduce
+    version: meddeid-study-v1.0.0
+    tag: meddeid-study-v1.0.0
+    commit: aeed6f27aef40bcdf4d6ddfa000cbfeb17bd6224
+    role: Exact Belgian-DEDUCE revision evaluated in the study.
+datasets:
+  dutch_synthetic_training:
+    repository: stighellemans/meddeid-dutch-synthetic-corpus
+    revision: cd85ee5500bd6b2783bc759d96d75a2b6e966a1f
+    split: train
+    rows: 6493
+    artifact: source/original.jsonl
+    sha256: 94ecefbcf5c2613d905c7762a71881f08c39a28cd6bf0828f70407f2bbeba41c
+    licence: CC-BY-4.0
+  dutch_synthetic_benchmark:
+    repository: stighellemans/meddeid-dutch-synthetic-benchmark
+    revision: 9b95ebbfb091a5390e4fc39e2ef74e7580aac068
+    split: test
+    rows: 300
+    primary_spans: 3598
+    subannotations: 14591
+    artifact: data/test.jsonl
+    sha256: f1fc1a0447d1c447d742a1d32c1bb18393840665cc44d591eccc95e8cf3f5d01
+    licence: CC-BY-4.0
+  english_synthetic_training:
+    repository: stighellemans/meddeid-english-synthetic-corpus
+    revision: b93f735c88cda2ed77725c6a4f53e8124503073a
+    split: train
+    rows: 6700
+    artifact: source/development.jsonl
+    sha256: ea77758db5f91dc992a23fc756e0d30958ba75750845fa78ec874bf96404fe45
+    licence: CC-BY-4.0
+  english_synthetic_benchmark:
+    repository: stighellemans/meddeid-english-synthetic-benchmark
+    revision: 36879b454408a86548cdcb6f82657a9434fa2b80
+    split: test
+    rows: 300
+    primary_spans: 1717
+    subannotations: 7358
+    artifact: source/benchmark.jsonl
+    sha256: 021332c7cf2900d22e38a77975920444a6fff475187925b973eee2ca8c2e51e5
+    licence: CC-BY-4.0
+accelerators:
+  cpu:
+    availability: ready
+    portability: linux/amd64 and linux/arm64
+    recommendation: Default for the smallest pull and hosts without a supported accelerator.
+  mps:
+    availability: ready-native
+    portability: Apple silicon with a compatible PyTorch/macOS runtime; no container
+      image.
+    recommendation: Use eager MPS; throughput mode enables bounded microbatching automatically.
+    evidence:
+      component: meddeid
+      path: deploy/mps/benchmark-summary.json
+      sha256: 76e9d4c709e2c0fe56962ddc2b7b6de56a80c31c0c64d36c81194c52e4b0e27b
+  pytorch_cuda:
+    availability: ready
+    portability: NVIDIA GPUs compatible with the pinned CUDA/PyTorch runtime.
+    recommendation: Portable NVIDIA default; FP16 eager avoids compile cold-start
+      and image-size costs.
+  tensorrt:
+    availability: ready-t4
+    portability: Plans are target- and runtime-specific; there is no universal TensorRT
+      tag.
+    recommendation: Choose the T4 image only on validated T4 hosts; request a new
+      plan for another declared target.
+    target_catalog:
+      component: meddeid
+      path: deploy/triton/targets.json
+    evidence:
+      component: meddeid
+      path: deploy/triton/t4-benchmark-summary.json
+      sha256: 572920854834cd1659b135aecc73b6844b2cb03c780fb57172193f13183bc29a
+    targets:
+      t4-sm75: ready
+      a10g-sm86: on-request
+      l4-sm89: on-request
+image_size_budgets:
+  component: meddeid
+  path: deploy/image-size-budgets.json
+  sha256: 92ddb29a311638f74659d01df049fa00dda606d7c56aa5b7ef827c7f7abf48db
+hosted_demo:
+  repository: stighellemans/meddeid-demo
+  revision: 830fc3d3ffb97140dd7c5b633a7d4b210f55ac2b
+  runtime: zero-a10g
+  api: /deidentify
+  privacy_boundary: synthetic-or-otherwise-non-sensitive-text-only
+hugging_face_collection:
+  slug: stighellemans/meddeid-6a7ae47783f48f05c85170d0
+  status: published
+archives:
+  dutch:
+    concept_doi: 10.5281/zenodo.21890964
+    version_doi: 10.5281/zenodo.21992866
+    record_id: 21992866
+    filename: meddeid-dutch-synthetic-data.zip
+    sha256: 1e1c2b37dd515b427b14884015771bec09b7c47667aabe58b5596853834602a7
+    status: published
+  english:
+    concept_doi: 10.5281/zenodo.22127863
+    version_doi: 10.5281/zenodo.22129255
+    record_id: 22129255
+    filename: meddeid-english-synthetic-data-v2.zip
+    sha256: efeaf896e1bf95a978f36c0ca9788fc47328bda9cb48cce6320315e803532e22
+    status: published
+runtime:
+  python: '3.12'
+  torch: 2.13.0
+  transformers: 5.15.0
+  numpy: 2.3.0
+  scikit_learn: 1.7.0
+smoke:
+  fixture: pilots/new-researcher-v1
+  documents: 6
+  predicted_spans: 22
+  exact_f1:
+    target: 0.9
+    tolerance: 0.1
+release_gates:
+  immutable_hub_revisions: passed
+  versioned_model_dois: passed
+  supporting_component_releases: passed
+  application_image_smoke: passed
+  legacy_site_redirect: passed
+  study_software_tags: passed
+  checked_mps_evidence: passed
+  checked_t4_evidence: passed
+  local_meddeid_tests: passed
+  local_package_build: passed
+  strict_documentation_build: passed
+  exact_commit_gpu_candidate_run: passed
+  t4_release_runner_ready: passed
+  public_pypi_artifacts: passed
+  public_container_digests: passed
+  pulled_artifact_smoke: passed

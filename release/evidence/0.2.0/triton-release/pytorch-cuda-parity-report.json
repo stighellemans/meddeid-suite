@@ -1,0 +1,33 @@
+{
+  "schema": "meddeid.triton-parity.v1",
+  "passed": true,
+  "documents": 6,
+  "reference_url": "http://127.0.0.1:8001",
+  "candidate_url": "http://127.0.0.1:8002",
+  "model_identity_matches": true,
+  "reference_identity": {
+    "software": {
+      "name": "meddeid",
+      "version": "0.3.0"
+    },
+    "model": {
+      "name": "meddeid-dutch-synth",
+      "version": "1",
+      "resolved_revision": "1f20655454dcbd042647cacdfff6b6802a970959",
+      "bundle_sha256": "001123dbc1184751e4bae3c29633d14a5e041acae0c173773f186127ae3fd944"
+    }
+  },
+  "candidate_identity": {
+    "software": {
+      "name": "meddeid",
+      "version": "0.3.0"
+    },
+    "model": {
+      "name": "meddeid-dutch-synth",
+      "version": "1",
+      "resolved_revision": "1f20655454dcbd042647cacdfff6b6802a970959",
+      "bundle_sha256": "001123dbc1184751e4bae3c29633d14a5e041acae0c173773f186127ae3fd944"
+    }
+  },
+  "semantic_differences": []
+}

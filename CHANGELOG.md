@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.2.0 - 2026-09-06
+
 - Added one suite-wide declarative age-granularity policy and connected the
   active Dutch/English language profiles to central inference date replacement,
   safe placeholder defaults, configurable weak-shift warnings, and processing
@@ -12,12 +14,30 @@
   `en-GB` and `en-US` profiles and integrated those profiles into synthetic
   generation and locale-driven stability helpers.
 - Published the English synthetic corpus, human-reviewed subannotated
-  benchmark, synthetic model, shared Dutch/English demo, and citable Zenodo v1
-  archive. The next coordinated suite release will incorporate their immutable
-  revisions into `suite-lock.yaml`.
+  benchmark, synthetic model, shared Dutch/English demo, and citable Zenodo
+  archive, and incorporated their immutable revisions into `suite-lock.yaml`.
 - Removed profile-version suffixes from the active language-profile contracts
-  and added local `nl-NL` language and generation support. No public release,
-  model bundle, suite lock, or generated corpus has been updated.
+  and released `nl-NL` language and generation support.
+- Released coordinated versions of every suite repository: Core 0.2.1,
+  English and Dutch language packages 0.2.1, Data and Eval 0.4.0, Training
+  0.2.1, and Annotate, Curate, Subannotate, and the legacy-site redirect 0.2.0.
+- Tagged both Hugging Face model repositories as `v1.0.0` and recorded their
+  version-specific DOIs, plus the exact deid-battery and Belgian-DEDUCE study
+  revisions.
+- Published the suite 0.2.0 release for `meddeid==0.3.0`, including
+  separate minimal CPU, portable PyTorch CUDA, weight-free TensorRT gateway,
+  and T4-specific TensorRT artifacts with immutable benchmark evidence.
+- Reduced the normal GPU tuning surface to the `latency` and `throughput`
+  serving profiles. Backend-specific batching, precision, transport,
+  concurrency, and worker choices remain image defaults; advanced overrides
+  are documented but absent from the quick deployment templates.
+- Added per-runtime image-size budgets and framework-separation gates so an
+  operator downloads only the CPU, portable CUDA, or target-specific
+  TensorRT/gateway stack selected for their hardware.
+- Added a v2 candidate lock, automated candidate validation, generic
+  post-publication identity/digest resolution for every component, and a gate
+  that prevents final suite-lock publication while any required check remains
+  pending.
 
 ## 0.1.1 - 2026-08-18
 

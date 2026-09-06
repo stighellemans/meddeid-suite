@@ -1,0 +1,124 @@
+[
+    {
+        "Id": "sha256:f9502f40130cd5c7058e2b0e66cb038d90b522a2d37c2bf7325454ac998d2c0c",
+        "RepoTags": [
+            "meddeid-triton-t4-sm75:0.3.0-trt26.07-fp16-ci"
+        ],
+        "RepoDigests": [
+            "meddeid-triton-t4-sm75@sha256:f9502f40130cd5c7058e2b0e66cb038d90b522a2d37c2bf7325454ac998d2c0c"
+        ],
+        "Comment": "buildkit.dockerfile.v0",
+        "Created": "2026-09-06T01:10:57.54033687Z",
+        "Config": {
+            "User": "10000:10000",
+            "ExposedPorts": {
+                "8000/tcp": {},
+                "8001/tcp": {},
+                "8002/tcp": {}
+            },
+            "Env": [
+                "PATH=/opt/tritonserver/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "NVARCH=x86_64",
+                "NVIDIA_REQUIRE_CUDA=cuda>=13.3 brand=unknown,driver>=535,driver<536 brand=grid,driver>=535,driver<536 brand=tesla,driver>=535,driver<536 brand=nvidia,driver>=535,driver<536 brand=quadro,driver>=535,driver<536 brand=quadrortx,driver>=535,driver<536 brand=nvidiartx,driver>=535,driver<536 brand=vapps,driver>=535,driver<536 brand=vpc,driver>=535,driver<536 brand=vcs,driver>=535,driver<536 brand=vws,driver>=535,driver<536 brand=cloudgaming,driver>=535,driver<536 brand=unknown,driver>=570,driver<571 brand=grid,driver>=570,driver<571 brand=tesla,driver>=570,driver<571 brand=nvidia,driver>=570,driver<571 brand=quadro,driver>=570,driver<571 brand=quadrortx,driver>=570,driver<571 brand=nvidiartx,driver>=570,driver<571 brand=vapps,driver>=570,driver<571 brand=vpc,driver>=570,driver<571 brand=vcs,driver>=570,driver<571 brand=vws,driver>=570,driver<571 brand=cloudgaming,driver>=570,driver<571 brand=unknown,driver>=580,driver<581 brand=grid,driver>=580,driver<581 brand=tesla,driver>=580,driver<581 brand=nvidia,driver>=580,driver<581 brand=quadro,driver>=580,driver<581 brand=quadrortx,driver>=580,driver<581 brand=nvidiartx,driver>=580,driver<581 brand=vapps,driver>=580,driver<581 brand=vpc,driver>=580,driver<581 brand=vcs,driver>=580,driver<581 brand=vws,driver>=580,driver<581 brand=cloudgaming,driver>=580,driver<581 brand=unknown,driver>=590,driver<591 brand=grid,driver>=590,driver<591 brand=tesla,driver>=590,driver<591 brand=nvidia,driver>=590,driver<591 brand=quadro,driver>=590,driver<591 brand=quadrortx,driver>=590,driver<591 brand=nvidiartx,driver>=590,driver<591 brand=vapps,driver>=590,driver<591 brand=vpc,driver>=590,driver<591 brand=vcs,driver>=590,driver<591 brand=vws,driver>=590,driver<591 brand=cloudgaming,driver>=590,driver<591 brand=unknown,driver>=595,driver<596 brand=grid,driver>=595,driver<596 brand=tesla,driver>=595,driver<596 brand=nvidia,driver>=595,driver<596 brand=quadro,driver>=595,driver<596 brand=quadrortx,driver>=595,driver<596 brand=nvidiartx,driver>=595,driver<596 brand=vapps,driver>=595,driver<596 brand=vpc,driver>=595,driver<596 brand=vcs,driver>=595,driver<596 brand=vws,driver>=595,driver<596 brand=cloudgaming,driver>=595,driver<596",
+                "NV_CUDA_CUDART_VERSION=13.3.29-1",
+                "CUDA_VERSION=13.3.1",
+                "LD_LIBRARY_PATH=/opt/tritonserver/lib:/usr/local/cuda/lib64:/usr/local/cuda/targets/x86_64-linux/lib:/usr/lib/x86_64-linux-gnu",
+                "NVIDIA_VISIBLE_DEVICES=all",
+                "NVIDIA_DRIVER_CAPABILITIES=compute,utility",
+                "HOME=/tmp",
+                "CUDA_CACHE_PATH=/tmp/cuda-cache"
+            ],
+            "Cmd": [
+                "tritonserver",
+                "--model-repository=/models",
+                "--strict-readiness=true",
+                "--disable-auto-complete-config"
+            ],
+            "WorkingDir": "/opt/tritonserver",
+            "Labels": {
+                "io.meddeid.build-manifest-sha256": "a97d975febb5c03da34f9df620c079c08c4e4ff08d6eaa669c4fdd6830c8d239",
+                "io.meddeid.bundle-sha256": "001123dbc1184751e4bae3c29633d14a5e041acae0c173773f186127ae3fd944",
+                "io.meddeid.cuda-base-image": "nvidia/cuda:13.3.1-base-ubuntu24.04@sha256:22dc6de51e33966f735440e9601a3006c38a8e6da4b4896b8ebc826e41252ae1",
+                "io.meddeid.gpu-target": "t4-sm75",
+                "io.meddeid.model-revision": "1f20655454dcbd042647cacdfff6b6802a970959",
+                "io.meddeid.runtime-closure": "triton,tensorrt,nccl,dcgm,cupti",
+                "io.meddeid.source-revision": "6370c67e020b2b8165bdab2276c431a5b0d09802",
+                "io.meddeid.tensorrt-output-precision": "fp32",
+                "io.meddeid.tensorrt-precision": "fp16",
+                "io.meddeid.tensorrt-version": "11.1.0.106",
+                "io.meddeid.triton-compose-revision": "819ee37770df2fcd6d799d2a5d1dacf812f7d62c",
+                "io.meddeid.triton-full-image": "nvcr.io/nvidia/tritonserver:26.07-py3@sha256:f76300c73eba7dd4c67183210c10b3fef67fb9aa2c18f150cb916387078442f0",
+                "io.meddeid.triton-min-image": "nvcr.io/nvidia/tritonserver:26.07-py3-min@sha256:091778e7ad4a9fe980c28ee121219bf9cacf5d6ef1ade65ba76770bfd6a35a16",
+                "io.meddeid.triton-server-version": "2.71.0",
+                "io.meddeid.triton-stack": "26.07",
+                "maintainer": "NVIDIA CORPORATION <cudatools@nvidia.com>",
+                "org.opencontainers.image.created": "2026-09-06T00:35:08+02:00",
+                "org.opencontainers.image.description": "Target-specific MedDeID TensorRT plan served by NVIDIA Triton",
+                "org.opencontainers.image.licenses": "AGPL-3.0-only AND LicenseRef-NVIDIA-Deep-Learning-Container",
+                "org.opencontainers.image.revision": "6370c67e020b2b8165bdab2276c431a5b0d09802",
+                "org.opencontainers.image.source": "https://github.com/stighellemans/meddeid",
+                "org.opencontainers.image.title": "MedDeID TensorRT model server",
+                "org.opencontainers.image.version": "0.3.0"
+            },
+            "ArgsEscaped": true,
+            "Healthcheck": {
+                "Test": [
+                    "CMD-SHELL",
+                    "curl --fail --silent http://127.0.0.1:8000/v2/health/ready >/dev/null || exit 1"
+                ],
+                "Interval": 15000000000,
+                "Timeout": 5000000000,
+                "StartPeriod": 90000000000,
+                "Retries": 6
+            }
+        },
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 2945826887,
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:f103cd120fdd6cbc7f3d0e1d5bfb3e16290c32ead7b822d15c34460ecdf64b29",
+                "sha256:a9cc1c90f1c1812263f7395267f109af8b70082d274df55ee16ec8ca9b50c3cb",
+                "sha256:70d00315500b1f9a6f12573c859ffaba655f84524b9669278c5c366fce2e9b46",
+                "sha256:f8a73e269513e40b106af860a8f43f68ad63c5864e898ebadd89eb9ac0bc1659",
+                "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+                "sha256:660c624ed9d916a585112fea809842b456d68f691bef3ba236d70ef001eef293",
+                "sha256:16cbecec273981d0fdd8614381a6137c08f560715d09fdfc8e7b7d2ed4e2491c",
+                "sha256:cfa548bbfd915e8c33764f31b58a5dfb595814a07c8ce974cf4cef361a81e9ed",
+                "sha256:242f1ae8fdbfe848945ec0a717e76e50f1cfd47c47c667fa25e69f330d13e0db",
+                "sha256:83f49c5f4aeb6c4cc9b36736b4ed12ddba7bc9257e9a52d937efbcc5a9b06254",
+                "sha256:bdc729509171e38709b972258aa69342976f98bf7e4168e4d066ba3b89a9509d",
+                "sha256:16982e6e4752e1bcb8c016af3d734e638405cfa180e1c9a844f4e9b743d6e9b5",
+                "sha256:3686eabfe94fffbdda7607ff3d9284d0c6c4d96fc89547510946909e350b6934",
+                "sha256:8d41b4e0bfea856b65a4d4e851a38f78b2c79ee08010b44df32a406f558b6496",
+                "sha256:c356c289535c77786c228922a096552b3f9b5b125f334167d11cc8bde94d9c7a",
+                "sha256:8a3e73b54fc99bb5f077bdb439d55e4c7705a08d4ae3a6483554c864b445dc6a",
+                "sha256:3c513bd3646b5be8c8fc9696863a5eaba87623708fbc84bc2ca6a75fdac3be43",
+                "sha256:0fc196686f019a3ef7e4b8a56d43c267e8f1a8ef1e68034ee37684a15a1d99ee",
+                "sha256:1c632ac59629c3f25d9bc89b54e163ba28f40105e03016d356ae61484e7e30a3",
+                "sha256:10dc3775758af326a5626ec8dd18f531d62c7900eec6a04132fa503258fdf902",
+                "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+                "sha256:e0f2b080e1dedfe13193fd9ba3fe1e0aae3c692883027f62ff399bd3934b7267",
+                "sha256:db6d477130185d5c68352576f0210416b804025d3ee77a808e287b3fda808a92",
+                "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "2026-09-06T01:11:07.985809335Z"
+        },
+        "Descriptor": {
+            "mediaType": "application/vnd.oci.image.index.v1+json",
+            "digest": "sha256:f9502f40130cd5c7058e2b0e66cb038d90b522a2d37c2bf7325454ac998d2c0c",
+            "size": 856
+        },
+        "Identity": {
+            "Build": [
+                {
+                    "Ref": "izqjgzn5s848uyspge3lowgsh",
+                    "CreatedAt": "2026-09-06T01:11:10.980689616Z"
+                }
+            ]
+        }
+    }
+]

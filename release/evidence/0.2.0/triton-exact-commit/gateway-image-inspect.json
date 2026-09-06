@@ -1,0 +1,116 @@
+[
+    {
+        "Id": "sha256:4d91b603603da983d9560fbf953d842a101e282edf63a812aae16d3db25d8c8b",
+        "RepoTags": [
+            "meddeid-triton-gateway:0.3.0-ci"
+        ],
+        "RepoDigests": [
+            "meddeid-triton-gateway@sha256:4d91b603603da983d9560fbf953d842a101e282edf63a812aae16d3db25d8c8b"
+        ],
+        "Comment": "buildkit.dockerfile.v0",
+        "Created": "2026-09-05T23:40:03.033272765Z",
+        "Config": {
+            "User": "10001:10001",
+            "ExposedPorts": {
+                "8000/tcp": {}
+            },
+            "Env": [
+                "PATH=/opt/venv/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "LANG=C.UTF-8",
+                "GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305",
+                "PYTHON_VERSION=3.12.14",
+                "PYTHON_SHA256=5c8462af5790baf43a321a1559dbe0db06d1be4300fb85fb53c40060668e548a",
+                "VIRTUAL_ENV=/opt/venv",
+                "PYTHONDONTWRITEBYTECODE=1",
+                "PYTHONUNBUFFERED=1",
+                "HOME=/home/meddeid",
+                "HF_HOME=/var/cache/meddeid/huggingface",
+                "MEDDEID_MODEL=/opt/meddeid-model",
+                "MEDDEID_REVISION=1f20655454dcbd042647cacdfff6b6802a970959",
+                "MEDDEID_OFFLINE=true",
+                "MEDDEID_BACKEND=triton",
+                "MEDDEID_TRITON_TRANSPORT=binary",
+                "MEDDEID_SERVING_PROFILE=latency",
+                "MEDDEID_MICROBATCH_ENABLED=auto",
+                "MEDDEID_WINDOW_BATCH_SIZE=64",
+                "MEDDEID_WORKERS=4",
+                "MEDDEID_DOCS_ENABLED=false",
+                "MEDDEID_UI_ENABLED=false",
+                "MEDDEID_REQUIRE_API_KEY=false",
+                "MEDDEID_MAX_INPUT_CHARS=20000",
+                "MEDDEID_MAX_BATCH_DOCUMENTS=32",
+                "MEDDEID_MAX_BATCH_CHARS=200000",
+                "MEDDEID_MAX_REQUEST_BYTES=2000000",
+                "MEDDEID_MAX_CONCURRENT_REQUESTS=auto",
+                "MEDDEID_QUEUE_TIMEOUT_SECONDS=30",
+                "MEDDEID_ACCESS_LOG=true",
+                "PORT=8000"
+            ],
+            "Cmd": [
+                "meddeid-server"
+            ],
+            "Labels": {
+                "io.meddeid.bundle-sha256": "001123dbc1184751e4bae3c29633d14a5e041acae0c173773f186127ae3fd944",
+                "io.meddeid.core-revision": "13a5b5d6049611e0c64e0d375d1cb5d99266bc15",
+                "io.meddeid.language-en-revision": "7958b77ee83295de7d809a8f52d6de2c2732c35e",
+                "io.meddeid.language-nl-revision": "c316c06669789fd16b2405a1ca8076d878f3d730",
+                "io.meddeid.model-id": "stighellemans/meddeid-dutch-synth",
+                "io.meddeid.model-revision": "1f20655454dcbd042647cacdfff6b6802a970959",
+                "io.meddeid.runtime-role": "triton-gateway",
+                "io.meddeid.torch-included": "false",
+                "io.meddeid.triton-client-version": "2.71.0",
+                "org.opencontainers.image.created": "2026-09-06T00:35:08+02:00",
+                "org.opencontainers.image.description": "Weight-free MedDeID API and preprocessing gateway for NVIDIA Triton",
+                "org.opencontainers.image.licenses": "AGPL-3.0-only",
+                "org.opencontainers.image.revision": "6370c67e020b2b8165bdab2276c431a5b0d09802",
+                "org.opencontainers.image.source": "https://github.com/stighellemans/meddeid",
+                "org.opencontainers.image.title": "MedDeID TensorRT gateway",
+                "org.opencontainers.image.version": "0.3.0"
+            },
+            "ArgsEscaped": true,
+            "Healthcheck": {
+                "Test": [
+                    "CMD-SHELL",
+                    "python -c \"import json,urllib.request; json.load(urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=4))\""
+                ],
+                "Interval": 30000000000,
+                "Timeout": 5000000000,
+                "StartPeriod": 45000000000,
+                "Retries": 3
+            }
+        },
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 667070390,
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:6f94328331290cbd81edab450664d42da7b64c191416c9346cd5d28c84f76035",
+                "sha256:d14fa28e2eb1f038f5c4664218a0857316a91bcf13f20391ca1e39a124ebb353",
+                "sha256:49813eb143b9b300a599bd6fed93a629d9e9ad7922811c09bd2d67381f00d1f4",
+                "sha256:4a3a923292e31dbb9508a11bf1be25b7e6995b2d219a08b780c1319c50de3f9f",
+                "sha256:b7ca161b627593899f939227e53e8a3736bf5a31214e5c7a6c68b2a70d09b150",
+                "sha256:71f69657dde78b5abb992f3edac612d45239847f44d00dad5d7c2c44b53d886f",
+                "sha256:dea63776865a7b9e3a2eda3494163cd36f57a0fc5e74d47c86b43cf795d76222",
+                "sha256:8461dd262c4e4fad1555e873de4e52bd499aceb09de43a0816fc820e2aa91b2b",
+                "sha256:91195cd2447df21b44aaab5cd181902c1444cb3aa29698c9fe7df6764fe371f4"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "2026-09-05T23:40:13.203502923Z"
+        },
+        "Descriptor": {
+            "mediaType": "application/vnd.oci.image.index.v1+json",
+            "digest": "sha256:4d91b603603da983d9560fbf953d842a101e282edf63a812aae16d3db25d8c8b",
+            "size": 856
+        },
+        "Identity": {
+            "Build": [
+                {
+                    "Ref": "ofh5dle3reyzovyzgli5bi5u7",
+                    "CreatedAt": "2026-09-05T23:40:15.835965357Z"
+                }
+            ]
+        }
+    }
+]

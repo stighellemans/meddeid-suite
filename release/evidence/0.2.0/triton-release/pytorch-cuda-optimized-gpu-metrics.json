@@ -1,0 +1,19 @@
+{
+  "device": "0",
+  "duration_seconds": 18.629492429001402,
+  "gpu": {
+    "compute_capability": "7.5",
+    "driver_version": "610.57.04",
+    "index": "0",
+    "name": "Tesla T4"
+  },
+  "maximum": {
+    "memory_used_mib": 1663.0,
+    "power_draw_watts": 103.64,
+    "utilization_gpu_percent": 78.0
+  },
+  "privacy": "Only aggregate device metrics are retained.",
+  "sample_count": 153,
+  "sample_interval_seconds": 0.1,
+  "schema": "meddeid.nvidia-monitor.v1"
+}

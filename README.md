@@ -2,7 +2,7 @@
 
 This repository pins and verifies the independently released components and
 public artifacts that make up MedDeID. End users normally install an individual
-component or follow the [public documentation](https://stighellemans.github.io/meddeid.github.io/);
+component or follow the [public documentation](https://stighellemans.github.io/meddeid/);
 they do not need this coordinator checkout.
 
 The prevalent cross-component workflows now use `meddeid` as a guided front
@@ -17,7 +17,7 @@ meddeid workflow next WORKSPACE
 
 This records scientific branches instead of inferring them from filenames or
 installed tools. Component CLIs remain available independently. See the
-[guided workflow documentation](https://stighellemans.github.io/meddeid.github.io/workflows/guided-workflows/).
+[workflow CLI reference](https://stighellemans.github.io/meddeid/reference/workflow-cli/).
 
 ## Public components
 
@@ -33,19 +33,33 @@ installed tools. Component CLIs remain available independently. See the
 | [`meddeid-annotate`](https://github.com/stighellemans/meddeid-annotate) | Primary-span annotation |
 | [`meddeid-curate`](https://github.com/stighellemans/meddeid-curate) | Optional multi-reviewer reconciliation |
 | [`meddeid-subannotate`](https://github.com/stighellemans/meddeid-subannotate) | Gold-only core-PII subannotation |
+| [`meddeid.github.io`](https://github.com/stighellemans/meddeid.github.io) | Redirects legacy documentation URLs to the maintained site |
 
 `suite-lock.yaml` is the public release contract. It records package versions
-and hashes, repository commits, container digests, model and dataset revisions,
-the archival DOI, language/profile contracts, and smoke-test tolerances.
+and hashes, repository commits, container digests, tagged model revisions and
+DOIs, dataset revisions, archival DOIs, language/profile contracts, exact study
+software revisions, and smoke-test tolerances.
 
-The English language component, synthetic corpus, human-reviewed benchmark,
-and synthetic model are now public. They will be incorporated into
-`suite-lock.yaml` in the next coordinated suite release. Bare `en` is not a
-valid profile selection.
+The [suite 0.2.0 release contract](suite-lock.yaml) includes
+`meddeid==0.3.0` and separate CPU, portable PyTorch CUDA, weight-free TensorRT
+gateway, and T4-specific TensorRT artifacts. External GPU deployment uses one
+ordinary performance choice, `MEDDEID_SERVING_PROFILE=latency|throughput`;
+backend-specific batching, precision, transport, concurrency, and worker
+defaults are carried by the selected image. CPU, CUDA, and TensorRT remain
+separate downloads so users do not receive frameworks for hardware they are
+not using. See the [release runbook](RELEASE.md).
+
+The Dutch and English model repositories have immutable `v1.0.0` tags and
+version-specific Hugging Face DOIs. The English language component, synthetic
+corpus, human-reviewed benchmark, and synthetic model are public and pinned in
+the 0.2.0 lock. Bare `en` is not a valid profile selection.
 
 ## Public release endpoints
 
 - English model: [`stighellemans/meddeid-english-synth`](https://huggingface.co/stighellemans/meddeid-english-synth)
+- English model DOI: [10.57967/hf/10306](https://doi.org/10.57967/hf/10306)
+- Dutch model: [`stighellemans/meddeid-dutch-synth`](https://huggingface.co/stighellemans/meddeid-dutch-synth)
+- Dutch model DOI: [10.57967/hf/10304](https://doi.org/10.57967/hf/10304)
 - English synthetic corpus: [`stighellemans/meddeid-english-synthetic-corpus`](https://huggingface.co/datasets/stighellemans/meddeid-english-synthetic-corpus)
 - English human-reviewed benchmark: [`stighellemans/meddeid-english-synthetic-benchmark`](https://huggingface.co/datasets/stighellemans/meddeid-english-synthetic-benchmark)
 - English data and guideline archive: [Zenodo v2](https://doi.org/10.5281/zenodo.22129255)
@@ -58,17 +72,15 @@ valid profile selection.
 
 ## Verify the release
 
-Install the exact released Python packages, then run:
+From the released coordinator checkout, install the exact locked Python
+packages and run the public verifiers:
 
 ```bash
-python -m pip install \
-  'meddeid[server]==0.1.1' \
-  'meddeid-data==0.2.1' \
-  'meddeid-eval==0.2.1' \
-  'meddeid-training[train]==0.1.1' \
-  'PyYAML>=6'
+python -m pip install 'PyYAML>=6'
+python scripts/release_requirements.py > /tmp/meddeid-release-requirements.txt
+python -m pip install --requirement /tmp/meddeid-release-requirements.txt
 python scripts/verify_release.py
-python scripts/verify_new_researcher_pilot.py --full
+python scripts/verify_new_researcher_pilot.py --installed-packages --full
 ```
 
 GitHub Actions runs this from a clean Ubuntu environment and verifies the

@@ -1,0 +1,197 @@
+evidence_format: meddeid.release-evidence.v1
+suite_version: 0.2.0
+recorded_at: 2026-09-06
+
+supporting_releases:
+  meddeid-core:
+    commit: 13a5b5d6049611e0c64e0d375d1cb5d99266bc15
+    tag: v0.2.1
+    ci_run: 33987971284
+    publish_run: 33988005510
+  meddeid-language-en:
+    commit: 7958b77ee83295de7d809a8f52d6de2c2732c35e
+    tag: v0.2.1
+    npm_tag: npm-v0.2.1
+    ci_run: 33988280278
+    pypi_run: 33988390189
+    npm_run: 33988458604
+  meddeid-language-nl:
+    commit: c316c06669789fd16b2405a1ca8076d878f3d730
+    tag: v0.2.1
+    npm_tag: npm-v0.2.1
+    ci_run: 33988280263
+    pypi_run: 33988599576
+    npm_run: 33988685358
+  meddeid-data:
+    commit: 5fbc38bed3e30cf12b86b09f63928e6cfb78f4ff
+    tag: v0.4.0
+    ci_run: 33993500854
+    publish_run: 33993607447
+  meddeid-eval:
+    commit: 27516c01dcdb26aa9d9e2cbbb2fd84c9b511109a
+    tag: v0.4.0
+    ci_run: 33993565191
+    publish_run: 33993652528
+  meddeid-training:
+    commit: ae0b2a2d80a7a543095039df47bea3d8c5212b5a
+    tag: v0.2.1
+    ci_run: 33993931227
+    publish_run: 33994105645
+  meddeid-annotate:
+    commit: dc27b4f27aaddff7206923c0c029115c312fbf0d
+    tag: v0.2.0
+    ci_run: 33994483994
+    publish_run: 33994483992
+    image_digest: sha256:a31fc05bd18f58d0e14449293e8e74033dca1bd32743359512888ed9af1c8b2d
+  meddeid-curate:
+    commit: a6c307df64d07160d0946c063a132aafffedfd52
+    tag: v0.2.0
+    ci_run: 33994529188
+    publish_run: 33994529197
+    image_digest: sha256:5fc8158c9efe632f9d24acb6937d63457945fa5dab8f1c02d314fcf96d7b1367
+  meddeid-subannotate:
+    commit: d21db652f619d84c9cc34b5d959a6b17ee2a089a
+    tag: v0.2.0
+    ci_run: 33994484831
+    publish_run: 33994484832
+    image_digest: sha256:bffda1df92ea1d5c03f69c8101bfd873b080ef7b9c8093fddd7ef4aa69fefe1a
+  meddeid.github.io:
+    commit: 59fb227dbbf9c63cd55b470c3a46299f84df5922
+    tag: v0.2.0
+    pages_run: 33994600411
+
+model_releases:
+  dutch:
+    repository: stighellemans/meddeid-dutch-synth
+    tag: v1.0.0
+    tag_revision: c7491c8b085767c70a5f234df518aece1c35f75f
+    doi: 10.57967/hf/10304
+    doi_metadata_revision: 1f20655454dcbd042647cacdfff6b6802a970959
+  english:
+    repository: stighellemans/meddeid-english-synth
+    tag: v1.0.0
+    tag_revision: fe15b89afb4c8f2272d2397da8b0eee77a5528f8
+    doi: 10.57967/hf/10306
+    doi_metadata_revision: e519d454250ba67bef62c0063dbbf242c329b750
+
+study_software:
+  deid-battery:
+    tag: v0.1.0
+    commit: 77da7c133d345353b52427ff0a14a424de08398b
+  belgian-deduce:
+    tag: meddeid-study-v1.0.0
+    commit: aeed6f27aef40bcdf4d6ddfa000cbfeb17bd6224
+
+gpu_candidate_runs:
+  final_hosted_checks:
+    commit: 6370c67e020b2b8165bdab2276c431a5b0d09802
+    ci_run: 33996333248
+    cpu_container_run: 33996333214
+    status: passed
+  pytorch_cuda:
+    run: 33993360112
+    commit: a8869e08c671815d88fb5d1eae64931fe030beec
+    superseded_by_commit: 186c6ff91ca135d909545bb20276c9095973c9da
+    status: passed
+    evidence_path: release/evidence/0.2.0/cuda-candidate
+  pytorch_cuda_exact_commit:
+    run: 33996179459
+    commit: 186c6ff91ca135d909545bb20276c9095973c9da
+    status: cancelled_before_completion
+    cancellation: Release-status documentation was corrected before final gating.
+    superseded_by_commit: 6370c67e020b2b8165bdab2276c431a5b0d09802
+    evidence_retained: false
+  pytorch_cuda_final_exact_commit:
+    run: 33996575227
+    commit: 6370c67e020b2b8165bdab2276c431a5b0d09802
+    status: passed
+    hardware: Standard_NC4as_T4_v3
+    gpu: Tesla T4
+    evidence_path: release/evidence/0.2.0/cuda-exact-commit
+  tensorrt_t4:
+    run: 33995736977
+    commit: a8869e08c671815d88fb5d1eae64931fe030beec
+    status: failed_before_build
+    failure: Python was used before actions/setup-python on the clean runner.
+    superseded_by_commit: 186c6ff91ca135d909545bb20276c9095973c9da
+    evidence_retained: false
+  tensorrt_t4_final_exact_commit:
+    run: 33998610288
+    commit: 6370c67e020b2b8165bdab2276c431a5b0d09802
+    status: passed
+    hardware: Standard_NC4as_T4_v3
+    gpu: Tesla T4
+    evidence_path: release/evidence/0.2.0/triton-exact-commit
+
+meddeid_release:
+  commit: 6370c67e020b2b8165bdab2276c431a5b0d09802
+  tag: v0.3.0
+  status: published
+  runs:
+    pypi: 34001505152
+    cpu_container: 34001505139
+    pytorch_cuda: 34001505158
+    tensorrt_t4_and_gateway: 34001505145
+  pypi:
+    wheel_sha256: 86aa15d95e90e0dc2cf5766472ef10c36ecd0dcae6f908798f5adf074ac26099
+    sdist_sha256: 8d56c1bd4d2386ab4c72067619e4a43563028570dd822bf921ed0fcc559452e9
+  containers:
+    cpu: sha256:221700879ff9bd7a74954b690d7cacb7dc5d6bbd612af44573b7763b57f4535a
+    pytorch_cuda: sha256:7f6af1ba6ed11cc6ed15dde4c08131a5f8d306ebe94b1c49297b69603bfd1d28
+    tensorrt_t4: sha256:f9502f40130cd5c7058e2b0e66cb038d90b522a2d37c2bf7325454ac998d2c0c
+    tensorrt_gateway: sha256:cb5a982a2011800d706507cff475522a45b8e3e6650746fa2c3754497c9eddda
+  evidence:
+    cpu: release/evidence/0.2.0/cpu-release
+    pytorch_cuda: release/evidence/0.2.0/cuda-release
+    tensorrt_t4_and_gateway: release/evidence/0.2.0/triton-release
+
+public_artifact_smoke:
+  cpu:
+    status: passed
+    platform: linux/arm64
+    digest: sha256:221700879ff9bd7a74954b690d7cacb7dc5d6bbd612af44573b7763b57f4535a
+  pytorch_cuda:
+    status: passed
+    platform: linux/amd64
+    hardware: Tesla T4
+    digest: sha256:7f6af1ba6ed11cc6ed15dde4c08131a5f8d306ebe94b1c49297b69603bfd1d28
+    evidence_path: release/evidence/0.2.0/public-smoke/meddeid-public-cuda-smoke.json
+  tensorrt_t4_and_gateway:
+    status: passed
+    platform: linux/amd64
+    hardware: Tesla T4
+    tensorrt_digest: sha256:f9502f40130cd5c7058e2b0e66cb038d90b522a2d37c2bf7325454ac998d2c0c
+    gateway_digest: sha256:cb5a982a2011800d706507cff475522a45b8e3e6650746fa2c3754497c9eddda
+    cpu_reference_digest: sha256:221700879ff9bd7a74954b690d7cacb7dc5d6bbd612af44573b7763b57f4535a
+    parity_evidence_path: release/evidence/0.2.0/public-smoke/meddeid-public-triton-parity.json
+    initial_harness_attempt: failed_before_assertions_due_to_missing_python_alias
+    successful_harness_interpreter: python3
+
+clean_install_and_pilot:
+  environment:
+    python: "3.12"
+    platform: macOS-arm64
+    source: public_package_indexes
+  dependency_check: passed
+  immutable_release_verification: passed
+  full_vertical_slice:
+    status: passed
+    model_revision: 1f20655454dcbd042647cacdfff6b6802a970959
+    documents: 6
+    predicted_spans: 22
+    exact_f1: 0.909091
+    stages:
+      - public_model_initialization
+      - epoch_selection
+      - refit
+      - export
+      - batch_inference
+      - evaluation
+  corrected_pre_release_blockers:
+    - stale pilot model revision used the superseded single-profile bundle contract
+    - pilot training and source rows used the ambiguous language shorthand nl instead of nl-BE
+
+infrastructure_cleanup:
+  azure_resource_group: meddeid-release-t4
+  status: deleted
+  github_self_hosted_runners_remaining: 0

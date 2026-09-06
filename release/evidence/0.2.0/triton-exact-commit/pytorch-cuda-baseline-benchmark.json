@@ -1,0 +1,79 @@
+{
+  "base_url": "http://127.0.0.1:8002",
+  "configuration": {
+    "batch_size": 16,
+    "character_filter": {
+      "maximum": null,
+      "minimum": 0
+    },
+    "concurrency": 8,
+    "documents_per_request": {
+      "max": 16,
+      "mean": 15.8,
+      "min": 12
+    },
+    "endpoint_mode": "batch",
+    "measured_requests": 60,
+    "repeat_fixture": 1,
+    "warmup_requests": 8
+  },
+  "first_request": {
+    "characters": 14291,
+    "documents": 16,
+    "latency_seconds": 2.6111674240000866
+  },
+  "fixture_sha256": "f1fc1a0447d1c447d742a1d32c1bb18393840665cc44d591eccc95e8cf3f5d01",
+  "health": {
+    "contracts": {
+      "default_language_profile": "nl-BE",
+      "language_profiles": [
+        {
+          "profile_id": "nl-BE"
+        }
+      ]
+    },
+    "model": {
+      "name": "meddeid-dutch-synth",
+      "version": "1"
+    },
+    "ready": true,
+    "serving": {
+      "gateway_microbatching": false,
+      "max_concurrent_requests": 8,
+      "profile": "latency"
+    },
+    "status": "ok"
+  },
+  "privacy": "No request or response text is retained in this report.",
+  "provenance": {
+    "contract_version": "meddeid.inference-provenance.v1",
+    "language_profile": {
+      "profile_id": "nl-BE"
+    },
+    "model": {
+      "bundle_sha256": "001123dbc1184751e4bae3c29633d14a5e041acae0c173773f186127ae3fd944",
+      "name": "meddeid-dutch-synth",
+      "resolved_revision": "1f20655454dcbd042647cacdfff6b6802a970959",
+      "version": "1"
+    },
+    "software": {
+      "name": "meddeid",
+      "version": "0.3.0"
+    }
+  },
+  "results": {
+    "characters": 1307107,
+    "characters_per_second": 35902.459043389485,
+    "documents": 948,
+    "documents_per_second": 26.03882556908748,
+    "request_latency_seconds": {
+      "max": 5.810636111000349,
+      "min": 0.32837477099928947,
+      "p50": 4.867091179001363,
+      "p95": 5.694778884000698,
+      "p99": 5.810636111000349
+    },
+    "wall_seconds": 36.407171954999285
+  },
+  "schema": "meddeid.http-benchmark.v1"
+}

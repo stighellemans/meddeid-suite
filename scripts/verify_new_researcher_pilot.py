@@ -18,7 +18,7 @@ import yaml
 SUITE = Path(__file__).resolve().parents[1]
 PILOT = SUITE / "pilots" / "new-researcher-v1"
 REPOS = SUITE / "repos"
-MODEL_REVISION = "55c7858e91a53686bfd359d2653c8c6b8dabde89"
+MODEL_REVISION = "1f20655454dcbd042647cacdfff6b6802a970959"
 
 
 def read_jsonl(path: Path) -> list[dict]:
@@ -38,9 +38,10 @@ def require(condition: bool, message: str) -> None:
         raise RuntimeError(message)
 
 
-def validate_checked_fixture() -> None:
-    sys.path.insert(0, str(REPOS / "meddeid-core" / "src"))
-    sys.path.insert(0, str(REPOS / "meddeid-eval" / "src"))
+def validate_checked_fixture(lock_path: Path, *, installed_packages: bool) -> None:
+    if not installed_packages:
+        sys.path.insert(0, str(REPOS / "meddeid-core" / "src"))
+        sys.path.insert(0, str(REPOS / "meddeid-eval" / "src"))
     from meddeid_core import validate_record
     from meddeid_eval.metrics import score_documents
 
@@ -143,9 +144,13 @@ def validate_checked_fixture() -> None:
     )
 
     pilot_config = yaml.safe_load((PILOT / "06-training" / "pilot.yaml").read_text())
-    public_lock = SUITE / "suite-lock.yaml"
-    if public_lock.exists():
-        release_model = yaml.safe_load(public_lock.read_text(encoding="utf-8"))["model"]
+    if lock_path.exists():
+        release_lock = yaml.safe_load(lock_path.read_text(encoding="utf-8"))
+        release_model = (
+            release_lock["models"]["dutch_synthetic"]
+            if "models" in release_lock
+            else release_lock["model"]
+        )
         release_model_revision = release_model["revision"]
         release_model_public = True
     else:
@@ -174,19 +179,22 @@ def run(command: list[str], *, env: dict[str, str]) -> None:
     subprocess.run(command, cwd=SUITE, env=env, check=True)
 
 
-def run_full_vertical_slice() -> None:
+def run_full_vertical_slice(lock_path: Path, *, installed_packages: bool) -> None:
     env = os.environ.copy()
-    env["PYTHONPATH"] = os.pathsep.join(
-        str(REPOS / name / "src")
-        for name in (
-            "meddeid-core",
-            "meddeid-language-nl",
-            "meddeid-data",
-            "meddeid-eval",
-            "meddeid",
-            "meddeid-training",
+    if installed_packages:
+        env.pop("PYTHONPATH", None)
+    else:
+        env["PYTHONPATH"] = os.pathsep.join(
+            str(REPOS / name / "src")
+            for name in (
+                "meddeid-core",
+                "meddeid-language-nl",
+                "meddeid-data",
+                "meddeid-eval",
+                "meddeid",
+                "meddeid-training",
+            )
         )
-    )
     env["TOKENIZERS_PARALLELISM"] = "false"
     env["HF_HUB_DISABLE_IMPLICIT_TOKEN"] = "1"
     env["HF_TOKEN"] = ""
@@ -339,9 +347,8 @@ def run_full_vertical_slice() -> None:
             predictions.with_suffix(".jsonl.manifest.json").read_text(encoding="utf-8")
         )
         metric_payload = json.loads(metrics.read_text(encoding="utf-8"))
-        public_lock = SUITE / "suite-lock.yaml"
-        if public_lock.exists():
-            smoke = yaml.safe_load(public_lock.read_text(encoding="utf-8"))["smoke"]
+        if lock_path.exists():
+            smoke = yaml.safe_load(lock_path.read_text(encoding="utf-8"))["smoke"]
             expected = float(smoke["exact_f1"]["target"])
             tolerance = float(smoke["exact_f1"]["tolerance"])
             require(
@@ -374,10 +381,21 @@ def main() -> None:
         action="store_true",
         help="also run selection, refit, export, batch inference, and evaluation",
     )
+    parser.add_argument(
+        "--lock",
+        type=Path,
+        default=SUITE / "suite-lock.yaml",
+        help="suite lock or resolved release candidate to verify",
+    )
+    parser.add_argument(
+        "--installed-packages",
+        action="store_true",
+        help="exercise installed public packages instead of the local source checkouts",
+    )
     args = parser.parse_args()
-    validate_checked_fixture()
+    validate_checked_fixture(args.lock, installed_packages=args.installed_packages)
     if args.full:
-        run_full_vertical_slice()
+        run_full_vertical_slice(args.lock, installed_packages=args.installed_packages)
 
 
 if __name__ == "__main__":

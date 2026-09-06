@@ -1,0 +1,120 @@
+[
+    {
+        "Id": "sha256:f82a960929395b7093083a52dee6cd9b5d729017544bf92df8b1728b75276ffb",
+        "RepoTags": [
+            "meddeid-api:0.3.0-cuda12.9-ci"
+        ],
+        "RepoDigests": [
+            "meddeid-api@sha256:f82a960929395b7093083a52dee6cd9b5d729017544bf92df8b1728b75276ffb"
+        ],
+        "Comment": "buildkit.dockerfile.v0",
+        "Created": "2026-09-05T21:40:11.258507658Z",
+        "Config": {
+            "User": "10001:10001",
+            "ExposedPorts": {
+                "8000/tcp": {}
+            },
+            "Env": [
+                "PATH=/opt/venv/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "LANG=C.UTF-8",
+                "GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305",
+                "PYTHON_VERSION=3.12.14",
+                "PYTHON_SHA256=5c8462af5790baf43a321a1559dbe0db06d1be4300fb85fb53c40060668e548a",
+                "VIRTUAL_ENV=/opt/venv",
+                "PYTHONDONTWRITEBYTECODE=1",
+                "PYTHONUNBUFFERED=1",
+                "HOME=/home/meddeid",
+                "HF_HOME=/var/cache/meddeid/huggingface",
+                "MEDDEID_MODEL=/opt/meddeid-model",
+                "MEDDEID_REVISION=1f20655454dcbd042647cacdfff6b6802a970959",
+                "MEDDEID_OFFLINE=true",
+                "MEDDEID_BACKEND=torch",
+                "MEDDEID_DEVICE=cuda",
+                "MEDDEID_TORCH_PRECISION=fp16",
+                "MEDDEID_TORCH_COMPILE_MODE=off",
+                "MEDDEID_TORCH_COMPILE_DYNAMIC=true",
+                "MEDDEID_SERVING_PROFILE=latency",
+                "MEDDEID_MICROBATCH_ENABLED=auto",
+                "MEDDEID_WINDOW_BATCH_SIZE=32",
+                "MEDDEID_WORKERS=1",
+                "MEDDEID_DOCS_ENABLED=false",
+                "MEDDEID_UI_ENABLED=false",
+                "MEDDEID_REQUIRE_API_KEY=false",
+                "MEDDEID_MAX_INPUT_CHARS=20000",
+                "MEDDEID_MAX_BATCH_DOCUMENTS=32",
+                "MEDDEID_MAX_BATCH_CHARS=200000",
+                "MEDDEID_MAX_REQUEST_BYTES=2000000",
+                "MEDDEID_MAX_CONCURRENT_REQUESTS=auto",
+                "MEDDEID_QUEUE_TIMEOUT_SECONDS=30",
+                "MEDDEID_ACCESS_LOG=true",
+                "OMP_NUM_THREADS=4",
+                "MKL_NUM_THREADS=4",
+                "PORT=8000"
+            ],
+            "Cmd": [
+                "meddeid-server"
+            ],
+            "Labels": {
+                "io.meddeid.accelerator": "cuda",
+                "io.meddeid.core-revision": "13a5b5d6049611e0c64e0d375d1cb5d99266bc15",
+                "io.meddeid.cuda-version": "12.9",
+                "io.meddeid.language-en-revision": "7958b77ee83295de7d809a8f52d6de2c2732c35e",
+                "io.meddeid.language-nl-revision": "c316c06669789fd16b2405a1ca8076d878f3d730",
+                "io.meddeid.model-id": "stighellemans/meddeid-dutch-synth",
+                "io.meddeid.model-revision": "1f20655454dcbd042647cacdfff6b6802a970959",
+                "io.meddeid.torch-compile-mode": "off",
+                "io.meddeid.torch-precision": "fp16",
+                "io.meddeid.torch-version": "2.13.0",
+                "org.opencontainers.image.created": "2026-09-05T23:31:06+02:00",
+                "org.opencontainers.image.description": "Local Dutch clinical-text de-identification API",
+                "org.opencontainers.image.licenses": "AGPL-3.0-only",
+                "org.opencontainers.image.revision": "a8869e08c671815d88fb5d1eae64931fe030beec",
+                "org.opencontainers.image.source": "https://github.com/stighellemans/meddeid",
+                "org.opencontainers.image.title": "MedDeID API",
+                "org.opencontainers.image.version": "0.3.0"
+            },
+            "ArgsEscaped": true,
+            "Healthcheck": {
+                "Test": [
+                    "CMD-SHELL",
+                    "python -c \"import json,urllib.request; json.load(urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=4))\""
+                ],
+                "Interval": 30000000000,
+                "Timeout": 5000000000,
+                "StartPeriod": 45000000000,
+                "Retries": 3
+            }
+        },
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 11941936231,
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:6f94328331290cbd81edab450664d42da7b64c191416c9346cd5d28c84f76035",
+                "sha256:d14fa28e2eb1f038f5c4664218a0857316a91bcf13f20391ca1e39a124ebb353",
+                "sha256:49813eb143b9b300a599bd6fed93a629d9e9ad7922811c09bd2d67381f00d1f4",
+                "sha256:4a3a923292e31dbb9508a11bf1be25b7e6995b2d219a08b780c1319c50de3f9f",
+                "sha256:300941d47bd92c236fce44e47a4645e1591d4b4c91ea3f5c4cae3297926b97ea",
+                "sha256:d3728118f29f3dd2a49c51965e9516aedd7bd8db0dae665393c0ada663437223",
+                "sha256:2bb14a0d55f4e2c7542a57314e2794192eee4b8fa93e0cf662df07df533c941a",
+                "sha256:3bf24e4c9957c4ca43ca0d439b9f4f46916c218ece44a97a47743a1bf76d89f3",
+                "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+                "sha256:04b4c8e1f7fe87b2be511424f04b0d981a70e52a5090941a76dd4a90b704102b"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "2026-09-05T21:44:52.760629898Z"
+        },
+        "Descriptor": {
+            "mediaType": "application/vnd.oci.image.manifest.v1+json",
+            "digest": "sha256:f82a960929395b7093083a52dee6cd9b5d729017544bf92df8b1728b75276ffb",
+            "size": 2203,
+            "annotations": {
+                "io.containerd.image.name": "docker.io/library/meddeid-api:0.3.0-cuda12.9-ci",
+                "org.opencontainers.image.created": "2026-09-05T21:43:32Z",
+                "org.opencontainers.image.ref.name": "0.3.0-cuda12.9-ci"
+            }
+        }
+    }
+]

@@ -1,0 +1,607 @@
+{
+  "budget": {
+    "key": "tensorrt-server",
+    "max_content_size_bytes": 2150000000,
+    "max_portable_save_gzip_bytes": 1150000000,
+    "passed": true
+  },
+  "content_size_bytes": 1924758900,
+  "content_size_note": "Unpacked layer-size sum from docker image history. Newer containerd-backed Docker engines can report compressed content in image inspect Size.",
+  "engine_reported_size_bytes": 2945826909,
+  "image": "meddeid-triton-t4-sm75:0.3.0-trt26.07-fp16-ci",
+  "image_id": "sha256:60671afe6d784570c6a75d6d01a8f6eebe3f19667713bff4f2d4b097953edbfa",
+  "labels": {
+    "io.meddeid.build-manifest-sha256": "21e93693445f9ab8c6c6b7e7dd4dcdc3aae8112816a4a00835f6eebacdd96072",
+    "io.meddeid.bundle-sha256": "001123dbc1184751e4bae3c29633d14a5e041acae0c173773f186127ae3fd944",
+    "io.meddeid.cuda-base-image": "nvidia/cuda:13.3.1-base-ubuntu24.04@sha256:22dc6de51e33966f735440e9601a3006c38a8e6da4b4896b8ebc826e41252ae1",
+    "io.meddeid.gpu-target": "t4-sm75",
+    "io.meddeid.model-revision": "1f20655454dcbd042647cacdfff6b6802a970959",
+    "io.meddeid.runtime-closure": "triton,tensorrt,nccl,dcgm,cupti",
+    "io.meddeid.source-revision": "6370c67e020b2b8165bdab2276c431a5b0d09802",
+    "io.meddeid.tensorrt-output-precision": "fp32",
+    "io.meddeid.tensorrt-precision": "fp16",
+    "io.meddeid.tensorrt-version": "11.1.0.106",
+    "io.meddeid.triton-compose-revision": "819ee37770df2fcd6d799d2a5d1dacf812f7d62c",
+    "io.meddeid.triton-full-image": "nvcr.io/nvidia/tritonserver:26.07-py3@sha256:f76300c73eba7dd4c67183210c10b3fef67fb9aa2c18f150cb916387078442f0",
+    "io.meddeid.triton-min-image": "nvcr.io/nvidia/tritonserver:26.07-py3-min@sha256:091778e7ad4a9fe980c28ee121219bf9cacf5d6ef1ade65ba76770bfd6a35a16",
+    "io.meddeid.triton-server-version": "2.71.0",
+    "io.meddeid.triton-stack": "26.07",
+    "maintainer": "NVIDIA CORPORATION <cudatools@nvidia.com>",
+    "org.opencontainers.image.created": "2026-09-06T00:35:08+02:00",
+    "org.opencontainers.image.description": "Target-specific MedDeID TensorRT plan served by NVIDIA Triton",
+    "org.opencontainers.image.licenses": "AGPL-3.0-only AND LicenseRef-NVIDIA-Deep-Learning-Container",
+    "org.opencontainers.image.revision": "6370c67e020b2b8165bdab2276c431a5b0d09802",
+    "org.opencontainers.image.source": "https://github.com/stighellemans/meddeid",
+    "org.opencontainers.image.title": "MedDeID TensorRT model server",
+    "org.opencontainers.image.version": "0.3.0"
+  },
+  "layers": [
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:06:24Z",
+      "CreatedBy": "CMD [\"tritonserver\" \"--model-repository=/models\" \"--strict-readiness=true\" \"--disable-auto-complete-config\"]",
+      "CreatedSince": "13 minutes ago",
+      "ID": "sha256:60671afe6d784570c6a75d6d01a8f6eebe3f19667713bff4f2d4b097953edbfa",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:06:24Z",
+      "CreatedBy": "HEALTHCHECK &{[\"CMD-SHELL\" \"curl --fail --silent http://127.0.0.1:8000/v2/health/ready >/dev/null || exit 1\"] \"15s\" \"5s\" \"1m30s\" \"0s\" '\\x06'}",
+      "CreatedSince": "13 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:06:24Z",
+      "CreatedBy": "EXPOSE map[8000/tcp:{} 8001/tcp:{} 8002/tcp:{}]",
+      "CreatedSince": "13 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:06:24Z",
+      "CreatedBy": "USER 10000:10000",
+      "CreatedSince": "13 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:06:24Z",
+      "CreatedBy": "LABEL org.opencontainers.image.title=MedDeID TensorRT model server org.opencontainers.image.description=Target-specific MedDeID TensorRT plan served by NVIDIA Triton org.opencontainers.image.source=https://github.com/stighellemans/meddeid org.opencontainers.image.licenses=AGPL-3.0-only AND LicenseRef-NVIDIA-Deep-Learning-Container org.opencontainers.image.version=0.3.0 org.opencontainers.image.revision=6370c67e020b2b8165bdab2276c431a5b0d09802 org.opencontainers.image.created=2026-09-06T00:35:08+02:00 io.meddeid.source-revision=6370c67e020b2b8165bdab2276c431a5b0d09802 io.meddeid.model-revision=1f20655454dcbd042647cacdfff6b6802a970959 io.meddeid.bundle-sha256=001123dbc1184751e4bae3c29633d14a5e041acae0c173773f186127ae3fd944 io.meddeid.gpu-target=t4-sm75 io.meddeid.triton-stack=26.07 io.meddeid.tensorrt-version=11.1.0.106 io.meddeid.triton-full-image=nvcr.io/nvidia/tritonserver:26.07-py3@sha256:f76300c73eba7dd4c67183210c10b3fef67fb9aa2c18f150cb916387078442f0 io.meddeid.triton-min-image=nvcr.io/nvidia/tritonserver:26.07-py3-min@sha256:091778e7ad4a9fe980c28ee121219bf9cacf5d6ef1ade65ba76770bfd6a35a16 io.meddeid.triton-compose-revision=819ee37770df2fcd6d799d2a5d1dacf812f7d62c io.meddeid.tensorrt-precision=fp16 io.meddeid.tensorrt-output-precision=fp32 io.meddeid.build-manifest-sha256=21e93693445f9ab8c6c6b7e7dd4dcdc3aae8112816a4a00835f6eebacdd96072",
+      "CreatedSince": "13 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:06:24Z",
+      "CreatedBy": "ARG BUILD_DATE=unknown",
+      "CreatedSince": "13 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:06:24Z",
+      "CreatedBy": "ARG VCS_REF=unknown",
+      "CreatedSince": "13 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:06:24Z",
+      "CreatedBy": "ARG MEDDEID_VERSION=0.3.0",
+      "CreatedSince": "13 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:06:24Z",
+      "CreatedBy": "RUN |11 MODEL_REVISION=1f20655454dcbd042647cacdfff6b6802a970959 BUNDLE_SHA256=001123dbc1184751e4bae3c29633d14a5e041acae0c173773f186127ae3fd944 GPU_TARGET=t4-sm75 TRITON_STACK=26.07 TENSORRT_VERSION=11.1.0.106 TRITON_FULL_IMAGE=nvcr.io/nvidia/tritonserver:26.07-py3@sha256:f76300c73eba7dd4c67183210c10b3fef67fb9aa2c18f150cb916387078442f0 TRITON_MIN_IMAGE=nvcr.io/nvidia/tritonserver:26.07-py3-min@sha256:091778e7ad4a9fe980c28ee121219bf9cacf5d6ef1ade65ba76770bfd6a35a16 TRITON_COMPOSE_REVISION=819ee37770df2fcd6d799d2a5d1dacf812f7d62c TRT_PRECISION=fp16 TRT_OUTPUT_PRECISION=fp32 BUILD_MANIFEST_SHA256=21e93693445f9ab8c6c6b7e7dd4dcdc3aae8112816a4a00835f6eebacdd96072 /bin/sh -c test -s /models/build-manifest.json     && test \"$(sha256sum /models/build-manifest.json | cut -d' ' -f1)\" = \"${BUILD_MANIFEST_SHA256}\"     && test \"$(find /models -name model.plan -type f | wc -l)\" -eq 1     && test \"$(stat -c %U /models)\" = root # buildkit",
+      "CreatedSince": "13 minutes ago",
+      "ID": "<missing>",
+      "Size": "4.1kB"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:06:24Z",
+      "CreatedBy": "COPY LICENSE NOTICE /licenses/meddeid/ # buildkit",
+      "CreatedSince": "13 minutes ago",
+      "ID": "<missing>",
+      "Size": "53.2kB"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:06:24Z",
+      "CreatedBy": "COPY . /models # buildkit",
+      "CreatedSince": "13 minutes ago",
+      "ID": "<missing>",
+      "Size": "250MB"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:06:24Z",
+      "CreatedBy": "ARG BUILD_MANIFEST_SHA256",
+      "CreatedSince": "13 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:06:24Z",
+      "CreatedBy": "ARG TRT_OUTPUT_PRECISION",
+      "CreatedSince": "13 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:06:24Z",
+      "CreatedBy": "ARG TRT_PRECISION",
+      "CreatedSince": "13 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:06:24Z",
+      "CreatedBy": "ARG TRITON_COMPOSE_REVISION",
+      "CreatedSince": "13 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:06:24Z",
+      "CreatedBy": "ARG TRITON_MIN_IMAGE",
+      "CreatedSince": "13 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:06:24Z",
+      "CreatedBy": "ARG TRITON_FULL_IMAGE",
+      "CreatedSince": "13 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:06:24Z",
+      "CreatedBy": "ARG TENSORRT_VERSION",
+      "CreatedSince": "13 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:06:24Z",
+      "CreatedBy": "ARG TRITON_STACK",
+      "CreatedSince": "13 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:06:24Z",
+      "CreatedBy": "ARG GPU_TARGET",
+      "CreatedSince": "13 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:06:24Z",
+      "CreatedBy": "ARG BUNDLE_SHA256",
+      "CreatedSince": "13 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:06:24Z",
+      "CreatedBy": "ARG MODEL_REVISION",
+      "CreatedSince": "13 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:06:24Z",
+      "CreatedBy": "ENV HOME=/tmp CUDA_CACHE_PATH=/tmp/cuda-cache",
+      "CreatedSince": "13 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:05:17Z",
+      "CreatedBy": "CMD [\"tritonserver\"]",
+      "CreatedSince": "14 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:05:17Z",
+      "CreatedBy": "EXPOSE map[8000/tcp:{} 8001/tcp:{} 8002/tcp:{}]",
+      "CreatedSince": "14 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:05:17Z",
+      "CreatedBy": "WORKDIR /opt/tritonserver",
+      "CreatedSince": "14 minutes ago",
+      "ID": "<missing>",
+      "Size": "4.1kB"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:05:17Z",
+      "CreatedBy": "RUN |7 TRITON_STACK=26.07 TRITON_SERVER_VERSION=2.71.0 TENSORRT_VERSION=11.1.0.106 TRITON_FULL_IMAGE=nvcr.io/nvidia/tritonserver:26.07-py3@sha256:f76300c73eba7dd4c67183210c10b3fef67fb9aa2c18f150cb916387078442f0 TRITON_MIN_IMAGE=nvcr.io/nvidia/tritonserver:26.07-py3-min@sha256:091778e7ad4a9fe980c28ee121219bf9cacf5d6ef1ade65ba76770bfd6a35a16 TRITON_COMPOSE_REVISION=819ee37770df2fcd6d799d2a5d1dacf812f7d62c CUDA_BASE_IMAGE=nvidia/cuda:13.3.1-base-ubuntu24.04@sha256:22dc6de51e33966f735440e9601a3006c38a8e6da4b4896b8ebc826e41252ae1 /bin/sh -c ln -s libcupti.so.2026.2.1 /usr/local/cuda-13.3/targets/x86_64-linux/lib/libcupti.so.13     && ln -s libcupti.so.13 /usr/local/cuda-13.3/targets/x86_64-linux/lib/libcupti.so     && ln -s libdcgm.so.4.5.3 /usr/lib/x86_64-linux-gnu/libdcgm.so.4     && ln -s libdcgm.so.4 /usr/lib/x86_64-linux-gnu/libdcgm.so     && ln -s libnccl.so.2.30.7 /usr/lib/x86_64-linux-gnu/libnccl.so.2     && ln -s libnccl.so.2 /usr/lib/x86_64-linux-gnu/libnccl.so     && ln -s libnvinfer.so.11.1.0 /usr/lib/x86_64-linux-gnu/libnvinfer.so.11     && ln -s libnvinfer.so.11 /usr/lib/x86_64-linux-gnu/libnvinfer.so     && ln -s libnvinfer_plugin.so.11.1.0 /usr/lib/x86_64-linux-gnu/libnvinfer_plugin.so.11     && ln -s libnvinfer_plugin.so.11 /usr/lib/x86_64-linux-gnu/libnvinfer_plugin.so     && ldconfig     && test -x /opt/tritonserver/bin/tritonserver     && test -s /opt/tritonserver/backends/tensorrt/libtriton_tensorrt.so     && ! find /usr/lib/x86_64-linux-gnu -name 'libnvinfer_builder_resource*' -print -quit | grep -q .     && ! find /usr/local/cuda-13.3 -type f \\( -name nvcc -o -name ptxas -o -name nsys \\) -print -quit | grep -q .     && ldd /opt/tritonserver/bin/tritonserver | tee /tmp/tritonserver.ldd     && ldd /opt/tritonserver/backends/tensorrt/libtriton_tensorrt.so | tee /tmp/tensorrt-backend.ldd     && ! grep -q 'not found' /tmp/tritonserver.ldd     && ! grep -q 'not found' /tmp/tensorrt-backend.ldd     && rm /tmp/tritonserver.ldd /tmp/tensorrt-backend.ldd # buildkit",
+      "CreatedSince": "14 minutes ago",
+      "ID": "<missing>",
+      "Size": "69.6kB"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:05:16Z",
+      "CreatedBy": "COPY /usr/lib/x86_64-linux-gnu/libnvinfer_plugin.so.11.1.0 /usr/lib/x86_64-linux-gnu/ # buildkit",
+      "CreatedSince": "15 minutes ago",
+      "ID": "<missing>",
+      "Size": "47.2MB"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:05:16Z",
+      "CreatedBy": "COPY /usr/lib/x86_64-linux-gnu/libnvinfer.so.11.1.0 /usr/lib/x86_64-linux-gnu/ # buildkit",
+      "CreatedSince": "15 minutes ago",
+      "ID": "<missing>",
+      "Size": "670MB"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:05:06Z",
+      "CreatedBy": "COPY /usr/lib/x86_64-linux-gnu/libnccl.so.2.30.7 /usr/lib/x86_64-linux-gnu/ # buildkit",
+      "CreatedSince": "15 minutes ago",
+      "ID": "<missing>",
+      "Size": "252MB"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:05:02Z",
+      "CreatedBy": "COPY /usr/lib/x86_64-linux-gnu/libdcgm.so.4.5.3 /usr/lib/x86_64-linux-gnu/ # buildkit",
+      "CreatedSince": "15 minutes ago",
+      "ID": "<missing>",
+      "Size": "5.93MB"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:05:02Z",
+      "CreatedBy": "COPY /usr/local/cuda-13.3/targets/x86_64-linux/lib/libcupti.so.2026.2.1 /usr/local/cuda-13.3/targets/x86_64-linux/lib/ # buildkit",
+      "CreatedSince": "15 minutes ago",
+      "ID": "<missing>",
+      "Size": "6.03MB"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:05:02Z",
+      "CreatedBy": "COPY /opt/tritonserver/backends/tensorrt /opt/tritonserver/backends/tensorrt # buildkit",
+      "CreatedSince": "15 minutes ago",
+      "ID": "<missing>",
+      "Size": "1.27MB"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:05:01Z",
+      "CreatedBy": "COPY /opt/tritonserver/lib /opt/tritonserver/lib # buildkit",
+      "CreatedSince": "15 minutes ago",
+      "ID": "<missing>",
+      "Size": "34.3MB"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:05:01Z",
+      "CreatedBy": "COPY /opt/tritonserver/bin /opt/tritonserver/bin # buildkit",
+      "CreatedSince": "15 minutes ago",
+      "ID": "<missing>",
+      "Size": "19.8MB"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:05:01Z",
+      "CreatedBy": "COPY /opt/tritonserver/NVIDIA_Deep_Learning_Container_License.pdf /opt/tritonserver/NVIDIA_Deep_Learning_Container_License.pdf # buildkit",
+      "CreatedSince": "15 minutes ago",
+      "ID": "<missing>",
+      "Size": "3.03MB"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:05:01Z",
+      "CreatedBy": "COPY /opt/tritonserver/TRITON_VERSION /opt/tritonserver/TRITON_VERSION # buildkit",
+      "CreatedSince": "15 minutes ago",
+      "ID": "<missing>",
+      "Size": "16.4kB"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:05:00Z",
+      "CreatedBy": "COPY /opt/tritonserver/LICENSE /opt/tritonserver/LICENSE # buildkit",
+      "CreatedSince": "15 minutes ago",
+      "ID": "<missing>",
+      "Size": "16.4kB"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:05:00Z",
+      "CreatedBy": "RUN |7 TRITON_STACK=26.07 TRITON_SERVER_VERSION=2.71.0 TENSORRT_VERSION=11.1.0.106 TRITON_FULL_IMAGE=nvcr.io/nvidia/tritonserver:26.07-py3@sha256:f76300c73eba7dd4c67183210c10b3fef67fb9aa2c18f150cb916387078442f0 TRITON_MIN_IMAGE=nvcr.io/nvidia/tritonserver:26.07-py3-min@sha256:091778e7ad4a9fe980c28ee121219bf9cacf5d6ef1ade65ba76770bfd6a35a16 TRITON_COMPOSE_REVISION=819ee37770df2fcd6d799d2a5d1dacf812f7d62c CUDA_BASE_IMAGE=nvidia/cuda:13.3.1-base-ubuntu24.04@sha256:22dc6de51e33966f735440e9601a3006c38a8e6da4b4896b8ebc826e41252ae1 /bin/sh -c apt-get update     && apt-get install --yes --no-install-recommends       ca-certificates       curl       libb64-0d       libcurl4t64       libnuma1       libxml2     && rm -rf /var/lib/apt/lists/* # buildkit",
+      "CreatedSince": "15 minutes ago",
+      "ID": "<missing>",
+      "Size": "44.8MB"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:05:00Z",
+      "CreatedBy": "ENV PATH=/opt/tritonserver/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin LD_LIBRARY_PATH=/opt/tritonserver/lib:/usr/local/cuda/lib64:/usr/local/cuda/targets/x86_64-linux/lib:/usr/lib/x86_64-linux-gnu NVIDIA_VISIBLE_DEVICES=all NVIDIA_DRIVER_CAPABILITIES=compute,utility",
+      "CreatedSince": "15 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:05:00Z",
+      "CreatedBy": "LABEL org.opencontainers.image.title=MedDeID TensorRT-only Triton runtime org.opencontainers.image.description=Minimal NVIDIA Triton runtime projected from the official TensorRT-only composition org.opencontainers.image.source=https://github.com/stighellemans/meddeid org.opencontainers.image.licenses=LicenseRef-NVIDIA-Deep-Learning-Container io.meddeid.triton-stack=26.07 io.meddeid.triton-server-version=2.71.0 io.meddeid.tensorrt-version=11.1.0.106 io.meddeid.triton-full-image=nvcr.io/nvidia/tritonserver:26.07-py3@sha256:f76300c73eba7dd4c67183210c10b3fef67fb9aa2c18f150cb916387078442f0 io.meddeid.triton-min-image=nvcr.io/nvidia/tritonserver:26.07-py3-min@sha256:091778e7ad4a9fe980c28ee121219bf9cacf5d6ef1ade65ba76770bfd6a35a16 io.meddeid.triton-compose-revision=819ee37770df2fcd6d799d2a5d1dacf812f7d62c io.meddeid.cuda-base-image=nvidia/cuda:13.3.1-base-ubuntu24.04@sha256:22dc6de51e33966f735440e9601a3006c38a8e6da4b4896b8ebc826e41252ae1 io.meddeid.runtime-closure=triton,tensorrt,nccl,dcgm,cupti",
+      "CreatedSince": "15 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:05:00Z",
+      "CreatedBy": "ARG CUDA_BASE_IMAGE",
+      "CreatedSince": "15 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:05:00Z",
+      "CreatedBy": "ARG TRITON_COMPOSE_REVISION",
+      "CreatedSince": "15 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:05:00Z",
+      "CreatedBy": "ARG TRITON_MIN_IMAGE",
+      "CreatedSince": "15 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:05:00Z",
+      "CreatedBy": "ARG TRITON_FULL_IMAGE",
+      "CreatedSince": "15 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:05:00Z",
+      "CreatedBy": "ARG TENSORRT_VERSION",
+      "CreatedSince": "15 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:05:00Z",
+      "CreatedBy": "ARG TRITON_SERVER_VERSION",
+      "CreatedSince": "15 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-09-06T00:05:00Z",
+      "CreatedBy": "ARG TRITON_STACK",
+      "CreatedSince": "15 minutes ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-07-16T15:48:27Z",
+      "CreatedBy": "ENV NVIDIA_DRIVER_CAPABILITIES=compute,utility",
+      "CreatedSince": "7 weeks ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-07-16T15:48:27Z",
+      "CreatedBy": "ENV NVIDIA_VISIBLE_DEVICES=all",
+      "CreatedSince": "7 weeks ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-07-16T15:48:27Z",
+      "CreatedBy": "COPY NGC-DL-CONTAINER-LICENSE / # buildkit",
+      "CreatedSince": "7 weeks ago",
+      "ID": "<missing>",
+      "Size": "24.6kB"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-07-16T15:48:27Z",
+      "CreatedBy": "ENV LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64:/usr/local/cuda/lib64",
+      "CreatedSince": "7 weeks ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-07-16T15:48:27Z",
+      "CreatedBy": "ENV PATH=/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "CreatedSince": "7 weeks ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-07-16T15:48:27Z",
+      "CreatedBy": "RUN |2 TARGETARCH=amd64 IMAGE_UPGRADE_ID=20260716 /bin/sh -c echo \"/usr/local/cuda/lib64\" >> /etc/ld.so.conf.d/nvidia.conf # buildkit",
+      "CreatedSince": "7 weeks ago",
+      "ID": "<missing>",
+      "Size": "16.4kB"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-07-16T15:48:26Z",
+      "CreatedBy": "RUN |2 TARGETARCH=amd64 IMAGE_UPGRADE_ID=20260716 /bin/sh -c apt-get update &&     if apt-cache policy cuda-compat-orin-13-3 2>/dev/null | grep -q \"Candidate:\"; then         apt-get install -y --no-install-recommends cuda-compat-orin-13-3;     fi &&     rm -rf /var/lib/apt/lists/* # buildkit",
+      "CreatedSince": "7 weeks ago",
+      "ID": "<missing>",
+      "Size": "4.1kB"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-07-16T15:48:21Z",
+      "CreatedBy": "RUN |2 TARGETARCH=amd64 IMAGE_UPGRADE_ID=20260716 /bin/sh -c apt-get update &&     if apt-cache policy cuda-compat-13-3 2>/dev/null | grep -q \"Candidate:\"; then         apt-get install -y --no-install-recommends cuda-compat-13-3;     fi &&     rm -rf /var/lib/apt/lists/* # buildkit",
+      "CreatedSince": "7 weeks ago",
+      "ID": "<missing>",
+      "Size": "477MB"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-07-16T15:48:11Z",
+      "CreatedBy": "RUN |2 TARGETARCH=amd64 IMAGE_UPGRADE_ID=20260716 /bin/sh -c apt-get update && apt-get install -y --no-install-recommends     cuda-cudart-13-3=${NV_CUDA_CUDART_VERSION}     cuda-toolkit-13-3-config-common=${NV_CUDA_CUDART_VERSION}     cuda-toolkit-13-config-common=${NV_CUDA_CUDART_VERSION}     cuda-toolkit-config-common=${NV_CUDA_CUDART_VERSION}     && rm -rf /var/lib/apt/lists/* # buildkit",
+      "CreatedSince": "7 weeks ago",
+      "ID": "<missing>",
+      "Size": "1.79MB"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-07-16T15:48:04Z",
+      "CreatedBy": "ENV CUDA_VERSION=13.3.1",
+      "CreatedSince": "7 weeks ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-07-16T15:48:04Z",
+      "CreatedBy": "RUN |2 TARGETARCH=amd64 IMAGE_UPGRADE_ID=20260716 /bin/sh -c echo \"IMAGE_UPGRADE_ID=${IMAGE_UPGRADE_ID}\" &&     apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends     gnupg2 curl ca-certificates &&     curl -fsSLO https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/${NVARCH}/cuda-keyring_1.1-1_all.deb && dpkg -i cuda-keyring_1.1-1_all.deb &&     apt-get purge --autoremove -y curl     && rm -rf /var/lib/apt/lists/* # buildkit",
+      "CreatedSince": "7 weeks ago",
+      "ID": "<missing>",
+      "Size": "23.8MB"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-07-16T15:48:04Z",
+      "CreatedBy": "ARG IMAGE_UPGRADE_ID=0",
+      "CreatedSince": "7 weeks ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-07-16T15:48:04Z",
+      "CreatedBy": "LABEL maintainer=NVIDIA CORPORATION <cudatools@nvidia.com>",
+      "CreatedSince": "7 weeks ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-07-16T15:48:04Z",
+      "CreatedBy": "ARG TARGETARCH",
+      "CreatedSince": "7 weeks ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-07-16T15:48:04Z",
+      "CreatedBy": "ENV NV_CUDA_CUDART_VERSION=13.3.29-1",
+      "CreatedSince": "7 weeks ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-07-16T15:48:04Z",
+      "CreatedBy": "ENV NVIDIA_REQUIRE_CUDA=cuda>=13.3 brand=unknown,driver>=535,driver<536 brand=grid,driver>=535,driver<536 brand=tesla,driver>=535,driver<536 brand=nvidia,driver>=535,driver<536 brand=quadro,driver>=535,driver<536 brand=quadrortx,driver>=535,driver<536 brand=nvidiartx,driver>=535,driver<536 brand=vapps,driver>=535,driver<536 brand=vpc,driver>=535,driver<536 brand=vcs,driver>=535,driver<536 brand=vws,driver>=535,driver<536 brand=cloudgaming,driver>=535,driver<536 brand=unknown,driver>=570,driver<571 brand=grid,driver>=570,driver<571 brand=tesla,driver>=570,driver<571 brand=nvidia,driver>=570,driver<571 brand=quadro,driver>=570,driver<571 brand=quadrortx,driver>=570,driver<571 brand=nvidiartx,driver>=570,driver<571 brand=vapps,driver>=570,driver<571 brand=vpc,driver>=570,driver<571 brand=vcs,driver>=570,driver<571 brand=vws,driver>=570,driver<571 brand=cloudgaming,driver>=570,driver<571 brand=unknown,driver>=580,driver<581 brand=grid,driver>=580,driver<581 brand=tesla,driver>=580,driver<581 brand=nvidia,driver>=580,driver<581 brand=quadro,driver>=580,driver<581 brand=quadrortx,driver>=580,driver<581 brand=nvidiartx,driver>=580,driver<581 brand=vapps,driver>=580,driver<581 brand=vpc,driver>=580,driver<581 brand=vcs,driver>=580,driver<581 brand=vws,driver>=580,driver<581 brand=cloudgaming,driver>=580,driver<581 brand=unknown,driver>=590,driver<591 brand=grid,driver>=590,driver<591 brand=tesla,driver>=590,driver<591 brand=nvidia,driver>=590,driver<591 brand=quadro,driver>=590,driver<591 brand=quadrortx,driver>=590,driver<591 brand=nvidiartx,driver>=590,driver<591 brand=vapps,driver>=590,driver<591 brand=vpc,driver>=590,driver<591 brand=vcs,driver>=590,driver<591 brand=vws,driver>=590,driver<591 brand=cloudgaming,driver>=590,driver<591 brand=unknown,driver>=595,driver<596 brand=grid,driver>=595,driver<596 brand=tesla,driver>=595,driver<596 brand=nvidia,driver>=595,driver<596 brand=quadro,driver>=595,driver<596 brand=quadrortx,driver>=595,driver<596 brand=nvidiartx,driver>=595,driver<596 brand=vapps,driver>=595,driver<596 brand=vpc,driver>=595,driver<596 brand=vcs,driver>=595,driver<596 brand=vws,driver>=595,driver<596 brand=cloudgaming,driver>=595,driver<596",
+      "CreatedSince": "7 weeks ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "buildkit.dockerfile.v0",
+      "CreatedAt": "2026-07-16T15:48:04Z",
+      "CreatedBy": "ENV NVARCH=x86_64",
+      "CreatedSince": "7 weeks ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "",
+      "CreatedAt": "2026-06-22T21:24:21Z",
+      "CreatedBy": "/bin/sh -c #(nop)  CMD [\"/bin/bash\"]",
+      "CreatedSince": "2 months ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "",
+      "CreatedAt": "2026-06-22T21:24:20Z",
+      "CreatedBy": "/bin/sh -c #(nop) ADD file:8c609c85109d07bf47cf268a175b3be8bbe34fc0c41d15d99b090d099f4dc837 in / ",
+      "CreatedSince": "2 months ago",
+      "ID": "<missing>",
+      "Size": "87.6MB"
+    },
+    {
+      "Comment": "",
+      "CreatedAt": "2026-06-22T21:24:18Z",
+      "CreatedBy": "/bin/sh -c #(nop)  LABEL org.opencontainers.image.version=24.04",
+      "CreatedSince": "2 months ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "",
+      "CreatedAt": "2026-06-22T21:24:18Z",
+      "CreatedBy": "/bin/sh -c #(nop)  ARG LAUNCHPAD_BUILD_ARCH",
+      "CreatedSince": "2 months ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    },
+    {
+      "Comment": "",
+      "CreatedAt": "2026-06-22T21:24:17Z",
+      "CreatedBy": "/bin/sh -c #(nop)  ARG RELEASE",
+      "CreatedSince": "2 months ago",
+      "ID": "<missing>",
+      "Size": "0B"
+    }
+  ],
+  "platform": {
+    "architecture": "amd64",
+    "os": "linux"
+  },
+  "portable_save_gzip_bytes": 1017036807,
+  "portable_save_note": "Gzip-compressed docker-save size is a consistent pull-size proxy; the registry transfer size can differ with its compression and shared layers.",
+  "schema": "meddeid.container-image-size.v1"
+}
