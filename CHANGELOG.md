@@ -2,6 +2,20 @@
 
 ## Unreleased
 
+## 0.3.0 - 2026-09-09
+
+- Coordinated MedDeID 0.4.0, Data 0.4.1, Eval 0.5.0, Training 0.3.0, and the
+  Annotate, Curate, and Subannotate 0.3.1 application releases.
+- Recorded separate CPU and CUDA API images, weight-free TensorRT gateway and
+  runtime images, exact-T4 Dutch and English plan artifacts, and
+  hardware-compatible Ampere+ plans for Ampere-or-newer GPUs. Named A10G and
+  L4 plans remain optional specialized builds; use CUDA when no released plan
+  matches, and native MPS on Apple silicon.
+- Clarified that the published performance results are comparative evidence
+  from synthetic benchmarks rather than clinical performance guarantees.
+- Added a local Compose preview for the three annotation workspaces and updated
+  the release verifiers for split TensorRT plan artifacts.
+
 ## 0.2.0 - 2026-09-06
 
 - Added one suite-wide declarative age-granularity policy and connected the

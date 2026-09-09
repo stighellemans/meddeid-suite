@@ -1,22 +1,20 @@
 lock_format: meddeid.suite-lock.v2
 suite_version: 0.3.0
-status: released
+status: release-candidate
 prepared_at: 2026-09-08
 schema_version: meddeid.schema.v1
 taxonomy_version: ProductionLabels-v1.1
 model_head_labels: 14
+
 source_policy:
   source_of_truth: meddeid
   primary_checkout: repos/meddeid
-  rule: Only the current meddeid source defines inference, API, gateway, scheduling,
-    and deployment behavior.
+  rule: Only the current meddeid source defines inference, API, gateway, scheduling, and deployment behavior.
   dirty_worktrees_excluded:
-    meddeid-data: untracked local uv.lock; release artifacts come from the recorded
-      tag
-    meddeid-eval: untracked local uv.lock; release artifacts come from the recorded
-      tag
-    meddeid-training: untracked local uv.lock; release artifacts come from the recorded
-      tag
+    meddeid-data: untracked local uv.lock; release artifacts come from the recorded tag
+    meddeid-eval: untracked local uv.lock; release artifacts come from the recorded tag
+    meddeid-training: untracked local uv.lock; release artifacts come from the recorded tag
+
 components:
   meddeid:
     repository: https://github.com/stighellemans/meddeid
@@ -109,78 +107,66 @@ components:
     version: 0.2.0
     tag: v0.2.0
     commit: 59fb227dbbf9c63cd55b470c3a46299f84df5922
+
 language_profiles:
   nl:
-    ids:
-    - nl-BE
-    - nl-NL
+    ids: [nl-BE, nl-NL]
     python_component: meddeid-language-nl
-    javascript_package: '@meddeid/language-nl@0.2.1'
+    javascript_package: "@meddeid/language-nl@0.2.1"
     javascript_status: published
     javascript_git_head: c316c06669789fd16b2405a1ca8076d878f3d730
     javascript_shasum: 31496b7b6cff261f22681bc2a4b4fbaa293a6b72
-    javascript_integrity: sha512-fLQg6U0iAGLjfztsVolhjbKNI7SLRUZ8QGvO8p6sbL7txk5JJ+3NZ9RFDXL9mWeM/1T9AGHDrpdFJ+syUchQhw==
+    javascript_integrity: "sha512-fLQg6U0iAGLjfztsVolhjbKNI7SLRUZ8QGvO8p6sbL7txk5JJ+3NZ9RFDXL9mWeM/1T9AGHDrpdFJ+syUchQhw=="
   en:
-    ids:
-    - en-GB
-    - en-US
+    ids: [en-GB, en-US]
     python_component: meddeid-language-en
-    javascript_package: '@meddeid/language-en@0.2.1'
+    javascript_package: "@meddeid/language-en@0.2.1"
     javascript_status: published
     javascript_git_head: 7958b77ee83295de7d809a8f52d6de2c2732c35e
     javascript_shasum: a9b02bfed2efefc90e225ad5dc6f5a2072e7bac1
-    javascript_integrity: sha512-VSycyKC/lFtp1F5dMxiQYo/ufXmhYH0Uv8rt7c9lcQf33H9Y1T5nXujM5akRGQ7RDegoWp4NuJxylfgC3xvkPg==
+    javascript_integrity: "sha512-VSycyKC/lFtp1F5dMxiQYo/ufXmhYH0Uv8rt7c9lcQf33H9Y1T5nXujM5akRGQ7RDegoWp4NuJxylfgC3xvkPg=="
+
 containers:
   meddeid-api-cpu:
     release_action: publish
     reference: ghcr.io/stighellemans/meddeid-api:0.4.0
-    platforms:
-    - linux/amd64
-    - linux/arm64
+    platforms: [linux/amd64, linux/arm64]
     size_budget_key: cpu
     digest: sha256:1992d2ad8be444190a47e74f98cce3307929130674923d4a0ba5fcab2c6be90d
   meddeid-api-cuda:
     release_action: publish
     reference: ghcr.io/stighellemans/meddeid-api:0.4.0-cuda12.9
-    platforms:
-    - linux/amd64
+    platforms: [linux/amd64]
     size_budget_key: pytorch-cuda
     digest: sha256:c2d723a103ced70ef1c3a27989ea331eac9bed6b51649b2e226cd75e9cf8760b
   meddeid-triton-gateway:
     release_action: publish
     reference: ghcr.io/stighellemans/meddeid-triton-gateway:0.4.0
-    platforms:
-    - linux/amd64
+    platforms: [linux/amd64]
     size_budget_key: tensorrt-gateway
     digest: sha256:cf4aaa21548deef06391b1464f442a5efa98aaac90f67266aaffbe2cddcdad0d
   meddeid-triton-runtime:
     release_action: publish
     reference: ghcr.io/stighellemans/meddeid-triton-runtime:0.4.0-trt26.07
-    platforms:
-    - linux/amd64
+    platforms: [linux/amd64]
     size_budget_key: tensorrt-server
     digest: sha256:f3baf725eff44e42d995c31f6a13b308df2d66bdd167385347cf2bb0a4d7fe3a
   meddeid-annotate:
     release_action: publish
     reference: ghcr.io/stighellemans/meddeid-annotate:0.3.1
-    platforms:
-    - linux/amd64
-    - linux/arm64
+    platforms: [linux/amd64, linux/arm64]
     digest: sha256:55c6ab5c578ebe1696eb5149c743b8e702470a8f9e1c3cd72e98a5f461bda271
   meddeid-curate:
     release_action: publish
     reference: ghcr.io/stighellemans/meddeid-curate:0.3.1
-    platforms:
-    - linux/amd64
-    - linux/arm64
+    platforms: [linux/amd64, linux/arm64]
     digest: sha256:e93cc2122a4e8cd88156396287df46d01c35480079ac4e65149848709b9d154f
   meddeid-subannotate:
     release_action: publish
     reference: ghcr.io/stighellemans/meddeid-subannotate:0.3.1
-    platforms:
-    - linux/amd64
-    - linux/arm64
+    platforms: [linux/amd64, linux/arm64]
     digest: sha256:52259baa0fe2e99f94398701ee29ddefb19dc610f802c324677489575514b632
+
 triton_plans:
   dutch_synthetic_t4:
     release_action: publish
@@ -192,8 +178,7 @@ triton_plans:
     target: t4-sm75
     model: dutch_synthetic
     revision: 1f20655454dcbd042647cacdfff6b6802a970959
-    language_profiles:
-    - nl-BE
+    language_profiles: [nl-BE]
   english_synthetic_t4:
     release_action: publish
     reference: ghcr.io/stighellemans/meddeid-triton-plan-t4-sm75:0.4.0-trt26.07-fp16-english-synthetic
@@ -204,9 +189,7 @@ triton_plans:
     target: t4-sm75
     model: english_synthetic
     revision: e519d454250ba67bef62c0063dbbf242c329b750
-    language_profiles:
-    - en-GB
-    - en-US
+    language_profiles: [en-GB, en-US]
   dutch_synthetic_ampere_plus:
     release_action: publish
     reference: ghcr.io/stighellemans/meddeid-triton-plan-ampere-plus:0.4.0-trt26.07-fp16-dutch-synthetic
@@ -217,8 +200,7 @@ triton_plans:
     target: ampere-plus
     model: dutch_synthetic
     revision: 1f20655454dcbd042647cacdfff6b6802a970959
-    language_profiles:
-    - nl-BE
+    language_profiles: [nl-BE]
   english_synthetic_ampere_plus:
     release_action: publish
     reference: ghcr.io/stighellemans/meddeid-triton-plan-ampere-plus:0.4.0-trt26.07-fp16-english-synthetic
@@ -229,9 +211,8 @@ triton_plans:
     target: ampere-plus
     model: english_synthetic
     revision: e519d454250ba67bef62c0063dbbf242c329b750
-    language_profiles:
-    - en-GB
-    - en-US
+    language_profiles: [en-GB, en-US]
+
 models:
   dutch_synthetic:
     repository: stighellemans/meddeid-dutch-synth
@@ -261,6 +242,7 @@ models:
     base_encoder: FacebookAI/roberta-base
     base_encoder_revision: e2da8e2f811d1448a5b465c236feacd80ffbac7b
     licence: AGPL-3.0-only
+
 study_software:
   deid-battery:
     repository: https://github.com/stighellemans/deid-battery
@@ -274,6 +256,7 @@ study_software:
     tag: meddeid-study-v1.0.0
     commit: aeed6f27aef40bcdf4d6ddfa000cbfeb17bd6224
     role: Exact Belgian-DEDUCE revision evaluated in the study.
+
 datasets:
   dutch_synthetic_training:
     repository: stighellemans/meddeid-dutch-synthetic-corpus
@@ -311,6 +294,7 @@ datasets:
     artifact: source/benchmark.jsonl
     sha256: 021332c7cf2900d22e38a77975920444a6fff475187925b973eee2ca8c2e51e5
     licence: CC-BY-4.0
+
 accelerators:
   cpu:
     availability: ready
@@ -318,24 +302,20 @@ accelerators:
     recommendation: Default for the smallest pull and hosts without a supported accelerator.
   mps:
     availability: ready-native
-    portability: Apple silicon with a compatible PyTorch/macOS runtime; no container
-      image.
+    portability: Apple silicon with a compatible PyTorch/macOS runtime; no container image.
     recommendation: Use eager MPS; throughput mode enables bounded microbatching automatically.
     evidence:
       component: meddeid
       path: deploy/mps/benchmark-summary.json
       sha256: de1989721cc7cd46fa3de318fba3af67cc95bbeebab3b98f9de52d65d1199526
   pytorch_cuda:
-    availability: ready
+    availability: release-candidate
     portability: NVIDIA GPUs compatible with the pinned CUDA/PyTorch runtime.
-    recommendation: Portable NVIDIA default; FP16 eager avoids compile cold-start
-      and image-size costs.
+    recommendation: Portable NVIDIA default; FP16 eager avoids compile cold-start and image-size costs.
   tensorrt:
     availability: release-candidate-t4-and-ampere-plus
-    portability: Separate T4 and Ampere+ plans share one runtime; there is no universal
-      TensorRT plan.
-    recommendation: Select the model and let Compose resolve the exact T4 or hardware-compatible
-      Ampere+ plan; use CUDA or build a plan when neither matches.
+    portability: Separate T4 and Ampere+ plans share one runtime; there is no universal TensorRT plan.
+    recommendation: Select the model and let Compose resolve the exact T4 or hardware-compatible Ampere+ plan; use CUDA or build a plan when neither matches.
     target_catalog:
       component: meddeid
       path: deploy/triton/targets.json
@@ -348,19 +328,23 @@ accelerators:
       ampere-plus: ready
       a10g-sm86: on-request
       l4-sm89: on-request
+
 image_size_budgets:
   component: meddeid
   path: deploy/image-size-budgets.json
   sha256: 92ddb29a311638f74659d01df049fa00dda606d7c56aa5b7ef827c7f7abf48db
+
 hosted_demo:
   repository: stighellemans/meddeid-demo
   revision: 830fc3d3ffb97140dd7c5b633a7d4b210f55ac2b
   runtime: zero-a10g
   api: /deidentify
   privacy_boundary: synthetic-or-otherwise-non-sensitive-text-only
+
 hugging_face_collection:
   slug: stighellemans/meddeid-6a7ae47783f48f05c85170d0
   status: published
+
 archives:
   dutch:
     concept_doi: 10.5281/zenodo.21890964
@@ -376,19 +360,22 @@ archives:
     filename: meddeid-english-synthetic-data-v2.zip
     sha256: efeaf896e1bf95a978f36c0ca9788fc47328bda9cb48cce6320315e803532e22
     status: published
+
 runtime:
-  python: '3.12'
-  torch: 2.13.0
-  transformers: 5.15.0
-  numpy: 2.3.0
-  scikit_learn: 1.7.0
+  python: "3.12"
+  torch: "2.13.0"
+  transformers: "5.15.0"
+  numpy: "2.3.0"
+  scikit_learn: "1.7.0"
+
 smoke:
   fixture: pilots/new-researcher-v1
   documents: 6
   predicted_spans: 22
   exact_f1:
-    target: 0.9
-    tolerance: 0.1
+    target: 0.90
+    tolerance: 0.10
+
 release_gates:
   immutable_hub_revisions: passed
   versioned_model_dois: passed
@@ -410,4 +397,3 @@ release_gates:
   public_container_digests: passed
   public_triton_plan_artifacts: passed
   pulled_artifact_smoke: passed
-released_at: '2026-09-09'

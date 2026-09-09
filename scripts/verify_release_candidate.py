@@ -15,12 +15,17 @@ import tomllib
 import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_CANDIDATE = ROOT / "release" / "0.2.0-candidate.yaml"
+DEFAULT_CANDIDATE = ROOT / "release" / "0.3.0-candidate.yaml"
 RELEASED_LOCK = ROOT / "suite-lock.yaml"
 SHA40 = re.compile(r"[0-9a-f]{40}")
 SHA256 = re.compile(r"[0-9a-f]{64}")
 DIGEST = re.compile(r"sha256:[0-9a-f]{64}")
 DOI = re.compile(r"10\.\d{4,9}/\S+")
+PRIVATE_FINE_TUNING_EXCEPTION_VERSION = "1.0"
+PRIVATE_FINE_TUNING_EXCEPTION_PATH = (
+    "MEDDEID-PRIVATE-FINE-TUNING-EXCEPTION-1.0.txt"
+)
+FIRST_EXCEPTION_RELEASE = (0, 2, 1)
 EXPECTED_COMPONENTS = {
     "meddeid",
     "meddeid-core",
@@ -36,6 +41,7 @@ EXPECTED_COMPONENTS = {
 }
 EXPECTED_TARGETS = {
     "t4-sm75": "ready",
+    "ampere-plus": "ready",
     "a10g-sm86": "on-request",
     "l4-sm89": "on-request",
 }
@@ -43,13 +49,30 @@ EXPECTED_SIZE_BUDGETS = {
     "meddeid-api-cpu": "cpu",
     "meddeid-api-cuda": "pytorch-cuda",
     "meddeid-triton-gateway": "tensorrt-gateway",
-    "meddeid-triton-t4-sm75": "tensorrt-server",
+    "meddeid-triton-runtime": "tensorrt-server",
 }
 
 
 def require(condition: bool, message: str) -> None:
     if not condition:
         raise RuntimeError(message)
+
+
+
+def require_parity_evidence(parity: dict[str, Any], accelerator: str) -> None:
+    require(parity["passed"] is True, f"{accelerator} comparison did not pass its policy")
+    differences = parity["semantic_differences"]
+    difference_count = len(differences) if isinstance(differences, list) else differences
+    require(type(difference_count) is int and difference_count >= 0,
+            f"{accelerator} invalid semantic difference count")
+    if difference_count:
+        require(parity.get("semantic_policy") == "report-only",
+                f"{accelerator} differences require explicit report-only policy")
+        require(parity.get("complete") is True and parity.get("model_identity_matches") is True
+                and parity.get("errors") == [] and parity.get("strict_passed") is False,
+                f"{accelerator} report-only evidence must be complete, identity-matched and error-free")
+        require(isinstance(parity.get("semantic_summary"), dict),
+                f"{accelerator} report-only evidence needs discrepancy totals")
 
 
 def version_tuple(value: str) -> tuple[int, ...]:
@@ -73,6 +96,57 @@ def load(path: Path) -> dict[str, Any]:
     return payload
 
 
+def validate_licensing_policy(payload: dict[str, Any]) -> None:
+    """Validate a private-training exception only when a release adopts one."""
+
+    licensing = payload.get("licensing")
+    if licensing is None:
+        return
+
+    require(isinstance(licensing, dict), "licensing policy is missing")
+    require(
+        licensing.get("code_licence") == "AGPL-3.0-only",
+        "code licence differs",
+    )
+    exception = licensing.get("private_fine_tuning_exception")
+    require(isinstance(exception, dict), "private fine-tuning exception is missing")
+    require(
+        str(exception.get("version")) == PRIVATE_FINE_TUNING_EXCEPTION_VERSION,
+        "private fine-tuning exception version differs",
+    )
+    require(
+        exception.get("path") == PRIVATE_FINE_TUNING_EXCEPTION_PATH,
+        "private fine-tuning exception path differs",
+    )
+    require(
+        exception.get("approval_status") == "approved",
+        "private fine-tuning exception lacks copyright-holder approval",
+    )
+    require(
+        exception.get("adoption") == "express-artifact-notice",
+        "private fine-tuning exception adoption rule differs",
+    )
+    adopters = exception.get("adopters")
+    require(
+        isinstance(adopters, list)
+        and adopters
+        and all(isinstance(item, str) and item for item in adopters),
+        "private fine-tuning exception has no adopting artifacts",
+    )
+
+    exception_path = ROOT / PRIVATE_FINE_TUNING_EXCEPTION_PATH
+    require(exception_path.is_file(), "private fine-tuning exception file is missing")
+    recorded_sha256 = str(exception.get("sha256", ""))
+    require(
+        SHA256.fullmatch(recorded_sha256) is not None,
+        "private fine-tuning exception has an invalid SHA-256",
+    )
+    require(
+        sha256_file(exception_path) == recorded_sha256,
+        "private fine-tuning exception hash differs",
+    )
+
+
 def validate_structure(payload: dict[str, Any], *, require_published: bool) -> None:
     require(
         payload.get("lock_format") == "meddeid.suite-lock.v2", "unsupported lock format"
@@ -81,6 +155,8 @@ def validate_structure(payload: dict[str, Any], *, require_published: bool) -> N
     require(payload.get("status") in allowed_status, "invalid release status")
     if require_published:
         require(payload["status"] == "released", "lock is not released")
+
+    validate_licensing_policy(payload)
 
     released = load(RELEASED_LOCK)
     candidate_version = version_tuple(str(payload["suite_version"]))
@@ -144,6 +220,55 @@ def validate_structure(payload: dict[str, Any], *, require_published: bool) -> N
             require(
                 container.get("size_budget_key") == EXPECTED_SIZE_BUDGETS.get(name),
                 f"{name}: image-size budget differs",
+            )
+
+    plans = payload.get("triton_plans")
+    require(isinstance(plans, dict) and plans, "Triton plan set is missing")
+    for name, plan in plans.items():
+        action = plan.get("release_action")
+        require(action in {"publish", "reuse"}, f"{name}: invalid release action")
+        digest = plan.get("digest")
+        if action == "reuse" or require_published:
+            require(
+                isinstance(digest, str) and DIGEST.fullmatch(digest) is not None,
+                f"{name}: invalid artifact digest",
+            )
+        elif digest is not None:
+            require(
+                DIGEST.fullmatch(str(digest)) is not None,
+                f"{name}: invalid artifact digest",
+            )
+        require(
+            plan.get("suite_version") == payload["suite_version"],
+            f"{name}: suite version differs",
+        )
+        require(
+            plan.get("meddeid_version")
+            == payload["components"]["meddeid"]["version"],
+            f"{name}: MedDeID version differs",
+        )
+        model_name = plan.get("model")
+        require(model_name in payload["models"], f"{name}: unknown model")
+        require(
+            plan.get("revision") == payload["models"][model_name]["revision"],
+            f"{name}: model revision differs",
+        )
+        profiles = plan.get("language_profiles")
+        require(
+            isinstance(profiles, list)
+            and profiles
+            and all(isinstance(item, str) and item for item in profiles),
+            f"{name}: language profiles are missing",
+        )
+        require(
+            isinstance(plan.get("reference"), str)
+            and plan["reference"].startswith("ghcr.io/"),
+            f"{name}: invalid OCI artifact reference",
+        )
+        if plan.get("hardware") == "ampere-plus":
+            require(
+                plan.get("target") == "ampere-plus",
+                f"{name}: Ampere+ target differs",
             )
 
     budget_ref = payload["image_size_budgets"]
@@ -270,18 +395,77 @@ def validate_local(payload: dict[str, Any]) -> None:
             f"{accelerator} evidence hash differs",
         )
         summary = json.loads(path.read_text(encoding="utf-8"))
-        require(
-            summary["parity"]["passed"] is True, f"{accelerator} parity did not pass"
-        )
-        require(
-            summary["parity"]["semantic_differences"] == 0,
-            f"{accelerator} parity differs",
-        )
+        require_parity_evidence(summary["parity"], accelerator)
 
     catalog_ref = payload["accelerators"]["tensorrt"]["target_catalog"]
     catalog = json.loads((meddeid / catalog_ref["path"]).read_text(encoding="utf-8"))
     actual_targets = {item["id"]: item["release_status"] for item in catalog["targets"]}
     require(actual_targets == EXPECTED_TARGETS, "local TensorRT target catalog differs")
+
+    release_catalog_path = meddeid / "deploy/triton/release.json"
+    require(release_catalog_path.is_file(), "local Triton release catalog is missing")
+    release_catalog = json.loads(release_catalog_path.read_text(encoding="utf-8"))
+    require(
+        release_catalog.get("suite_version") == payload["suite_version"],
+        "local Triton release catalog has a different suite version",
+    )
+    require(
+        release_catalog.get("meddeid_version")
+        == payload["components"]["meddeid"]["version"],
+        "local Triton release catalog has a different MedDeID version",
+    )
+    require(
+        release_catalog.get("images", {}).get("gateway")
+        == payload["containers"]["meddeid-triton-gateway"]["reference"],
+        "local Triton gateway reference differs",
+    )
+    runtime_references = set(
+        release_catalog.get("images", {}).get("runtimes", {}).values()
+    )
+    require(
+        runtime_references
+        == {payload["containers"]["meddeid-triton-runtime"]["reference"]},
+        "local Triton runtime reference differs",
+    )
+    local_plans = {
+        (item.get("model_key"), item.get("hardware")): item
+        for item in release_catalog.get("plans", [])
+    }
+    require(
+        len(local_plans) == len(payload["triton_plans"]),
+        "local Triton plan catalog differs",
+    )
+    for name, plan in payload["triton_plans"].items():
+        local = local_plans.get((plan["model"], plan["hardware"]))
+        require(local is not None, f"{name}: absent from local Triton release catalog")
+        require(local.get("target") == plan["target"], f"{name}: target differs")
+        require(
+            local.get("model") == payload["models"][plan["model"]]["repository"],
+            f"{name}: model repository differs",
+        )
+        require(
+            local.get("bundle_sha256")
+            == payload["models"][plan["model"]]["contract_sha256"],
+            f"{name}: bundle contract differs",
+        )
+        for field in ("revision", "language_profiles", "artifact"):
+            expected = plan["reference"] if field == "artifact" else plan[field]
+            require(local.get(field) == expected, f"{name}: {field} differs")
+        benchmark = local.get("benchmark", {})
+        dataset_name = f"{plan['model']}_benchmark"
+        dataset = payload["datasets"][dataset_name]
+        require(
+            benchmark.get("dataset") == dataset["repository"],
+            f"{name}: benchmark dataset differs",
+        )
+        require(
+            benchmark.get("revision") == dataset["revision"],
+            f"{name}: benchmark revision differs",
+        )
+        require(
+            benchmark.get("file") == dataset["artifact"],
+            f"{name}: benchmark file differs",
+        )
 
     budget_ref = payload["image_size_budgets"]
     budget_path = meddeid / budget_ref["path"]

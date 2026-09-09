@@ -9,6 +9,8 @@ import importlib.metadata
 import json
 import re
 import subprocess
+import tarfile
+import tempfile
 import time
 import urllib.error
 import urllib.request
@@ -21,6 +23,9 @@ LOCK_PATH = ROOT / "suite-lock.yaml"
 SHA40 = re.compile(r"[0-9a-f]{40}")
 SHA256 = re.compile(r"[0-9a-f]{64}")
 DOI = re.compile(r"10\.\d{4,9}/\S+")
+PRIVATE_FINE_TUNING_EXCEPTION_PATH = (
+    "MEDDEID-PRIVATE-FINE-TUNING-EXCEPTION-1.0.txt"
+)
 
 
 def require(condition: bool, message: str) -> None:
@@ -59,6 +64,59 @@ def remote_sha256(url: str) -> str:
                 raise
             time.sleep(2**attempt)
     raise AssertionError("unreachable")
+
+
+def sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def verify_licensing_policy(lock: dict) -> None:
+    licensing = lock.get("licensing")
+    if licensing is None:
+        return
+
+    require(isinstance(licensing, dict), "licensing policy is missing")
+    require(
+        licensing.get("code_licence") == "AGPL-3.0-only",
+        "code licence differs",
+    )
+    exception = licensing.get("private_fine_tuning_exception")
+    require(isinstance(exception, dict), "private fine-tuning exception is missing")
+    require(str(exception.get("version")) == "1.0", "exception version differs")
+    require(
+        exception.get("path") == PRIVATE_FINE_TUNING_EXCEPTION_PATH,
+        "exception path differs",
+    )
+    require(
+        exception.get("approval_status") == "approved",
+        "exception lacks copyright-holder approval",
+    )
+    require(
+        exception.get("adoption") == "express-artifact-notice",
+        "exception adoption rule differs",
+    )
+    adopters = exception.get("adopters")
+    require(
+        isinstance(adopters, list)
+        and adopters
+        and all(isinstance(item, str) and item for item in adopters),
+        "exception has no adopting artifacts",
+    )
+    exception_path = ROOT / PRIVATE_FINE_TUNING_EXCEPTION_PATH
+    require(exception_path.is_file(), "exception file is missing")
+    require(
+        SHA256.fullmatch(str(exception.get("sha256", ""))) is not None,
+        "exception has an invalid SHA-256",
+    )
+    require(
+        sha256_file(exception_path) == exception["sha256"],
+        "exception hash differs",
+    )
+    print("Private fine-tuning exception verified")
 
 
 def verify_python_components(lock: dict) -> None:
@@ -251,6 +309,72 @@ def verify_npm(lock: dict) -> None:
     print("npm language profiles verified")
 
 
+def verify_triton_plans(lock: dict) -> None:
+    for name, plan in lock.get("triton_plans", {}).items():
+        reference = str(plan["reference"])
+        repository = reference.rsplit(":", 1)[0]
+        digest = str(plan["digest"])
+        require(
+            re.fullmatch(r"sha256:[0-9a-f]{64}", digest) is not None,
+            f"{name}: invalid Triton plan digest",
+        )
+        output = subprocess.check_output(
+            ["oras", "manifest", "fetch", "--descriptor", f"{repository}@{digest}"],
+            text=True,
+        )
+        descriptor = json.loads(output)
+        require(descriptor.get("digest") == digest, f"{name}: artifact digest differs")
+        manifest_output = subprocess.check_output(
+            ["oras", "manifest", "fetch", f"{repository}@{digest}"], text=True
+        )
+        manifest = json.loads(manifest_output)
+        require(
+            manifest.get("artifactType")
+            == "application/vnd.meddeid.triton-model-repository.v1",
+            f"{name}: artifact type differs",
+        )
+        with tempfile.TemporaryDirectory(prefix="meddeid-plan-") as raw:
+            destination = Path(raw)
+            subprocess.check_call(
+                [
+                    "oras",
+                    "pull",
+                    f"{repository}@{digest}",
+                    "--output",
+                    str(destination),
+                ],
+                stdout=subprocess.DEVNULL,
+            )
+            archive_path = destination / "model-repository.tar.gz"
+            require(archive_path.is_file(), f"{name}: plan archive is missing")
+            with tarfile.open(archive_path, mode="r:gz") as archive:
+                member = archive.extractfile("build-manifest.json")
+                require(member is not None, f"{name}: build manifest is missing")
+                build = json.load(member)
+
+        model = lock["models"][plan["model"]]
+        expected = {
+            ("release", "suite_version"): plan["suite_version"],
+            ("release", "meddeid_version"): plan["meddeid_version"],
+            ("model", "id"): model["repository"],
+            ("model", "revision"): plan["revision"],
+            ("model", "bundle_sha256"): model["contract_sha256"],
+            ("target", "id"): plan["target"],
+        }
+        for (section, field), value in expected.items():
+            require(
+                build.get(section, {}).get(field) == value,
+                f"{name}: {section}.{field} differs",
+            )
+        require(
+            set(build.get("model", {}).get("language_profiles", []))
+            == set(plan["language_profiles"]),
+            f"{name}: language profiles differ",
+        )
+    if lock.get("triton_plans"):
+        print("TensorRT plan artifacts verified")
+
+
 def verify_archive(lock: dict, *, allow_candidate: bool) -> None:
     archives = lock.get("archives")
     if archives is None:
@@ -302,6 +426,7 @@ def main() -> None:
     )
     if lock["status"] != "released":
         require(args.allow_candidate, "suite lock is not released")
+    verify_licensing_policy(lock)
     models = lock["models"] if "models" in lock else {"default": lock["model"]}
     for name, model in models.items():
         require(
@@ -311,6 +436,7 @@ def main() -> None:
     verify_python_components(lock)
     verify_git_components(lock)
     verify_hugging_face(lock)
+    verify_triton_plans(lock)
     profiles = (
         lock["language_profiles"]
         if "language_profiles" in lock

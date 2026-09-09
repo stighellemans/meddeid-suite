@@ -8,6 +8,8 @@ import copy
 import hashlib
 import json
 import subprocess
+import tarfile
+import tempfile
 import urllib.request
 from datetime import UTC, datetime
 from pathlib import Path
@@ -17,7 +19,7 @@ import yaml
 from verify_release_candidate import validate_structure
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_CANDIDATE = ROOT / "release" / "0.2.0-candidate.yaml"
+DEFAULT_CANDIDATE = ROOT / "release" / "0.3.0-candidate.yaml"
 
 
 def read_json(url: str) -> dict[str, Any]:
@@ -52,8 +54,7 @@ def resolve_component(name: str, component: dict[str, Any]) -> None:
         version = str(component["version"])
         pypi = read_json(f"https://pypi.org/pypi/{name}/{version}/json")
         hashes = {
-            item["packagetype"]: item["digests"]["sha256"]
-            for item in pypi["urls"]
+            item["packagetype"]: item["digests"]["sha256"] for item in pypi["urls"]
         }
         component["wheel_sha256"] = hashes["bdist_wheel"]
         component["sdist_sha256"] = hashes["sdist"]
@@ -95,11 +96,85 @@ def resolve_container_digest(reference: str) -> str:
     return digest
 
 
+def resolve_oci_artifact_digest(reference: str) -> str:
+    output = subprocess.check_output(
+        ["oras", "manifest", "fetch", "--descriptor", reference], text=True
+    )
+    descriptor = json.loads(output)
+    digest = descriptor.get("digest")
+    if not isinstance(digest, str) or not digest.startswith("sha256:"):
+        raise RuntimeError(f"could not resolve OCI artifact digest for {reference}")
+    return digest
+
+
+def verify_triton_plan(plan: dict[str, Any], payload: dict[str, Any]) -> None:
+    reference = str(plan["reference"]).rsplit(":", 1)[0]
+    immutable_reference = f"{reference}@{plan['digest']}"
+    raw_manifest = subprocess.check_output(
+        ["oras", "manifest", "fetch", immutable_reference], text=True
+    )
+    oci_manifest = json.loads(raw_manifest)
+    if (
+        oci_manifest.get("artifactType")
+        != "application/vnd.meddeid.triton-model-repository.v1"
+    ):
+        raise RuntimeError(
+            f"unexpected Triton plan artifact type: {immutable_reference}"
+        )
+
+    with tempfile.TemporaryDirectory(prefix="meddeid-plan-") as raw:
+        destination = Path(raw)
+        subprocess.check_call(
+            ["oras", "pull", immutable_reference, "--output", str(destination)],
+            stdout=subprocess.DEVNULL,
+        )
+        archive_path = destination / "model-repository.tar.gz"
+        if not archive_path.is_file():
+            raise RuntimeError(f"Triton plan archive is missing: {immutable_reference}")
+        with tarfile.open(archive_path, mode="r:gz") as archive:
+            member = archive.extractfile("build-manifest.json")
+            if member is None:
+                raise RuntimeError(
+                    f"Triton build manifest is missing: {immutable_reference}"
+                )
+            build = json.load(member)
+
+    model = payload["models"][plan["model"]]
+    expected = {
+        ("release", "suite_version"): plan["suite_version"],
+        ("release", "meddeid_version"): plan["meddeid_version"],
+        ("model", "id"): model["repository"],
+        ("model", "revision"): plan["revision"],
+        ("model", "bundle_sha256"): model["contract_sha256"],
+        ("target", "id"): plan["target"],
+    }
+    for (section, field), value in expected.items():
+        if build.get(section, {}).get(field) != value:
+            raise RuntimeError(
+                f"Triton plan {plan['model']} has a different {section}.{field}"
+            )
+    if set(build.get("model", {}).get("language_profiles", [])) != set(
+        plan["language_profiles"]
+    ):
+        raise RuntimeError(
+            f"Triton plan {plan['model']} has different language profiles"
+        )
+    if plan.get("hardware") == "ampere-plus":
+        target = build.get("target", {})
+        if (
+            target.get("family") != "ampere-plus"
+            or target.get("compatibility_mode") != "ampere+"
+        ):
+            raise RuntimeError(
+                f"Triton plan {plan['model']} lacks its Ampere+ compatibility contract"
+            )
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--candidate", type=Path, default=DEFAULT_CANDIDATE)
     parser.add_argument(
-        "--output", type=Path, default=ROOT / "release" / "0.2.0-resolved.yaml"
+        "--output", type=Path, default=ROOT / "release" / "0.3.0-resolved.yaml"
     )
     parser.add_argument(
         "--release",
@@ -124,9 +199,14 @@ def main() -> None:
     for container in resolved["containers"].values():
         if container["release_action"] == "publish":
             container["digest"] = resolve_container_digest(container["reference"])
+    for plan in resolved["triton_plans"].values():
+        if plan["release_action"] == "publish":
+            plan["digest"] = resolve_oci_artifact_digest(plan["reference"])
+        verify_triton_plan(plan, resolved)
     resolved["accelerators"]["pytorch_cuda"]["availability"] = "ready"
     resolved["release_gates"]["public_pypi_artifacts"] = "passed"
     resolved["release_gates"]["public_container_digests"] = "passed"
+    resolved["release_gates"]["public_triton_plan_artifacts"] = "passed"
 
     if args.release:
         pending = [

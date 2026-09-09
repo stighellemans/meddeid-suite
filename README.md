@@ -40,14 +40,15 @@ and hashes, repository commits, container digests, tagged model revisions and
 DOIs, dataset revisions, archival DOIs, language/profile contracts, exact study
 software revisions, and smoke-test tolerances.
 
-The [suite 0.2.0 release contract](suite-lock.yaml) includes
-`meddeid==0.3.0` and separate CPU, portable PyTorch CUDA, weight-free TensorRT
-gateway, and T4-specific TensorRT artifacts. External GPU deployment uses one
-ordinary performance choice, `MEDDEID_SERVING_PROFILE=latency|throughput`;
-backend-specific batching, precision, transport, concurrency, and worker
-defaults are carried by the selected image. CPU, CUDA, and TensorRT remain
-separate downloads so users do not receive frameworks for hardware they are
-not using. See the [release runbook](RELEASE.md).
+The [suite 0.3.0 release lock](suite-lock.yaml) records `meddeid==0.4.0`,
+separate CPU and PyTorch CUDA images, a weight-free TensorRT gateway and
+runtime, and model-specific T4 and Ampere+ plans for the public Dutch and
+English models. The lock records the image and plan digests together. End
+users choose hardware, model revision, and language profile; Compose resolves
+the internal TensorRT parts. CPU, CUDA, and TensorRT remain separate downloads
+so users do not receive frameworks for hardware they are not using. See the
+[release runbook](RELEASE.md) and the retained
+[resolved release record](release/0.3.0-resolved.yaml).
 
 The Dutch and English model repositories have immutable `v1.0.0` tags and
 version-specific Hugging Face DOIs. The English language component, synthetic
@@ -77,6 +78,7 @@ packages and run the public verifiers:
 
 ```bash
 python -m pip install 'PyYAML>=6'
+# Install ORAS 1.3 or later to verify the TensorRT plan artifacts.
 python scripts/release_requirements.py > /tmp/meddeid-release-requirements.txt
 python -m pip install --requirement /tmp/meddeid-release-requirements.txt
 python scripts/verify_release.py
@@ -93,6 +95,8 @@ Local execution reduces data movement but does not guarantee anonymity.
 Clinical deployments require representative local validation, governance,
 access controls, monitoring, and incident response. Never attach patient text,
 credentials, or restricted artifacts to a public issue.
+
+## Licensing
 
 Code is licensed AGPL-3.0-only. Models, datasets, guidelines, and lookup
 resources retain the terms recorded in `suite-lock.yaml` and their artifact

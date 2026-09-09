@@ -1,6 +1,6 @@
 lock_format: meddeid.suite-lock.v2
 suite_version: 0.3.0
-status: released
+status: release-candidate
 prepared_at: 2026-09-08
 schema_version: meddeid.schema.v1
 taxonomy_version: ProductionLabels-v1.1
@@ -410,4 +410,3 @@ release_gates:
   public_container_digests: passed
   public_triton_plan_artifacts: passed
   pulled_artifact_smoke: passed
-released_at: '2026-09-09'

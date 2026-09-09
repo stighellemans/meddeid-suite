@@ -1,0 +1,54 @@
+# Development images built from this checkout. The published 0.3.1 images also
+# include the workspace picker. All three services share one persistent mount.
+services:
+  annotate:
+    build:
+      context: ./repos/meddeid-annotate
+      args:
+        VITE_WORKSPACE_ANNOTATE_URL: http://127.0.0.1:5186
+        VITE_WORKSPACE_COMPANION_URL: http://127.0.0.1:5187
+        VITE_WORKSPACE_SUBANNOTATE_URL: http://127.0.0.1:5187
+        VITE_WORKSPACE_CURATE_URL: http://127.0.0.1:5188
+    ports:
+      - "127.0.0.1:5186:8787"
+    environment:
+      MEDDEID_WORKSPACE_DIR: /app/data/workspaces
+    volumes:
+      - ${MEDDEID_ANNOTATION_WORKSPACE:-./workspaces/annotation-preview}:/app/data/workspaces
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+  subannotate:
+    build:
+      context: ./repos/meddeid-subannotate
+      args:
+        VITE_WORKSPACE_ANNOTATE_URL: http://127.0.0.1:5186
+        VITE_WORKSPACE_COMPANION_URL: http://127.0.0.1:5186
+        VITE_WORKSPACE_SUBANNOTATE_URL: http://127.0.0.1:5187
+        VITE_WORKSPACE_CURATE_URL: http://127.0.0.1:5188
+    ports:
+      - "127.0.0.1:5187:8787"
+    environment:
+      MEDDEID_WORKSPACE_DIR: /app/data/workspaces
+    volumes:
+      - ${MEDDEID_ANNOTATION_WORKSPACE:-./workspaces/annotation-preview}:/app/data/workspaces
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+  curate:
+    build:
+      context: ./repos/meddeid-curate
+      args:
+        VITE_WORKSPACE_ANNOTATE_URL: http://127.0.0.1:5186
+        VITE_WORKSPACE_COMPANION_URL: http://127.0.0.1:5186
+        VITE_WORKSPACE_SUBANNOTATE_URL: http://127.0.0.1:5187
+    ports:
+      - "127.0.0.1:5188:8793"
+    environment:
+      MEDDEID_WORKSPACE_DIR: /app/data/workspaces
+      MEDDEID_CURATE_DATA_DIR: /app/data/workspaces/curate
+    volumes:
+      - ${MEDDEID_ANNOTATION_WORKSPACE:-./workspaces/annotation-preview}:/app/data/workspaces
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
