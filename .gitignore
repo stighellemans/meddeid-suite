@@ -40,6 +40,8 @@ scripts/*
 !scripts/verify_release.py
 !scripts/verify_new_researcher_pilot.py
 !scripts/prepare_english_publication.py
+!scripts/prepare_model_license_correction.py
+!scripts/publish_zenodo_correction.py
 !scripts/preview-annotation-workspaces.mjs
 
 pilots/*

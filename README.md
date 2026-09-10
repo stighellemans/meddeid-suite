@@ -40,20 +40,21 @@ and hashes, repository commits, container digests, tagged model revisions and
 DOIs, dataset revisions, archival DOIs, language/profile contracts, exact study
 software revisions, and smoke-test tolerances.
 
-The [suite 0.3.0 release lock](suite-lock.yaml) records `meddeid==0.4.0`,
-separate CPU and PyTorch CUDA images, a weight-free TensorRT gateway and
-runtime, and model-specific T4 and Ampere+ plans for the public Dutch and
-English models. The lock records the image and plan digests together. End
+The [suite 0.3.1 release lock](suite-lock.yaml) records `meddeid==0.4.2`,
+the corrected CPU image, the compatible validated PyTorch CUDA image, a
+weight-free TensorRT gateway and runtime, and model-specific T4 and Ampere+
+plans for the public Dutch and English models. The lock records the image and
+plan digests together and marks compatible GPU artifacts as reused. End
 users choose hardware, model revision, and language profile; Compose resolves
 the internal TensorRT parts. CPU, CUDA, and TensorRT remain separate downloads
 so users do not receive frameworks for hardware they are not using. See the
 [release runbook](RELEASE.md) and the retained
-[resolved release record](release/0.3.0-resolved.yaml).
+[resolved release record](release/0.3.1-resolved.yaml).
 
-The Dutch and English model repositories have immutable `v1.0.0` tags and
+The Dutch and English model repositories have immutable `v1.0.1` tags and
 version-specific Hugging Face DOIs. The English language component, synthetic
 corpus, human-reviewed benchmark, and synthetic model are public and pinned in
-the 0.2.0 lock. Bare `en` is not a valid profile selection.
+the 0.3.1 lock. Bare `en` is not a valid profile selection.
 
 ## Public release endpoints
 
@@ -63,13 +64,14 @@ the 0.2.0 lock. Bare `en` is not a valid profile selection.
 - Dutch model DOI: [10.57967/hf/10304](https://doi.org/10.57967/hf/10304)
 - English synthetic corpus: [`stighellemans/meddeid-english-synthetic-corpus`](https://huggingface.co/datasets/stighellemans/meddeid-english-synthetic-corpus)
 - English human-reviewed benchmark: [`stighellemans/meddeid-english-synthetic-benchmark`](https://huggingface.co/datasets/stighellemans/meddeid-english-synthetic-benchmark)
-- English data and guideline archive: [Zenodo v2](https://doi.org/10.5281/zenodo.22129255)
+- English data and guideline archive: [Zenodo v3](https://doi.org/10.5281/zenodo.22689857)
 - npm Dutch language capability: [`@meddeid/language-nl`](https://www.npmjs.com/package/@meddeid/language-nl)
 - npm English language capability: [`@meddeid/language-en`](https://www.npmjs.com/package/@meddeid/language-en)
 - Hugging Face project collection: [MedDeID](https://huggingface.co/collections/stighellemans/meddeid)
 - hosted non-clinical demo: [`stighellemans/meddeid-demo`](https://huggingface.co/spaces/stighellemans/meddeid-demo)
-- versioned data and guideline archive: [Zenodo v2](https://doi.org/10.5281/zenodo.21992866)
-- all archive versions: [Zenodo concept DOI](https://doi.org/10.5281/zenodo.21890964)
+- Dutch data and guideline archive: [Zenodo v3](https://doi.org/10.5281/zenodo.22689856)
+- all Dutch archive versions: [Zenodo concept DOI](https://doi.org/10.5281/zenodo.21890964)
+- all English archive versions: [Zenodo concept DOI](https://doi.org/10.5281/zenodo.22127863)
 
 ## Verify the release
 
@@ -98,6 +100,10 @@ credentials, or restricted artifacts to a public issue.
 
 ## Licensing
 
-Code is licensed AGPL-3.0-only. Models, datasets, guidelines, and lookup
-resources retain the terms recorded in `suite-lock.yaml` and their artifact
-cards.
+Coordinator code is licensed AGPL-3.0-only with the MedDeID Private Fine-Tuning
+Exception, version 1.0. The exception permits private training data and
+resulting private fine-tuned weights to remain confidential; MedDeID code
+modifications remain subject to AGPL-3.0-only. See `NOTICE` and
+`MEDDEID-PRIVATE-FINE-TUNING-EXCEPTION-1.0.txt`. Components, models, datasets,
+guidelines, and lookup resources retain the terms recorded in `suite-lock.yaml`
+and their own notices or artifact cards.

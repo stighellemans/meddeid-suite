@@ -2,8 +2,8 @@ cff-version: 1.2.0
 message: "If you use MedDeID, cite the relevant software and dataset or manuscript."
 title: "MedDeID suite"
 type: software
-version: "0.2.0"
-date-released: 2026-09-06
+version: "0.3.1"
+date-released: 2026-09-10
 authors:
   - family-names: Hellemans
     given-names: Stig
@@ -28,5 +28,8 @@ url: https://stighellemans.github.io/meddeid/
 license: AGPL-3.0-only
 identifiers:
   - type: doi
-    value: 10.5281/zenodo.21890964
-    description: MedDeID synthetic data and annotation-guideline archive
+    value: 10.5281/zenodo.22689856
+    description: MedDeID Dutch synthetic data and annotation-guideline archive v3
+  - type: doi
+    value: 10.5281/zenodo.22689857
+    description: MedDeID English synthetic data and annotation-guideline archive v3

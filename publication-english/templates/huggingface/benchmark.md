@@ -113,8 +113,8 @@ Please cite both the archived dataset version and the accompanying paper.
 
 Hellemans, S., Stroobants, T., Scheurwegs, E., Meysman, P., Jorens, P., and
 Laukens, K. (2026). *MedDeID English synthetic clinical corpus, benchmark and
-annotation guideline* (v2) [Dataset]. Zenodo.
-[https://doi.org/10.5281/zenodo.22129255](https://doi.org/10.5281/zenodo.22129255)
+annotation guideline* (v3) [Dataset]. Zenodo.
+[https://doi.org/10.5281/zenodo.22689857](https://doi.org/10.5281/zenodo.22689857)
 
 ### Accompanying paper (forthcoming)
 

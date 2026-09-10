@@ -8,3 +8,7 @@ No real patient notes were used for training. The model was trained on the
 MedDeID English synthetic corpus and evaluated on the separate fixed synthetic
 benchmark. Synthetic-benchmark results do not establish safety or performance
 on real clinical data.
+
+The model weights and bundled MedDeID software files are AGPL-3.0-only with the
+MedDeID Private Fine-Tuning Exception, version 1.0. That Exception expressly
+applies to these model weights and software files.

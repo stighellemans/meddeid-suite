@@ -26,6 +26,8 @@ MODEL_EXPORT = MODEL_RUN / "export/meddeid-english-synth"
 GUIDELINE = SUITE / "publication/guidelines/annotation-guidelines-en.pdf"
 CC_LICENSE = SUITE / "publication/templates/huggingface/data-license/LICENSE"
 AGPL_LICENSE = SUITE / "AGPL-3.0-only.txt"
+EXCEPTION = SUITE / "MEDDEID-PRIVATE-FINE-TUNING-EXCEPTION-1.0.txt"
+LICENSING_NOTICE = SUITE / "SOFTWARE-AND-MODEL-LICENSING.md"
 
 EXPECTED = {
     "development_sha256": "ea77758db5f91dc992a23fc756e0d30958ba75750845fa78ec874bf96404fe45",
@@ -275,6 +277,7 @@ def build_model_repo(target: Path, verified: dict[str, Any]) -> None:
     copy_file(ROOT / "templates/huggingface/model.md", target / "README.md")
     copy_file(ROOT / "templates/huggingface/MODEL_NOTICE", target / "NOTICE")
     copy_file(AGPL_LICENSE, target / "LICENSE")
+    copy_file(EXCEPTION, target / "MEDDEID-PRIVATE-FINE-TUNING-EXCEPTION-1.0.txt")
     write_json(
         target / "MODEL_PROVENANCE.json",
         {
@@ -300,7 +303,7 @@ def deterministic_zip(source: Path, destination: Path) -> None:
         for path in sorted(source.rglob("*")):
             if not path.is_file():
                 continue
-            info = zipfile.ZipInfo(path.relative_to(source.parent).as_posix(), (2026, 8, 27, 0, 0, 0))
+            info = zipfile.ZipInfo(path.relative_to(source.parent).as_posix(), (2026, 9, 10, 0, 0, 0))
             info.compress_type = zipfile.ZIP_DEFLATED
             info.external_attr = 0o100644 << 16
             archive.writestr(info, path.read_bytes(), compresslevel=9)
@@ -321,11 +324,13 @@ def build_zenodo(target: Path, verified: dict[str, Any]) -> Path:
     )
     copy_file(GUIDELINE, target / "guidelines/annotation-guidelines-en.pdf")
     copy_file(CC_LICENSE, target / "LICENSE")
+    copy_file(EXCEPTION, target / "MEDDEID-PRIVATE-FINE-TUNING-EXCEPTION-1.0.txt")
+    copy_file(LICENSING_NOTICE, target / "SOFTWARE-AND-MODEL-LICENSING.md")
     copy_file(ROOT / "templates/zenodo/README.md", target / "README.md")
     copy_file(ROOT / "templates/zenodo/metadata.json", target / "metadata.json")
     write_json(target / "release-manifest.json", release_manifest(verified, include_local_paths=False))
     write_checksums(target)
-    archive = target.parent / "meddeid-english-synthetic-data-v2.zip"
+    archive = target.parent / "meddeid-english-synthetic-data-v3.zip"
     deterministic_zip(target, archive)
     return archive
 
@@ -344,19 +349,29 @@ def release_manifest(verified: dict[str, Any], *, include_local_paths: bool) -> 
     return {
         "manifest_version": "meddeid.english-publication.v1",
         "status": "published",
-        "prepared_date": "2026-08-27",
-        "published_date": "2026-08-27",
+        "prepared_date": "2026-09-10",
+        "published_date": "2026-09-10",
         "owner": "stighellemans",
+        "software_and_model_licensing": {
+            "data_and_guidelines": "CC-BY-4.0",
+            "exception": {
+                "name": "MedDeID Private Fine-Tuning Exception",
+                "version": "1.0",
+                "path": "MEDDEID-PRIVATE-FINE-TUNING-EXCEPTION-1.0.txt",
+                "sha256": sha256_file(EXCEPTION),
+                "applies_to_archive_data": False,
+            },
+        },
         "publication": {
             "zenodo": {
-                "record": "https://zenodo.org/records/22129255",
-                "version_doi": "10.5281/zenodo.22129255",
+                "record": "https://zenodo.org/records/22689857",
+                "version_doi": "10.5281/zenodo.22689857",
                 "concept_doi": "10.5281/zenodo.22127863",
             },
             "hugging_face_revisions": {
-                "stighellemans/meddeid-english-synthetic-corpus": "b93f735c88cda2ed77725c6a4f53e8124503073a",
-                "stighellemans/meddeid-english-synthetic-benchmark": "36879b454408a86548cdcb6f82657a9434fa2b80",
-                "stighellemans/meddeid-english-synth": "3e5139a749bd2e4f490a76571338108dbe6b1498",
+                "stighellemans/meddeid-english-synthetic-corpus": "74a043765fe48750ffc4ae5dce6f778ab41d16dc",
+                "stighellemans/meddeid-english-synthetic-benchmark": "8f2e5f4c6d575f658093c58d434c2275377e0a2d",
+                "stighellemans/meddeid-english-synth": "a6d5a25c33a4b7c560bc3452f32cc4591617e714",
                 "spaces/stighellemans/meddeid-demo": "830fc3d3ffb97140dd7c5b633a7d4b210f55ac2b",
             },
         },
@@ -448,7 +463,7 @@ def main() -> None:
         },
     )
     build_model_repo(hf_root / "meddeid-english-synth", verified)
-    archive = build_zenodo(output / "zenodo/meddeid-english-synthetic-data-v2", verified)
+    archive = build_zenodo(output / "zenodo/meddeid-english-synthetic-data-v3", verified)
     write_json(
         output / "BUILD.json",
         {

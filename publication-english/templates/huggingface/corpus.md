@@ -102,9 +102,9 @@ Please cite both the archived dataset version and the accompanying paper.
   title     = {MedDeID English synthetic clinical corpus, benchmark and annotation guideline},
   year      = {2026},
   publisher = {Zenodo},
-  version   = {v2},
-  doi       = {10.5281/zenodo.22129255},
-  url       = {https://doi.org/10.5281/zenodo.22129255}
+  version   = {v3},
+  doi       = {10.5281/zenodo.22689857},
+  url       = {https://doi.org/10.5281/zenodo.22689857}
 }
 ```
 

@@ -207,13 +207,24 @@ def verify_hugging_face(lock: dict) -> None:
                     "ls-remote",
                     f"https://huggingface.co/{model['repository']}",
                     f"refs/tags/{tag}",
+                    f"refs/tags/{tag}^{{}}",
                 ],
                 text=True,
             ).strip()
             require(tag_output, f"{name}: model tag is not public")
+            tag_refs = {
+                ref: sha
+                for sha, ref in (line.split() for line in tag_output.splitlines())
+            }
+            tag_ref = f"refs/tags/{tag}"
+            peeled_ref = f"{tag_ref}^{{}}"
             require(
-                tag_output.split()[0] == model["tag_revision"],
+                tag_refs.get(tag_ref) == model["tag_revision"],
                 f"{name}: model tag does not resolve to the locked tag revision",
+            )
+            require(
+                tag_refs.get(peeled_ref) == revision,
+                f"{name}: model tag does not point to the locked model revision",
             )
             require(
                 DOI.fullmatch(str(model.get("doi", ""))) is not None,

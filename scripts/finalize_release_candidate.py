@@ -19,7 +19,7 @@ import yaml
 from verify_release_candidate import validate_structure
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_CANDIDATE = ROOT / "release" / "0.3.0-candidate.yaml"
+DEFAULT_CANDIDATE = ROOT / "release" / "0.3.1-candidate.yaml"
 
 
 def read_json(url: str) -> dict[str, Any]:
@@ -174,7 +174,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--candidate", type=Path, default=DEFAULT_CANDIDATE)
     parser.add_argument(
-        "--output", type=Path, default=ROOT / "release" / "0.3.0-resolved.yaml"
+        "--output", type=Path, default=ROOT / "release" / "0.3.1-resolved.yaml"
     )
     parser.add_argument(
         "--release",

@@ -46,7 +46,7 @@ meddeid batch \
   "$MEDDEID_PILOT_WORK/project/artifacts/annotations.jsonl" \
   --output "$MEDDEID_PILOT_WORK/project/assignments/primary.jsonl" \
   --model stighellemans/meddeid-dutch-synth \
-  --revision 55c7858e91a53686bfd359d2653c8c6b8dabde89 \
+  --revision d21619c2025f7cdd1cbe268557c058846c750e3c \
   --device cpu
 ```
 

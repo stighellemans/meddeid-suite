@@ -1,6 +1,6 @@
 lock_format: meddeid.suite-lock.v2
 suite_version: 0.3.1
-status: released
+status: release-candidate
 prepared_at: 2026-09-10
 schema_version: meddeid.schema.v1
 taxonomy_version: ProductionLabels-v1.1
@@ -430,4 +430,3 @@ release_gates:
   corrected_model_notices: passed
   corrected_zenodo_versions: passed
   licensing_exception_packaging: passed
-released_at: '2026-09-10'

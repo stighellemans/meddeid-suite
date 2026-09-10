@@ -180,8 +180,8 @@ reported in the accompanying MedDeID study.
 
 Hellemans, S., Stroobants, T., Scheurwegs, E., Meysman, P., Jorens, P., and
 Laukens, K. (2026). *MedDeID English synthetic clinical corpus, benchmark and
-annotation guideline* (v2) [Dataset]. Zenodo.
-[https://doi.org/10.5281/zenodo.22129255](https://doi.org/10.5281/zenodo.22129255)
+annotation guideline* (v3) [Dataset]. Zenodo.
+[https://doi.org/10.5281/zenodo.22689857](https://doi.org/10.5281/zenodo.22689857)
 
 ### Accompanying paper (forthcoming)
 
@@ -190,5 +190,9 @@ Laukens, K. *MedDeID for locally deployable clinical text de-identification
 with real or synthetic training data.* Manuscript in preparation. The final
 publication details and DOI will be added here when available.
 
-The model bundle is licensed under AGPL-3.0-only. The upstream RoBERTa base
-model remains subject to its own terms and attribution requirements.
+The model bundle is licensed under AGPL-3.0-only with the MedDeID Private
+Fine-Tuning Exception, version 1.0. The Exception expressly applies to these
+model weights and bundled software. It permits private training data and
+resulting private fine-tuned weights to remain confidential; MedDeID code
+modifications remain subject to AGPL-3.0-only. The upstream RoBERTa base model
+remains subject to its own terms and attribution requirements.

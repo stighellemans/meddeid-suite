@@ -20,7 +20,7 @@ The build refuses a non-empty output directory. It creates:
 - `dist/huggingface/meddeid-english-synthetic-corpus`;
 - `dist/huggingface/meddeid-english-synthetic-benchmark`;
 - `dist/huggingface/meddeid-english-synth`;
-- `dist/zenodo/meddeid-english-synthetic-data-v2.zip`.
+- `dist/zenodo/meddeid-english-synthetic-data-v3.zip`.
 
 ## Public targets
 
@@ -35,7 +35,7 @@ synthetic-trained English model to the existing MedDeID Collection.
 
 The Zenodo data record remains separate from model weights and software. The
 published version DOI is
-[`10.5281/zenodo.22129255`](https://doi.org/10.5281/zenodo.22129255); the
+[`10.5281/zenodo.22689857`](https://doi.org/10.5281/zenodo.22689857); the
 concept DOI is `10.5281/zenodo.22127863`.
 
 See `RELEASE_RUNBOOK.md` for the exact private-staging, verification, and

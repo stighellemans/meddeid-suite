@@ -1,5 +1,5 @@
 model_name: stighellemans/meddeid-dutch-synth
-model_revision: 1f20655454dcbd042647cacdfff6b6802a970959
+model_revision: d21619c2025f7cdd1cbe268557c058846c750e3c
 from_base_encoder: false
 language_profile: nl-BE
 language_profile_version: "1"

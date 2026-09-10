@@ -29,7 +29,7 @@
 - [x] Download the model into an empty cache and run both `en-GB` and `en-US`
       smoke inference with the public `meddeid==0.2.0` runtime.
 - [x] Create and preview the corrected Zenodo draft; record concept DOI `10.5281/zenodo.22127863`
-      and version DOI `10.5281/zenodo.22129255`.
+      and version DOI `10.5281/zenodo.22689857`.
 - [x] Publish the two datasets, model, and Zenodo record after final review.
 - [x] Add the English synthetic corpus, subannotated benchmark and English model
       to the MedDeID Collection. Add the final paper when available.

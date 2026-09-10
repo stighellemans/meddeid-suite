@@ -15,12 +15,13 @@ import tomllib
 import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_CANDIDATE = ROOT / "release" / "0.3.0-candidate.yaml"
+DEFAULT_CANDIDATE = ROOT / "release" / "0.3.1-candidate.yaml"
 RELEASED_LOCK = ROOT / "suite-lock.yaml"
 SHA40 = re.compile(r"[0-9a-f]{40}")
 SHA256 = re.compile(r"[0-9a-f]{64}")
 DIGEST = re.compile(r"sha256:[0-9a-f]{64}")
 DOI = re.compile(r"10\.\d{4,9}/\S+")
+MODEL_TAG = re.compile(r"v\d+\.\d+\.\d+")
 PRIVATE_FINE_TUNING_EXCEPTION_VERSION = "1.0"
 PRIVATE_FINE_TUNING_EXCEPTION_PATH = (
     "MEDDEID-PRIVATE-FINE-TUNING-EXCEPTION-1.0.txt"
@@ -238,21 +239,28 @@ def validate_structure(payload: dict[str, Any], *, require_published: bool) -> N
                 DIGEST.fullmatch(str(digest)) is not None,
                 f"{name}: invalid artifact digest",
             )
-        require(
-            plan.get("suite_version") == payload["suite_version"],
-            f"{name}: suite version differs",
-        )
-        require(
-            plan.get("meddeid_version")
-            == payload["components"]["meddeid"]["version"],
-            f"{name}: MedDeID version differs",
-        )
+        if action == "publish":
+            require(
+                plan.get("suite_version") == payload["suite_version"],
+                f"{name}: suite version differs",
+            )
+            require(
+                plan.get("meddeid_version")
+                == payload["components"]["meddeid"]["version"],
+                f"{name}: MedDeID version differs",
+            )
         model_name = plan.get("model")
         require(model_name in payload["models"], f"{name}: unknown model")
-        require(
-            plan.get("revision") == payload["models"][model_name]["revision"],
-            f"{name}: model revision differs",
-        )
+        if action == "publish":
+            require(
+                plan.get("revision") == payload["models"][model_name]["revision"],
+                f"{name}: model revision differs",
+            )
+        else:
+            require(
+                SHA40.fullmatch(str(plan.get("revision", ""))) is not None,
+                f"{name}: reused plan has no immutable model revision",
+            )
         profiles = plan.get("language_profiles")
         require(
             isinstance(profiles, list)
@@ -292,7 +300,10 @@ def validate_structure(payload: dict[str, Any], *, require_published: bool) -> N
                 )
 
     for name, model in payload["models"].items():
-        require(model.get("tag") == "v1.0.0", f"{name}: model tag differs")
+        require(
+            MODEL_TAG.fullmatch(str(model.get("tag", ""))) is not None,
+            f"{name}: model tag differs",
+        )
         require(
             SHA40.fullmatch(str(model.get("tag_revision", ""))) is not None,
             f"{name}: invalid model tag revision",
@@ -405,13 +416,21 @@ def validate_local(payload: dict[str, Any]) -> None:
     release_catalog_path = meddeid / "deploy/triton/release.json"
     require(release_catalog_path.is_file(), "local Triton release catalog is missing")
     release_catalog = json.loads(release_catalog_path.read_text(encoding="utf-8"))
+    published_plans = [
+        plan
+        for plan in payload["triton_plans"].values()
+        if plan["release_action"] == "publish"
+    ]
+    provenance_plan = published_plans[0] if published_plans else next(
+        iter(payload["triton_plans"].values())
+    )
     require(
-        release_catalog.get("suite_version") == payload["suite_version"],
+        release_catalog.get("suite_version") == provenance_plan["suite_version"],
         "local Triton release catalog has a different suite version",
     )
     require(
         release_catalog.get("meddeid_version")
-        == payload["components"]["meddeid"]["version"],
+        == provenance_plan["meddeid_version"],
         "local Triton release catalog has a different MedDeID version",
     )
     require(

@@ -1,0 +1,1 @@
+ghcr.io/stighellemans/meddeid-api:0.4.2-cuda12.9@sha256:3a355a4b3e5a0158cb0cb3232aeb3114b09843d4846de4d230e78a8f1b75b98f

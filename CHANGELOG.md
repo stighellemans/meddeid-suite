@@ -2,6 +2,18 @@
 
 ## Unreleased
 
+## 0.3.1 - 2026-09-10
+
+- Added and expressly adopted the MedDeID Private Fine-Tuning Exception 1.0
+  for the coordinator, inference, data, training, and public synthetic-model
+  releases without changing the CC-BY-4.0 dataset and guideline terms.
+- Corrected guided workflows to use the validated Annotate, Curate, and
+  Subannotate 0.3.1 image digests.
+- Published `meddeid` 0.4.2 with the exception present in both package and
+  runtime container filesystems, and validated its CPU and CUDA images.
+- Published new Dutch and English Zenodo v3 archive versions with complete
+  licensing context while preserving the dataset payloads.
+
 ## 0.3.0 - 2026-09-09
 
 - Coordinated MedDeID 0.4.0, Data 0.4.1, Eval 0.5.0, Training 0.3.0, and the

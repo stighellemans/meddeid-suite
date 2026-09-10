@@ -1,0 +1,24 @@
+{
+  "before_publish": {
+    "bytes": 11684877,
+    "concept_doi": "10.5281/zenodo.21890964",
+    "filename": "meddeid-dutch-synthetic-data-v3.zip",
+    "record_id": 22689856,
+    "record_url": "https://zenodo.org/deposit/22689856",
+    "sha256": "5255f956e4e8acab46538446e7ba0c0be0e3fe4ae64b377e69c437d23d2c4255",
+    "state": "unsubmitted",
+    "submitted": false,
+    "version_doi": "10.5281/zenodo.22689856"
+  },
+  "published": {
+    "bytes": 11684877,
+    "concept_doi": "10.5281/zenodo.21890964",
+    "filename": "meddeid-dutch-synthetic-data-v3.zip",
+    "record_id": 22689856,
+    "record_url": "https://zenodo.org/records/22689856",
+    "sha256": "5255f956e4e8acab46538446e7ba0c0be0e3fe4ae64b377e69c437d23d2c4255",
+    "state": "done",
+    "submitted": true,
+    "version_doi": "10.5281/zenodo.22689856"
+  }
+}

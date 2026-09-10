@@ -1,0 +1,47 @@
+{
+  "cuda_device": {
+    "compute_capability": "7.5",
+    "name": "Tesla T4",
+    "total_memory_bytes": 16703356928
+  },
+  "cuda_runtime": "12.9",
+  "deid_text": "Patiënt [Name:Patient] belde [Contactdetails].",
+  "exception_sha256": "e31baff0466175c9e63ba64f14c304932ddc3c29eadb879a976efd5b7f58e11d",
+  "health": {
+    "contracts": {
+      "default_language_profile": "nl-BE",
+      "language_profiles": [
+        {
+          "profile_id": "nl-BE"
+        }
+      ]
+    },
+    "model": {
+      "name": "meddeid-dutch-synth",
+      "version": "1"
+    },
+    "ready": true,
+    "serving": {
+      "gateway_microbatching": false,
+      "max_concurrent_requests": 1,
+      "profile": "latency"
+    },
+    "status": "ok"
+  },
+  "image": "ghcr.io/stighellemans/meddeid-api@sha256:3a355a4b3e5a0158cb0cb3232aeb3114b09843d4846de4d230e78a8f1b75b98f",
+  "installed_exception": "/opt/venv/lib/python3.12/site-packages/meddeid-0.4.2.dist-info/licenses/MEDDEID-PRIVATE-FINE-TUNING-EXCEPTION-1.0.txt",
+  "meddeid": "0.4.2",
+  "model": "stighellemans/meddeid-dutch-synth",
+  "model_repository_release": "v1.0.1",
+  "model_revision": "d21619c2025f7cdd1cbe268557c058846c750e3c",
+  "model_version": "1",
+  "runtime_exception": "/licenses/meddeid/MEDDEID-PRIVATE-FINE-TUNING-EXCEPTION-1.0.txt",
+  "schema": "meddeid.cuda-release-validation.v1",
+  "span_count": 2,
+  "status": "ok",
+  "torch": "2.13.0+cu129",
+  "validated_at_utc": "2026-09-10T12:44:47Z",
+  "host_driver": "580.173.02",
+  "validation_provider": "Azure Standard_NC4as_T4_v3",
+  "validation_region": "westeurope"
+}

@@ -1,4 +1,4 @@
-# MedDeID English synthetic data v2
+# MedDeID English synthetic data v3
 
 This archive contains 6,700 synthetic English clinical documents for model
 development, a separate 300-document human-validated synthetic benchmark, and
@@ -31,6 +31,9 @@ Verify all extracted files from the archive root with:
 sha256sum --check CHECKSUMS.sha256
 ```
 
-The data and guideline are licensed under CC BY 4.0. Synthetic data does not
-represent every property of real clinical documentation; local validation and
-a separate privacy assessment remain necessary.
+The data and guideline are licensed under CC BY 4.0. The included MedDeID
+Private Fine-Tuning Exception applies only to the linked software and model
+artifacts identified in `SOFTWARE-AND-MODEL-LICENSING.md`; it does not apply to
+or relicense the archive's data or guideline. Synthetic data does not represent
+every property of real clinical documentation; local validation and a separate
+privacy assessment remain necessary.

@@ -18,7 +18,7 @@ import yaml
 SUITE = Path(__file__).resolve().parents[1]
 PILOT = SUITE / "pilots" / "new-researcher-v1"
 REPOS = SUITE / "repos"
-MODEL_REVISION = "1f20655454dcbd042647cacdfff6b6802a970959"
+MODEL_REVISION = "d21619c2025f7cdd1cbe268557c058846c750e3c"
 
 
 def read_jsonl(path: Path) -> list[dict]:
