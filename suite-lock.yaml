@@ -371,7 +371,7 @@ image_size_budgets:
   sha256: 92ddb29a311638f74659d01df049fa00dda606d7c56aa5b7ef827c7f7abf48db
 hosted_demo:
   repository: stighellemans/meddeid-demo
-  revision: ffb577b403cccb4cb637e5f295dc40a27ddfc585
+  revision: 460201d056eb79f86ed02e7536f2f94d381a7f28
   runtime: zero-a10g
   api: /deidentify
   privacy_boundary: synthetic-or-otherwise-non-sensitive-text-only

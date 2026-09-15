@@ -108,12 +108,12 @@ Please cite both the archived dataset version and the accompanying paper.
 }
 ```
 
-### Accompanying paper (forthcoming)
+### MedDeID paper
 
-Hellemans, S., Stroobants, T., Scheurwegs, E., Meysman, P., Jorens, P., and
-Laukens, K. *MedDeID for locally deployable clinical text de-identification
-with real or synthetic training data.* Manuscript in preparation. The final
-publication details and DOI will be added here when available.
+Hellemans, S., Stroobants, T., Scheurwegs, E., Meysman, P., Jorens, P. G., and
+Laukens, K. (2026). *MedDeID enables locally governed clinical-text
+de-identification from real or synthetic training data*.
+[arXiv:2609.10049](https://arxiv.org/abs/2609.10049).
 
 ## Licence
 
