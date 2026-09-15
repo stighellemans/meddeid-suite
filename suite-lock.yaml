@@ -254,7 +254,7 @@ models:
     repository: stighellemans/meddeid-dutch-synth
     tag: v1.0.1
     tag_revision: b4aa61f3f41f9aed1dfe09ef1169f7d090ccad1f
-    revision: d21619c2025f7cdd1cbe268557c058846c750e3c
+    revision: 6ae4ba7f0717dda6308dc2e1a8e93aaf2befb3c4
     doi: 10.57967/hf/10304
     weights_artifact: model.safetensors
     weights_sha256: 791c6b2135274d548a0ee0c8759055be3eac2ac6245977b7faaf992a664f4780
@@ -268,7 +268,7 @@ models:
     repository: stighellemans/meddeid-english-synth
     tag: v1.0.1
     tag_revision: 2ca1b531ace797096ccfe21c6e8a38f157b1ec74
-    revision: a6d5a25c33a4b7c560bc3452f32cc4591617e714
+    revision: bda8c85075208a41aa5aaee9baba2ab919f8cf9b
     doi: 10.57967/hf/10306
     weights_artifact: model.safetensors
     weights_sha256: 545ebc71a235d471ba7f2fefca341704fe6aed33df4fb5b46ab9adef3e139bcc
@@ -371,7 +371,7 @@ image_size_budgets:
   sha256: 92ddb29a311638f74659d01df049fa00dda606d7c56aa5b7ef827c7f7abf48db
 hosted_demo:
   repository: stighellemans/meddeid-demo
-  revision: 830fc3d3ffb97140dd7c5b633a7d4b210f55ac2b
+  revision: ffb577b403cccb4cb637e5f295dc40a27ddfc585
   runtime: zero-a10g
   api: /deidentify
   privacy_boundary: synthetic-or-otherwise-non-sensitive-text-only
