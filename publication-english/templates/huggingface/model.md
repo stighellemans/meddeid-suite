@@ -24,6 +24,10 @@ datasets:
 is packaged with its tokenizer, configuration, labels, and MedDeID bundle
 contract. No real patient notes were used for training.
 
+The [MedDeID documentation](https://stighellemans.github.io/meddeid/) is the
+central reference for installation, local deployment, annotation workflows,
+validation, and security guidance.
+
 ## Intended use
 
 The model is a research and local-deployment starting point for detecting
